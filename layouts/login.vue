@@ -2,6 +2,7 @@
   <section class="container-fluid">
         <div class="row bg-login">
             <div class="col-sm-6 login-section-wrapper">
+                 <div class="brand-wrapper">LOGO</div>
                 <nuxt />
             </div>
             <div class="col-md-12 col-lg-6 bg-login-right align-middle text-center">

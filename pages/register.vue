@@ -5,11 +5,11 @@
         <div class="frame ">
             <div class="nav">
                 <ul class="links">
-                    <li class="signin-active"><nuxt-link
+                    <li class="signin-inactive"><nuxt-link
             class="btn"
             :to="'login'"
           >เข้าสู่ระบบ</nuxt-link></li>
-                    <li class="signup-inactive"><nuxt-link
+                    <li class="signup-active"><nuxt-link
             class="btn"
             :to="'register'"
           >สมัครสมาชิก</nuxt-link></li>
@@ -20,21 +20,27 @@
                     <div class="form-login">
                         <div class="input active">
                             <label for="fullname">อีเมล</label>
-                            <input class="form-styling" type="email" name="email" placeholder="admin@test.om" /> 
+                            <input class="form-styling" type="email" name="email" placeholder="admin@test.com" /> 
                         </div>
                         
                        <div class="input">
                             <label for="fullname">รหัสผ่าน</label>
                             <input class="form-styling" type="password" name="password"  /> 
                         </div>
+                         <div class="input">
+                            <label for="fullname">ยืนยันรหัสผ่าน</label>
+                            <input class="form-styling" type="password" name="password" placeholder="ใส่รหัสผ่านอีกครั้ง"  /> 
+                        </div>
                     </div> 
                     
-                     <div class="link-forgot"><nuxt-link
-           
-            :to="'forgotpass'"
-          >ลืมรหัสผ่าน?</nuxt-link> </div>
+                     <div class="regis-agree">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">ยอมรับ<a>เงื่อนไข</a>และ<a>ข้อตกลง</a></label>
+                        </div>
+                    </div>
                    
-                    <div class="btn-animate"> <a class="btn-signin">เข้าสู่ระบบ <img src="~/assets/mark/icons8-right_arrow.png" /></a>  </div>
+                    <div class="btn-animate"> <a class="btn-signin">สมัครสมาชิก <img src="~/assets/mark/icons8-right_arrow.png" /></a>  </div>
                 </form>
                
                   
@@ -55,7 +61,7 @@ export default {
     return 'login'
   },
   async asyncData({ params, app, payload, route, store }) {
-    await store.commit("SET_TITLE", "Login");
+    await store.commit("SET_TITLE", "Register");
   },
   transition(to, from) {
     if (!from) return "fade";
@@ -66,12 +72,12 @@ export default {
   },
   head() {
     return {
-      title: "Login | " + this.$store.state.info.sitename,
+      title: "Register | " + this.$store.state.info.sitename,
     };
   },
   mounted() {
     this.$store.commit("SET_CURRENT", {
-      title: "Login",
+      title: "Register",
       dir: ''
     });
   },
