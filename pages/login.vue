@@ -1,6 +1,36 @@
 <template>
   <div>
-      a
+      <div class="brand-wrapper">LOGO</div>
+      <div class="login-wrapper my-auto">
+            <h1 class="login-title">Login</h1>
+            
+                <div class="frame">
+                    <div class="nav">
+                        <ul class="links">
+                            <li class="signin-active"><a class="btn">Existing User</a></li>
+                            <li class="signup-inactive"><a class="btn">New User</a></li>
+                        </ul>
+                    </div>
+                    <div ng-app ng-init="checked = false">
+                        <form class="form-signin" action="" method="post" name="form"> <label for="fullname">Full name</label><input class="form-styling" type="text" name="username" placeholder="" /> <label for="dlno">Driving License Number</label> <input class="form-styling" type="text" name="username" placeholder="" /> <label for="password">Password</label> <input class="form-styling" type="text" name="password" placeholder="" /> <input type="checkbox" id="checkbox" /> <label for="checkbox"><span class="ui"></span>Keep me signed in</label>
+                            <div class="btn-animate"> <a class="btn-signin">Login to your account</a> </div>
+                        </form>
+                        <form class="form-signup" action="" method="post" name="form"> <label for="fullname">Full name</label> <input class="form-styling" type="text" name="email" placeholder="" /><label for="email">Email</label> <input class="form-styling" type="text" name="email" placeholder="" /> <label for="dlno">Enter DL Number</label> <input class="form-styling" type="text" name="dlno" placeholder="" /> <label for="password">Create password</label> <input class="form-styling" type="text" name="confirmpassword" placeholder="" /> <a ng-click="checked = !checked" class="btn-signup">REGISTER</a> </form>
+                        <div class="success"> 
+                                <div class="successtext">
+                                    <p> New User registered, Kindly check your email for confirmation.</p>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="forgot"> <a href="#">Forgot your password?</a> </div>
+                    <div>
+                        <div class="cover-photo"></div>
+                        <div class="profile-photo"></div>
+                        <h1 class="welcome">Welcome,User</h1> <a class="btn-goback" value="Refresh" onClick="history.go()">Go back</a>
+                    </div>
+                </div> 
+            </div>    
+     
   </div>
 </template>
 
