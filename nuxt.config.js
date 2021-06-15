@@ -42,7 +42,8 @@ module.exports = {
       }
     ]
   },
-  css: ["@/assets/grid.css", "@/assets/content.scss", "bf-solid/dist/solid.latest.css","@/assets/main.scss"],
+  //css: ["@/assets/grid.css", "@/assets/content.scss", "bf-solid/dist/solid.latest.css","@/assets/main.scss"],
+  css: ["@/assets/grid.css", "@/assets/content.scss","@/assets/main.scss"],
   // icon: {
   //   iconSrc: `${siteInfo.siteicon}`
   //  },

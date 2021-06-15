@@ -9,7 +9,7 @@
                 <div class="login-text-right">
                     <h1>YOUR <span>FRIEND</span></h1>
                     <h2>FOR BUSINESS</h2>
-                    <p>LISTEN | UNderstand | create solution</p>
+                    <p>LISTEN | UNDERSTAND | CREATE SOLUTION</p>
                 </div>
                 
                 

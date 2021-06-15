@@ -34,13 +34,15 @@
                     </div> 
                     
                      <div class="regis-agree">
+                       
                         <div class="form-check">
                             <input type="checkbox" class="form-check-input" id="exampleCheck1">
                             <label class="form-check-label" for="exampleCheck1">ยอมรับ<a>เงื่อนไข</a>และ<a>ข้อตกลง</a></label>
                         </div>
                     </div>
+                    
                    
-                    <div class="btn-animate"> <a class="btn-signin">สมัครสมาชิก <img src="~/assets/mark/icons8-right_arrow.png" /></a>  </div>
+                    <div class="btn-animate"> <button class="btn btn-xs" disabled>สมัครสมาชิก <img src="~/assets/mark/icons8-right_arrow.png" /></button>  </div>
                 </form>
                
                   

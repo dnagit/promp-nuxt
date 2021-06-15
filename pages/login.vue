@@ -34,7 +34,7 @@
             :to="'forgotpass'"
           >ลืมรหัสผ่าน?</nuxt-link> </div>
                    
-                    <div class="btn-animate"> <a class="btn-signin">เข้าสู่ระบบ <img src="~/assets/mark/icons8-right_arrow.png" /></a>  </div>
+                    <div class="btn-animate"> <button class="btn btn-xs">เข้าสู่ระบบ <img src="~/assets/mark/icons8-right_arrow.png" /></button>  </div>
                 </form>
                
                   

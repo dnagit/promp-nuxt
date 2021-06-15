@@ -215,7 +215,15 @@ li {
     font-weight: 300;
     
     padding-top: 55px;
-   
+   .btn-animate{
+       button{
+        color: #ffffff;
+       }
+       img{
+            margin-left: 60px;
+        }
+      
+   }
    
 
 }
@@ -365,6 +373,9 @@ textarea:focus {
 .btn-signin{
     color:#fff;
 }
+.btn-xs{
+    padding: .125rem .75rem;
+}
 .forgotcomplete-wrapper{
     height: 80vh;
     text-align: center;
@@ -473,6 +484,9 @@ textarea:focus {
     a{
         color: #272727;
         font-weight: bold;
+    }
+    label{
+        padding: 4px;
     }
 }
 
