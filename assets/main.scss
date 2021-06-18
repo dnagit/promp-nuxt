@@ -5,11 +5,15 @@ h1, h2, h3, h4, h5, h6{
 }
 .bg-login{
     height: 100vh;
+    img{
+        width: 75px;
+    }
 }
 .bg-login-right{
     
     background-image: url('../static/images/background.png');
     background-size: 100%;
+    
 
 }
 .login-left{
@@ -642,5 +646,25 @@ a.btn-goback:hover {
 
         padding: 20px;
     }
+    .bg-login-right{
+        display: none;
+    }
+    .frame{
+        width: 100%;
+        .form-signin{
+            width: 100%;
+        }
+    }
+    .signin-active, .signup-active{
+
+        padding: 10px 14px;
+    }
+    .frame .nav .btn{
+        padding: .375rem 32px;
+    }
+    .bg-login img{
+        width: 50px;
+    }
+    
     
 }
