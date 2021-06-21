@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@nuxt/content": "^1.8.1",
+    "@nuxtjs/auth": "^4.9.1",
     "@nuxtjs/axios": "^5.3.1",
     "@nuxtjs/pwa": "^3.0.2",
     "bf-solid": "^2.10.6",
@@ -29,13 +30,13 @@
   },
   "devDependencies": {
     "@sendgrid/client": "^6.3.0",
-    "string.prototype.includes": "^2.0.0",
-    "sass-loader": "^7.0.0",
     "babel-eslint": "^8.2.6",
     "eslint": "^4.15.0",
     "eslint-friendly-formatter": "^3.0.0",
     "eslint-loader": "^1.7.1",
     "eslint-plugin-vue": "^4.7.0",
-    "prettier": "^2.1.1"
+    "prettier": "^2.1.1",
+    "sass-loader": "^7.0.0",
+    "string.prototype.includes": "^2.0.0"
   }
 }

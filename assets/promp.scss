@@ -1,0 +1,2170 @@
+.mediaViewInfo {
+    --web-view-name: signup;
+    --web-view-id: signup;
+    --web-scale-on-resize: true;
+    --web-enable-deep-linking: true;
+}
+:root {
+    --web-view-ids: signup;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+}
+#signup {
+    position: absolute;
+    width: 1920px;
+    height: 1080px;
+    background-color: rgba(255,255,255,1);
+    overflow: hidden;
+    --web-view-name: signup;
+    --web-view-id: signup;
+    --web-scale-on-resize: true;
+    --web-enable-deep-linking: true;
+}
+@keyframes fadein {
+
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+
+}
+#Rectangle_1_cx {
+    fill: rgba(255,255,255,1);
+    stroke: rgba(201,201,201,1);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+.Rectangle_1_cx {
+    filter: drop-shadow(0px 20px 50px rgba(0, 0, 0, 0.161));
+    position: absolute;
+    overflow: visible;
+    width: 783px;
+    height: 462px;
+    left: 105px;
+    top: 427px;
+}
+#Rectangle_2_cy {
+    fill: rgba(39,39,39,1);
+}
+.Rectangle_2_cy {
+    position: absolute;
+    overflow: visible;
+    width: 9px;
+    height: 105px;
+    left: 105px;
+    top: 530px;
+}
+#_cz {
+    left: 163px;
+    top: 437px;
+    position: absolute;
+    overflow: visible;
+    width: 48px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    color: rgba(112,112,112,1);
+}
+#Line_48 {
+    fill: transparent;
+    stroke: rgba(201,201,201,1);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+.Line_48 {
+    overflow: visible;
+    position: absolute;
+    width: 633px;
+    height: 1px;
+    left: 105.5px;
+    top: 531px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#_c {
+    left: 163px;
+    top: 541px;
+    position: absolute;
+    overflow: visible;
+    width: 81px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    color: rgba(112,112,112,1);
+}
+#Line_49 {
+    fill: transparent;
+    stroke: rgba(201,201,201,1);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+.Line_49 {
+    overflow: visible;
+    position: absolute;
+    width: 633px;
+    height: 1px;
+    left: 105.5px;
+    top: 635px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#_da {
+    left: 163px;
+    top: 645px;
+    position: absolute;
+    overflow: visible;
+    width: 137px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    color: rgba(112,112,112,1);
+}
+#Rectangle_3_c {
+    fill: rgba(64,64,64,1);
+}
+.Rectangle_3_c {
+    filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.161));
+    position: absolute;
+    overflow: visible;
+    width: 357px;
+    height: 107px;
+    left: 105px;
+    top: 876px;
+    --web-animation: fadein 0.3s ease-out;
+    --web-action-type: page;
+    --web-action-target: Dashboard.html;
+    cursor: pointer;
+}
+#_db {
+    left: 147px;
+    top: 902px;
+    position: absolute;
+    overflow: visible;
+    width: 141px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px;
+    color: rgba(255,255,255,1);
+}
+#icons8-right_arrow_c {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    left: 364px;
+    top: 899px;
+    overflow: visible;
+}
+#patsanan {
+    left: 163px;
+    top: 474px;
+    position: absolute;
+    overflow: visible;
+    width: 121px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    color: rgba(57,57,57,1);
+}
+#patsanan1 {
+    left: 163px;
+    top: 585px;
+    position: absolute;
+    overflow: visible;
+    width: 121px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    color: rgba(57,57,57,1);
+}
+#Ellipse_1_c {
+    fill: rgba(57,57,57,1);
+}
+.Ellipse_1_c {
+    position: absolute;
+    overflow: visible;
+    width: 9px;
+    height: 9px;
+    left: 163px;
+    top: 595px;
+}
+#Ellipse_2_c {
+    fill: rgba(57,57,57,1);
+}
+.Ellipse_2_c {
+    position: absolute;
+    overflow: visible;
+    width: 9px;
+    height: 9px;
+    left: 179px;
+    top: 595px;
+}
+#Ellipse_3_da {
+    fill: rgba(57,57,57,1);
+}
+.Ellipse_3_da {
+    position: absolute;
+    overflow: visible;
+    width: 9px;
+    height: 9px;
+    left: 195px;
+    top: 595px;
+}
+#Ellipse_4_db {
+    fill: rgba(57,57,57,1);
+}
+.Ellipse_4_db {
+    position: absolute;
+    overflow: visible;
+    width: 9px;
+    height: 9px;
+    left: 211px;
+    top: 595px;
+}
+#Ellipse_5_dc {
+    fill: rgba(57,57,57,1);
+}
+.Ellipse_5_dc {
+    position: absolute;
+    overflow: visible;
+    width: 9px;
+    height: 9px;
+    left: 227px;
+    top: 595px;
+}
+#Line_2_dd {
+    fill: transparent;
+    stroke: rgba(57,57,57,1);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: round;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+.Line_2_dd {
+    overflow: visible;
+    position: absolute;
+    width: 1px;
+    height: 28px;
+    left: 243.5px;
+    top: 586.5px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Rectangle_2949 {
+    fill: rgba(255,192,15,1);
+    stroke: rgba(255,192,15,1);
+    stroke-width: 2px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+.Rectangle_2949 {
+    position: absolute;
+    overflow: visible;
+    width: 24px;
+    height: 25px;
+    left: 105px;
+    top: 780px;
+}
+#_df {
+    left: 147px;
+    top: 774px;
+    position: absolute;
+    overflow: visible;
+    width: 268px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    color: rgba(112,112,112,1);
+}
+#LOGO_dg {
+    left: 107px;
+    top: 90px;
+    position: absolute;
+    overflow: visible;
+    width: 110px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    color: rgba(0,0,0,1);
+    img{
+        width: 100px;
+    }
+}
+#Group_1381_dh {
+    position: absolute;
+    width: 1030.221px;
+    height: 1354.84px;
+    left: 889.779px;
+    top: -62px;
+    overflow: visible;
+}
+#Rectangle_2950_di {
+    fill: rgba(109,109,109,1);
+}
+.Rectangle_2950_di {
+    position: absolute;
+    overflow: visible;
+    width: 971px;
+    height: 1080px;
+    left: 59.221px;
+    top: 62px;
+}
+#Path_1129_dj {
+    fill: rgba(0,0,0,0.169);
+}
+.Path_1129_dj {
+    overflow: visible;
+    position: absolute;
+    width: 96.304px;
+    height: 206.84px;
+    left: 912.362px;
+    top: 0px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Path_1127_dk {
+    fill: rgba(255,192,15,1);
+}
+.Path_1127_dk {
+    overflow: visible;
+    position: absolute;
+    width: 139.604px;
+    height: 299.84px;
+    left: 0.062px;
+    top: 119px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Path_1128_dl {
+    fill: rgba(255,215,102,1);
+}
+.Path_1128_dl {
+    overflow: visible;
+    position: absolute;
+    width: 79.311px;
+    height: 170.342px;
+    left: 190.356px;
+    top: 128.498px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Path_1131_dm {
+    fill: rgba(0,0,0,0.169);
+}
+.Path_1131_dm {
+    overflow: visible;
+    position: absolute;
+    width: 180.094px;
+    height: 386.802px;
+    left: 836.573px;
+    top: 248.038px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#pexels-karolina-grabowska-7679_dn {
+    position: absolute;
+    width: 180.094px;
+    height: 386.802px;
+    left: 777.532px;
+    top: 179.005px;
+    overflow: visible;
+}
+#Path_1132_do {
+    fill: rgba(255,192,15,1);
+}
+.Path_1132_do {
+    overflow: visible;
+    position: absolute;
+    width: 198.27px;
+    height: 425.84px;
+    left: 615.397px;
+    top: 929px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Path_1133_dp {
+    fill: rgba(0,0,0,0.169);
+}
+.Path_1133_dp {
+    overflow: visible;
+    position: absolute;
+    width: 65.135px;
+    height: 139.895px;
+    left: 762.532px;
+    top: 853.945px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Path_1134_dq {
+    fill: rgba(255,215,102,1);
+}
+.Path_1134_dq {
+    overflow: visible;
+    position: absolute;
+    width: 77.213px;
+    height: 165.838px;
+    left: 847.532px;
+    top: 961.945px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Path_1136_dr {
+    fill: rgba(0,0,0,0.169);
+}
+.Path_1136_dr {
+    overflow: visible;
+    position: absolute;
+    width: 199.666px;
+    height: 428.84px;
+    left: 52px;
+    top: 677px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#pexels-karolina-grabowska-7679_ds {
+    position: absolute;
+    width: 199.666px;
+    height: 428.84px;
+    left: 0px;
+    top: 627px;
+    overflow: visible;
+}
+#Path_1137_dt {
+    fill: rgba(255,215,102,1);
+}
+.Path_1137_dt {
+    overflow: visible;
+    position: absolute;
+    width: 67.241px;
+    height: 144.42px;
+    left: 294.425px;
+    top: 889.42px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#YOUR_FRIEND_FOR_BUSINESS_du {
+    left: 1123px;
+    top: 415px;
+    position: absolute;
+    overflow: visible;
+    width: 544px;
+    white-space: nowrap;
+    text-align: right;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 83px;
+    color: rgba(255,255,255,1);
+}
+#LISTEN__UNderstand__create_sol_dv {
+    left: 1125px;
+    top: 625px;
+    position: absolute;
+    overflow: visible;
+    width: 540px;
+    white-space: nowrap;
+    text-align: right;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 28px;
+    color: rgba(168,168,168,1);
+    text-transform: uppercase;
+}
+#icons8-multiply_dw {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    left: 1829.211px;
+    top: 68.702px;
+    overflow: visible;
+}
+#spacer_dx {
+    fill: rgba(255,255,255,0);
+    stroke: rgba(0,0,0,0);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+.spacer_dx {
+    position: absolute;
+    overflow: visible;
+    width: 36px;
+    height: 36px;
+    left: 0px;
+    top: 0px;
+}
+#icons8-multiply_dy {
+    fill: rgba(245,245,245,1);
+}
+.icons8-multiply_dy {
+    overflow: visible;
+    position: absolute;
+    width: 31.702px;
+    height: 31.68px;
+    left: 2px;
+    top: 2px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#icons8-checkmark {
+    fill: rgba(245,245,245,1);
+}
+.icons8-checkmark {
+    overflow: visible;
+    position: absolute;
+    width: 13.412px;
+    height: 10.258px;
+    left: 111px;
+    top: 787.752px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#_d {
+    left: 163px;
+    top: 687px;
+    position: absolute;
+    overflow: visible;
+    width: 200px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    color: rgba(222,222,222,1);
+}
+#Rectangle_691_d {
+    fill: rgba(255,255,255,1);
+    stroke: rgba(168,168,168,1);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+.Rectangle_691_d {
+    position: absolute;
+    overflow: visible;
+    width: 625px;
+    height: 77px;
+    left: 105px;
+    top: 257px;
+}
+#Rectangle_692 {
+    fill: rgba(64,64,64,1);
+}
+.Rectangle_692 {
+    position: absolute;
+    overflow: visible;
+    width: 290px;
+    height: 77px;
+    left: 105px;
+    top: 257px;
+}
+#_ea {
+    left: 165px;
+    top: 276px;
+    position: absolute;
+    overflow: visible;
+    width: 170px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    color: rgba(255,255,255,1);
+}
+#_eb {
+    left: 492px;
+    top: 276px;
+    position: absolute;
+    overflow: visible;
+    width: 114px;
+    white-space: nowrap;
+    --web-animation: fadein 0.3s ease-out;
+    --web-action-type: page;
+    --web-action-target: login.html;
+    cursor: pointer;
+    text-align: left;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    color: rgba(80,80,80,1);
+    a{
+        color: rgba(80,80,80,1);
+    }
+}
+
+/*login*/
+#login {
+    position: absolute;
+    width: 1920px;
+    height: 1080px;
+    background-color: rgba(255,255,255,1);
+    overflow: hidden;
+    --web-view-name: login;
+    --web-view-id: login;
+    --web-scale-on-resize: true;
+    --web-enable-deep-linking: true;
+}
+@keyframes fadein {
+
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+
+}
+#Rectangle_1 {
+    fill: rgba(255,255,255,1);
+    stroke: rgba(201,201,201,1);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+.Rectangle_1 {
+    filter: drop-shadow(0px 20px 50px rgba(0, 0, 0, 0.161));
+    position: absolute;
+    overflow: visible;
+    width: 783px;
+    height: 357px;
+    left: 105px;
+    top: 427px;
+}
+#_bq {
+    left: 163px;
+    top: 546px;
+    position: absolute;
+    overflow: visible;
+    width: 81px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    color: rgba(112,112,112,1);
+}
+#Line_1 {
+    fill: transparent;
+    stroke: rgba(201,201,201,1);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+.Line_1 {
+    overflow: visible;
+    position: absolute;
+    width: 633px;
+    height: 1px;
+    left: 105.5px;
+    top: 530.5px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#_bs {
+    left: 163px;
+    top: 442px;
+    position: absolute;
+    overflow: visible;
+    width: 48px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    color: rgba(112,112,112,1);
+}
+#Pimgmailcom {
+    left: 163px;
+    top: 482px;
+    position: absolute;
+    overflow: visible;
+    width: 217px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    color: rgba(57,57,57,1);
+}
+#Pimgmailcom1 {
+    left: 163px;
+    top: 585px;
+    position: absolute;
+    overflow: visible;
+    width: 217px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    color: rgba(57,57,57,1);
+}
+#Ellipse_1 {
+    fill: rgba(57,57,57,1);
+}
+.Ellipse_1 {
+    position: absolute;
+    overflow: visible;
+    width: 9px;
+    height: 9px;
+    left: 163px;
+    top: 596px;
+}
+#Ellipse_2 {
+    fill: rgba(57,57,57,1);
+}
+.Ellipse_2 {
+    position: absolute;
+    overflow: visible;
+    width: 9px;
+    height: 9px;
+    left: 179px;
+    top: 596px;
+}
+#Ellipse_3 {
+    fill: rgba(57,57,57,1);
+}
+.Ellipse_3 {
+    position: absolute;
+    overflow: visible;
+    width: 9px;
+    height: 9px;
+    left: 195px;
+    top: 596px;
+}
+#Ellipse_4 {
+    fill: rgba(57,57,57,1);
+}
+.Ellipse_4 {
+    position: absolute;
+    overflow: visible;
+    width: 9px;
+    height: 9px;
+    left: 211px;
+    top: 596px;
+}
+#Ellipse_5 {
+    fill: rgba(57,57,57,1);
+}
+.Ellipse_5 {
+    position: absolute;
+    overflow: visible;
+    width: 9px;
+    height: 9px;
+    left: 227px;
+    top: 596px;
+}
+#Line_2 {
+    fill: transparent;
+    stroke: rgba(57,57,57,1);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: round;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+.Line_2 {
+    overflow: visible;
+    position: absolute;
+    width: 1px;
+    height: 28px;
+    left: 243.5px;
+    top: 587.5px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Rectangle_2 {
+    fill: rgba(39,39,39,1);
+}
+.Rectangle_2 {
+    position: absolute;
+    overflow: visible;
+    width: 9px;
+    height: 104px;
+    left: 105px;
+    top: 530px;
+}
+#Rectangle_3 {
+    fill: rgba(64,64,64,1);
+}
+.Rectangle_3 {
+    filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.161));
+    position: absolute;
+    overflow: visible;
+    width: 357px;
+    height: 107px;
+    left: 105px;
+    top: 843px;
+    --web-animation: fadein 0.3s ease-out;
+    --web-action-type: page;
+    --web-action-target: Dashboard.html;
+    cursor: pointer;
+}
+#_b {
+    left: 147px;
+    top: 869px;
+    position: absolute;
+    overflow: visible;
+    width: 109px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px;
+    color: rgba(255,255,255,1);
+}
+#icons8-right_arrow {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    left: 364px;
+    top: 866px;
+    overflow: visible;
+}
+#_ca {
+    left: 612px;
+    top: 667px;
+    position: absolute;
+    overflow: visible;
+    width: 120px;
+    white-space: nowrap;
+    --web-animation: fadein 0.3s ease-out;
+    --web-action-type: page;
+    --web-action-target: forgot_password.html;
+    cursor: pointer;
+    text-align: left;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    color: rgba(112,112,112,1);
+    a{
+        color: rgba(112,112,112,1);
+    }
+}
+#LOGO {
+    left: 107px;
+    top: 90px;
+    position: absolute;
+    overflow: visible;
+    width: 110px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    color: rgba(0,0,0,1);
+}
+#icons8-multiply_cs {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    left: 1829.211px;
+    top: 68.702px;
+    overflow: visible;
+}
+#spacer_ct {
+    fill: rgba(255,255,255,0);
+    stroke: rgba(0,0,0,0);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+.spacer_ct {
+    position: absolute;
+    overflow: visible;
+    width: 36px;
+    height: 36px;
+    left: 0px;
+    top: 0px;
+}
+#icons8-multiply_cu {
+    fill: rgba(245,245,245,1);
+}
+.icons8-multiply_cu {
+    overflow: visible;
+    position: absolute;
+    width: 31.702px;
+    height: 31.68px;
+    left: 2px;
+    top: 2px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Rectangle_691 {
+    fill: rgba(255,255,255,1);
+    stroke: rgba(168,168,168,1);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+.Rectangle_691 {
+    position: absolute;
+    overflow: visible;
+    width: 625px;
+    height: 77px;
+    left: 105px;
+    top: 257px;
+}
+#Rectangle_695 {
+    fill: rgba(64,64,64,1);
+}
+.Rectangle_695 {
+    position: absolute;
+    overflow: visible;
+    width: 335px;
+    height: 77px;
+    left: 395px;
+    top: 257px;
+}
+#_cb {
+    left: 503px;
+    top: 276px;
+    position: absolute;
+    overflow: visible;
+    width: 130px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    color: rgba(255,255,255,1);
+}
+#_cc {
+    left: 165px;
+    top: 276px;
+    position: absolute;
+    overflow: visible;
+    width: 146px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    color: rgba(80,80,80,1);
+a{
+  color: rgba(80,80,80,1);
+}
+}
+#Group_1381 {
+    position: absolute;
+    width: 1030.221px;
+    height: 1354.84px;
+    left: 889.779px;
+    top: -62px;
+    overflow: visible;
+}
+#Rectangle_2950 {
+    fill: rgba(109,109,109,1);
+}
+.Rectangle_2950 {
+    position: absolute;
+    overflow: visible;
+    width: 971px;
+    height: 1080px;
+    left: 59.221px;
+    top: 62px;
+}
+#Path_1129 {
+    fill: rgba(0,0,0,0.169);
+}
+.Path_1129 {
+    overflow: visible;
+    position: absolute;
+    width: 96.304px;
+    height: 206.84px;
+    left: 912.362px;
+    top: 0px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Path_1127 {
+    fill: rgba(255,192,15,1);
+}
+.Path_1127 {
+    overflow: visible;
+    position: absolute;
+    width: 139.604px;
+    height: 299.84px;
+    left: 0.062px;
+    top: 119px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Path_1128 {
+    fill: rgba(255,215,102,1);
+}
+.Path_1128 {
+    overflow: visible;
+    position: absolute;
+    width: 79.311px;
+    height: 170.342px;
+    left: 190.356px;
+    top: 128.498px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Path_1131 {
+    fill: rgba(0,0,0,0.169);
+}
+.Path_1131 {
+    overflow: visible;
+    position: absolute;
+    width: 180.094px;
+    height: 386.802px;
+    left: 836.573px;
+    top: 248.038px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#pexels-karolina-grabowska-7679 {
+    position: absolute;
+    width: 180.094px;
+    height: 386.802px;
+    left: 777.532px;
+    top: 179.005px;
+    overflow: visible;
+}
+#Path_1132 {
+    fill: rgba(255,192,15,1);
+}
+.Path_1132 {
+    overflow: visible;
+    position: absolute;
+    width: 198.27px;
+    height: 425.84px;
+    left: 615.397px;
+    top: 929px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Path_1133 {
+    fill: rgba(0,0,0,0.169);
+}
+.Path_1133 {
+    overflow: visible;
+    position: absolute;
+    width: 65.135px;
+    height: 139.895px;
+    left: 762.532px;
+    top: 853.945px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Path_1134 {
+    fill: rgba(255,215,102,1);
+}
+.Path_1134 {
+    overflow: visible;
+    position: absolute;
+    width: 77.213px;
+    height: 165.838px;
+    left: 847.532px;
+    top: 961.945px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Path_1136 {
+    fill: rgba(0,0,0,0.169);
+}
+.Path_1136 {
+    overflow: visible;
+    position: absolute;
+    width: 199.666px;
+    height: 428.84px;
+    left: 52px;
+    top: 677px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#pexels-karolina-grabowska-7679_co {
+    position: absolute;
+    width: 199.666px;
+    height: 428.84px;
+    left: 0px;
+    top: 627px;
+    overflow: visible;
+}
+#Path_1137 {
+    fill: rgba(255,215,102,1);
+}
+.Path_1137 {
+    overflow: visible;
+    position: absolute;
+    width: 67.241px;
+    height: 144.42px;
+    left: 294.425px;
+    top: 889.42px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#YOUR_FRIEND_FOR_BUSINESS {
+    left: 1123px;
+    top: 415px;
+    position: absolute;
+    overflow: visible;
+    width: 544px;
+    white-space: nowrap;
+    text-align: right;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 83px;
+    color: rgba(255,255,255,1);
+}
+#LISTEN__UNderstand__create_sol {
+    left: 1125px;
+    top: 625px;
+    position: absolute;
+    overflow: visible;
+    width: 540px;
+    white-space: nowrap;
+    text-align: right;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 28px;
+    color: rgba(168,168,168,1);
+    text-transform: uppercase;
+}
+#icons8-multiply_cs {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    left: 1829.211px;
+    top: 68.702px;
+    overflow: visible;
+}
+#spacer_ct {
+    fill: rgba(255,255,255,0);
+    stroke: rgba(0,0,0,0);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+.spacer_ct {
+    position: absolute;
+    overflow: visible;
+    width: 36px;
+    height: 36px;
+    left: 0px;
+    top: 0px;
+}
+#icons8-multiply_cu {
+    fill: rgba(245,245,245,1);
+}
+.icons8-multiply_cu {
+    overflow: visible;
+    position: absolute;
+    width: 31.702px;
+    height: 31.68px;
+    left: 2px;
+    top: 2px;
+    transform: matrix(1,0,0,1,0,0);
+}
+/*fogotpass*/
+#forgot_password {
+    position: absolute;
+    width: 1920px;
+    height: 1080px;
+    background-color: rgba(252,252,253,1);
+    overflow: hidden;
+    --web-view-name: forgot password;
+    --web-view-id: forgot_password;
+    --web-scale-on-resize: true;
+    --web-enable-deep-linking: true;
+}
+@keyframes fadein {
+
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+
+}
+#pexels-photo-4261800_d {
+    opacity: 0.551;
+    fill: url(#pexels-photo-4261800_d);
+}
+.pexels-photo-4261800_d {
+    display: none;
+    overflow: visible;
+    position: absolute;
+    width: 1080px;
+    height: 1079.067px;
+    left: -16px;
+    top: -0.067px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#pexels-photo-4261800_eb {
+    fill: url(#pexels-photo-4261800_eb);
+}
+.pexels-photo-4261800_eb {
+    display: none;
+    overflow: visible;
+    position: absolute;
+    width: 1080px;
+    height: 1079.067px;
+    left: -75px;
+    top: -0.067px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#_ec {
+    left: 104px;
+    top: 259px;
+    position: absolute;
+    overflow: visible;
+    width: 202px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    color: rgba(57,57,57,1);
+}
+#_ {
+    left: 104px;
+    top: 323px;
+    position: absolute;
+    overflow: visible;
+    width: 708px;
+    height: 49px;
+    line-height: 40px;
+    margin-top: -5px;
+    text-align: left;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: lighter;
+    font-size: 30px;
+    color: rgba(123,123,123,1);
+}
+#Group_54 {
+    position: absolute;
+    width: 290px;
+    height: 40px;
+    left: 171px;
+    top: 906px;
+    overflow: visible;
+}
+#_ee {
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    overflow: visible;
+    width: 291px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    color: rgba(80,80,80,1);
+    a{
+        color: rgba(80,80,80,1);
+    }
+}
+#Rectangle_3_ef {
+    fill: rgba(64,64,64,1);
+}
+.Rectangle_3_ef {
+    filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.161));
+    position: absolute;
+    overflow: visible;
+    width: 357px;
+    height: 107px;
+    left: 109px;
+    top: 685px;
+    --web-animation: fadein 0.3s ease-out;
+    --web-action-type: page;
+    --web-action-target: ________________________.html;
+    cursor: pointer;
+}
+#_eg {
+    left: 162px;
+    top: 703px;
+    position: absolute;
+    overflow: visible;
+    width: 74px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Mitr;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    color: rgba(255,255,255,1);
+}
+#icons8-right_arrow_eh {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    left: 368px;
+    top: 708px;
+    overflow: visible;
+}
+#Rectangle_1_ei {
+    fill: rgba(255,255,255,1);
+    stroke: rgba(201,201,201,1);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+.Rectangle_1_ei {
+    filter: drop-shadow(0px 20px 50px rgba(0, 0, 0, 0.161));
+    position: absolute;
+    overflow: visible;
+    width: 783px;
+    height: 254px;
+    left: 105px;
+    top: 437px;
+}
+#_ej {
+    left: 163px;
+    top: 452px;
+    position: absolute;
+    overflow: visible;
+    width: 48px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    color: rgba(112,112,112,1);
+}
+#Pimgmailcom_ek {
+    left: 163px;
+    top: 492px;
+    position: absolute;
+    overflow: visible;
+    width: 217px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    color: rgba(57,57,57,1);
+}
+#Rectangle_2_el {
+    fill: rgba(64,64,64,1);
+}
+.Rectangle_2_el {
+    position: absolute;
+    overflow: visible;
+    width: 9px;
+    height: 104px;
+    left: 105px;
+    top: 437px;
+}
+#icons8-import {
+    fill: rgba(255,192,15,1);
+}
+.icons8-import {
+    overflow: visible;
+    position: absolute;
+    width: 28.413px;
+    height: 28.413px;
+    left: 116px;
+    top: 912.587px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#LOGO_en {
+    left: 107px;
+    top: 90px;
+    position: absolute;
+    overflow: visible;
+    width: 110px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    color: rgba(0,0,0,1);
+}
+#icons8-multiply_e {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    left: 1829.211px;
+    top: 68.702px;
+    overflow: visible;
+}
+#spacer_e {
+    fill: rgba(255,255,255,0);
+    stroke: rgba(0,0,0,0);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+.spacer_e {
+    position: absolute;
+    overflow: visible;
+    width: 36px;
+    height: 36px;
+    left: 0px;
+    top: 0px;
+}
+#icons8-multiply_fa {
+    fill: rgba(245,245,245,1);
+}
+.icons8-multiply_fa {
+    overflow: visible;
+    position: absolute;
+    width: 31.702px;
+    height: 31.68px;
+    left: 2px;
+    top: 2px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Group_1381_er {
+    position: absolute;
+    width: 1030.221px;
+    height: 1354.84px;
+    left: 889.779px;
+    top: -62px;
+    overflow: visible;
+}
+#Rectangle_2950_es {
+    fill: rgba(109,109,109,1);
+}
+.Rectangle_2950_es {
+    position: absolute;
+    overflow: visible;
+    width: 971px;
+    height: 1080px;
+    left: 59.221px;
+    top: 62px;
+}
+#Path_1129_et {
+    fill: rgba(0,0,0,0.169);
+}
+.Path_1129_et {
+    overflow: visible;
+    position: absolute;
+    width: 96.304px;
+    height: 206.84px;
+    left: 912.362px;
+    top: 0px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Path_1127_eu {
+    fill: rgba(255,192,15,1);
+}
+.Path_1127_eu {
+    overflow: visible;
+    position: absolute;
+    width: 139.604px;
+    height: 299.84px;
+    left: 0.062px;
+    top: 119px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Path_1128_ev {
+    fill: rgba(255,215,102,1);
+}
+.Path_1128_ev {
+    overflow: visible;
+    position: absolute;
+    width: 79.311px;
+    height: 170.342px;
+    left: 190.356px;
+    top: 128.498px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Path_1131_ew {
+    fill: rgba(0,0,0,0.169);
+}
+.Path_1131_ew {
+    overflow: visible;
+    position: absolute;
+    width: 180.094px;
+    height: 386.802px;
+    left: 836.573px;
+    top: 248.038px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#pexels-karolina-grabowska-7679_ex {
+    position: absolute;
+    width: 180.094px;
+    height: 386.802px;
+    left: 777.532px;
+    top: 179.005px;
+    overflow: visible;
+}
+#Path_1132_ey {
+    fill: rgba(255,192,15,1);
+}
+.Path_1132_ey {
+    overflow: visible;
+    position: absolute;
+    width: 198.27px;
+    height: 425.84px;
+    left: 615.397px;
+    top: 929px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Path_1133_ez {
+    fill: rgba(0,0,0,0.169);
+}
+.Path_1133_ez {
+    overflow: visible;
+    position: absolute;
+    width: 65.135px;
+    height: 139.895px;
+    left: 762.532px;
+    top: 853.945px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Path_1134_e {
+    fill: rgba(255,215,102,1);
+}
+.Path_1134_e {
+    overflow: visible;
+    position: absolute;
+    width: 77.213px;
+    height: 165.838px;
+    left: 847.532px;
+    top: 961.945px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Path_1136_e {
+    fill: rgba(0,0,0,0.169);
+}
+.Path_1136_e {
+    overflow: visible;
+    position: absolute;
+    width: 199.666px;
+    height: 428.84px;
+    left: 52px;
+    top: 677px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#pexels-karolina-grabowska-7679_e {
+    position: absolute;
+    width: 199.666px;
+    height: 428.84px;
+    left: 0px;
+    top: 627px;
+    overflow: visible;
+}
+#Path_1137_e {
+    fill: rgba(255,215,102,1);
+}
+.Path_1137_e {
+    overflow: visible;
+    position: absolute;
+    width: 67.241px;
+    height: 144.42px;
+    left: 294.425px;
+    top: 889.42px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#YOUR_FRIEND_FOR_BUSINESS_e {
+    left: 1123px;
+    top: 415px;
+    position: absolute;
+    overflow: visible;
+    width: 544px;
+    white-space: nowrap;
+    text-align: right;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 83px;
+    color: rgba(255,255,255,1);
+}
+#LISTEN__UNderstand__create_sol_e {
+    left: 1125px;
+    top: 625px;
+    position: absolute;
+    overflow: visible;
+    width: 540px;
+    white-space: nowrap;
+    text-align: right;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 28px;
+    color: rgba(168,168,168,1);
+    text-transform: uppercase;
+}
+#icons8-multiply_e {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    left: 1829.211px;
+    top: 68.702px;
+    overflow: visible;
+}
+#spacer_e {
+    fill: rgba(255,255,255,0);
+    stroke: rgba(0,0,0,0);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+.spacer_e {
+    position: absolute;
+    overflow: visible;
+    width: 36px;
+    height: 36px;
+    left: 0px;
+    top: 0px;
+}
+#icons8-multiply_fa {
+    fill: rgba(245,245,245,1);
+}
+.icons8-multiply_fa {
+    overflow: visible;
+    position: absolute;
+    width: 31.702px;
+    height: 31.68px;
+    left: 2px;
+    top: 2px;
+    transform: matrix(1,0,0,1,0,0);
+}
+/*confirmpass*/
+@keyframes fadein {
+	
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+
+}
+#pexels-photo-4261800_fc {
+    opacity: 0.551;
+    fill: url(#pexels-photo-4261800_fc);
+}
+.pexels-photo-4261800_fc {
+    display: none;
+    overflow: visible;
+    position: absolute;
+    width: 1080px;
+    height: 1079.067px;
+    left: -16px;
+    top: -0.067px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#pexels-photo-4261800_fe {
+    fill: url(#pexels-photo-4261800_fe);
+}
+.pexels-photo-4261800_fe {
+    display: none;
+    overflow: visible;
+    position: absolute;
+    width: 1080px;
+    height: 1079.067px;
+    left: -75px;
+    top: -0.067px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Rectangle_3_ff {
+    fill: rgba(64,64,64,1);
+}
+.Rectangle_3_ff {
+    filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.161));
+    position: absolute;
+    overflow: visible;
+    width: 465px;
+    height: 107px;
+    left: 260px;
+    top: 840px;
+    --web-animation: fadein 0.3s ease-out;
+    --web-action-type: page;
+    --web-action-target: login.html;
+    cursor: pointer;
+}
+#_fg {
+    left: 381px;
+    top: 863px;
+    position: absolute;
+    overflow: visible;
+    width: 291px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    color: rgba(255,255,255,1);
+}
+#_fh {
+    left: 243px;
+    top: 512px;
+    position: absolute;
+    overflow: visible;
+    width: 477px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    color: rgba(57,57,57,1);
+}
+#_fi {
+    left: 201px;
+    top: 603px;
+    position: absolute;
+    overflow: visible;
+    width: 547px;
+    height: 112px;
+    text-align: center;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: lighter;
+    font-size: 30px;
+    color: rgba(112,112,112,1);
+}
+#icons8-enter2 {
+    position: absolute;
+    width: 47px;
+    height: 47px;
+    left: 314px;
+    top: 861px;
+    overflow: visible;
+}
+#____ {
+    left: 239.5px;
+    top: 965px;
+    position: absolute;
+    overflow: visible;
+    width: 471px;
+    white-space: nowrap;
+    text-align: center;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: lighter;
+    font-size: 25px;
+    color: rgba(123,123,123,1);
+}
+#Group_177 {
+    position: absolute;
+    width: 331.055px;
+    height: 260.491px;
+    left: 309px;
+    top: 236.509px;
+    overflow: visible;
+}
+#Path_166 {
+    fill: rgba(255,239,195,1);
+}
+.Path_166 {
+    overflow: visible;
+    position: absolute;
+    width: 270.506px;
+    height: 217.709px;
+    left: 29.949px;
+    top: 23.47px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Mask_Group_19 {
+    position: absolute;
+    width: 270.506px;
+    height: 217.709px;
+    left: 29.949px;
+    top: 23.47px;
+    overflow: visible;
+}
+#Group_59 {
+    position: absolute;
+    width: 331.055px;
+    height: 152.46px;
+    left: 0px;
+    top: 0px;
+    overflow: visible;
+}
+#Path_154 {
+    fill: rgba(255,192,15,1);
+}
+.Path_154 {
+    overflow: visible;
+    position: absolute;
+    width: 34.932px;
+    height: 34.932px;
+    left: 125.572px;
+    top: 0px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Path_155 {
+    fill: rgba(255,192,15,1);
+}
+.Path_155 {
+    overflow: visible;
+    position: absolute;
+    width: 27.577px;
+    height: 27.577px;
+    left: 303.478px;
+    top: 122.727px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Path_156 {
+    fill: rgba(255,192,15,1);
+}
+.Path_156 {
+    overflow: visible;
+    position: absolute;
+    width: 20.363px;
+    height: 20.363px;
+    left: 0px;
+    top: 132.097px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Path_157 {
+    fill: rgba(255,239,195,1);
+}
+.Path_157 {
+    overflow: visible;
+    position: absolute;
+    width: 22.766px;
+    height: 22.766px;
+    left: 246.395px;
+    top: 30.149px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Path_158 {
+    fill: rgba(255,239,195,1);
+}
+.Path_158 {
+    overflow: visible;
+    position: absolute;
+    width: 15.057px;
+    height: 15.057px;
+    left: 23.835px;
+    top: 53.296px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Path_1124 {
+    fill: rgba(127,198,98,1);
+}
+.Path_1124 {
+    overflow: visible;
+    position: absolute;
+    width: 62px;
+    height: 62px;
+    left: 207px;
+    top: 198.491px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#icons8-checkmark_fv {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: 218px;
+    top: 209.491px;
+    overflow: visible;
+}
+#LOGO_fw {
+    left: 107px;
+    top: 90px;
+    position: absolute;
+    overflow: visible;
+    width: 110px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    color: rgba(0,0,0,1);
+}
+#icons8-multiply_gf {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    left: 1829.211px;
+    top: 68.702px;
+    overflow: visible;
+}
+#spacer_gg {
+    fill: rgba(255,255,255,0);
+    stroke: rgba(0,0,0,0);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+.spacer_gg {
+    position: absolute;
+    overflow: visible;
+    width: 36px;
+    height: 36px;
+    left: 0px;
+    top: 0px;
+}
+#icons8-multiply_gh {
+    fill: rgba(245,245,245,1);
+}
+.icons8-multiply_gh {
+    overflow: visible;
+    position: absolute;
+    width: 31.702px;
+    height: 31.68px;
+    left: 2px;
+    top: 2px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Group_1381_f {
+    position: absolute;
+    width: 1030.221px;
+    height: 1354.84px;
+    left: 889.779px;
+    top: -62px;
+    overflow: visible;
+}
+#Rectangle_2950_f {
+    fill: rgba(109,109,109,1);
+}
+.Rectangle_2950_f {
+    position: absolute;
+    overflow: visible;
+    width: 971px;
+    height: 1080px;
+    left: 59.221px;
+    top: 62px;
+}
+#Path_1129_f {
+    fill: rgba(0,0,0,0.169);
+}
+.Path_1129_f {
+    overflow: visible;
+    position: absolute;
+    width: 96.304px;
+    height: 206.84px;
+    left: 912.362px;
+    top: 0px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Path_1127_f {
+    fill: rgba(255,192,15,1);
+}
+.Path_1127_f {
+    overflow: visible;
+    position: absolute;
+    width: 139.604px;
+    height: 299.84px;
+    left: 0.062px;
+    top: 119px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Path_1128_f {
+    fill: rgba(255,215,102,1);
+}
+.Path_1128_f {
+    overflow: visible;
+    position: absolute;
+    width: 79.311px;
+    height: 170.342px;
+    left: 190.356px;
+    top: 128.498px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Path_1131_f {
+    fill: rgba(0,0,0,0.169);
+}
+.Path_1131_f {
+    overflow: visible;
+    position: absolute;
+    width: 180.094px;
+    height: 386.802px;
+    left: 836.573px;
+    top: 248.038px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#pexels-karolina-grabowska-7679_f {
+    position: absolute;
+    width: 180.094px;
+    height: 386.802px;
+    left: 777.532px;
+    top: 179.005px;
+    overflow: visible;
+}
+#Path_1132_f {
+    fill: rgba(255,192,15,1);
+}
+.Path_1132_f {
+    overflow: visible;
+    position: absolute;
+    width: 198.27px;
+    height: 425.84px;
+    left: 615.397px;
+    top: 929px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Path_1133_f {
+    fill: rgba(0,0,0,0.169);
+}
+.Path_1133_f {
+    overflow: visible;
+    position: absolute;
+    width: 65.135px;
+    height: 139.895px;
+    left: 762.532px;
+    top: 853.945px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Path_1134_f {
+    fill: rgba(255,215,102,1);
+}
+.Path_1134_f {
+    overflow: visible;
+    position: absolute;
+    width: 77.213px;
+    height: 165.838px;
+    left: 847.532px;
+    top: 961.945px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#Path_1136_ga {
+    fill: rgba(0,0,0,0.169);
+}
+.Path_1136_ga {
+    overflow: visible;
+    position: absolute;
+    width: 199.666px;
+    height: 428.84px;
+    left: 52px;
+    top: 677px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#pexels-karolina-grabowska-7679_gb {
+    position: absolute;
+    width: 199.666px;
+    height: 428.84px;
+    left: 0px;
+    top: 627px;
+    overflow: visible;
+}
+#Path_1137_gc {
+    fill: rgba(255,215,102,1);
+}
+.Path_1137_gc {
+    overflow: visible;
+    position: absolute;
+    width: 67.241px;
+    height: 144.42px;
+    left: 294.425px;
+    top: 889.42px;
+    transform: matrix(1,0,0,1,0,0);
+}
+#YOUR_FRIEND_FOR_BUSINESS_gd {
+    left: 1123px;
+    top: 415px;
+    position: absolute;
+    overflow: visible;
+    width: 544px;
+    white-space: nowrap;
+    text-align: right;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 83px;
+    color: rgba(255,255,255,1);
+}
+#LISTEN__UNderstand__create_sol_ge {
+    left: 1125px;
+    top: 625px;
+    position: absolute;
+    overflow: visible;
+    width: 540px;
+    white-space: nowrap;
+    text-align: right;
+    font-family: Sukhumvit Set;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 28px;
+    color: rgba(168,168,168,1);
+    text-transform: uppercase;
+}
+#icons8-multiply_gf {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    left: 1829.211px;
+    top: 68.702px;
+    overflow: visible;
+}
+#spacer_gg {
+    fill: rgba(255,255,255,0);
+    stroke: rgba(0,0,0,0);
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+.spacer_gg {
+    position: absolute;
+    overflow: visible;
+    width: 36px;
+    height: 36px;
+    left: 0px;
+    top: 0px;
+}
+#icons8-multiply_gh {
+    fill: rgba(245,245,245,1);
+}
+.icons8-multiply_gh {
+    overflow: visible;
+    position: absolute;
+    width: 31.702px;
+    height: 31.68px;
+    left: 2px;
+    top: 2px;
+    transform: matrix(1,0,0,1,0,0);
+}

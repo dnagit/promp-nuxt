@@ -1,52 +1,70 @@
 <template>
+<section>
+  <svg class="Rectangle_691">
+		<rect id="Rectangle_691" rx="18" ry="18" x="0" y="0" width="625" height="77">
+		</rect>
+	</svg>
+	<svg class="Rectangle_695">
+		<rect id="Rectangle_695" rx="18" ry="18" x="0" y="0" width="335" height="77">
+		</rect>
+	</svg>
+	<div id="_cb">
+		<span>เข้าสู่ระบบ</span>
+	</div>
+	<div id="_cc">
+		<span><nuxt-link
+		
+		:to="'register'"
+	  >สมัครสมาชิก</nuxt-link></span>
+	</div>
+  <svg class="Rectangle_1">
+		<rect id="Rectangle_1" rx="8" ry="8" x="0" y="0" width="633" height="207">
+		</rect>
+	</svg>
+	<div id="_bq">
+		<span>รหัสผ่าน</span>
+	</div>
+	<svg class="Line_1" viewBox="0 0 633 1">
+		<path id="Line_1" d="M 0 0 L 633 0">
+		</path>
+	</svg>
+	<div id="_bs">
+		<span>อีเมล</span>
+	</div>
+	<div id="Pimgmailcom">
+		<span><input type="email" name="email" placeholder="Pim@gmail.com" value="" /></span>
+	</div> 
+  <div id="Pimgmailcom1">
+		<span><input type="password" name="email" placeholder="*******" value="" /></span>
+	</div> 
+	
+	
+	<svg class="Rectangle_2">
+		<rect id="Rectangle_2" rx="0" ry="0" x="0" y="0" width="9" height="104">
+		</rect>
+	</svg>
+	<svg class="Rectangle_3">
+		<rect onclick="application.goToTargetView(event)" id="Rectangle_3" rx="19" ry="19" x="0" y="0" width="339" height="89">
+		</rect>
+	</svg>
+	<div id="_b">
+		<span>เข้าสู่ระบบ</span>
+	</div>
+	<img id="icons8-right_arrow" src="~/assets/promp/icons8-right_arrow.png" srcset="~/assets/promp/icons8-right_arrow.png 1x, ~/assets/promp/icons8-right_arrow@2x.png 2x">
+		
+	<div onclick="application.goToTargetView(event)" id="_ca">
+		<span><nuxt-link
+	   
+		:to="'forgotpass'"
+	  >ลืมรหัสผ่าน?</nuxt-link></span>
+	</div>
+</section>
 
-<div class="login-wrapper align-middle">
-    
-        <div class="frame ">
-            <div class="nav">
-                <ul class="links">
-                    <li class="signin-active"><nuxt-link
-            class="btn"
-            :to="'login'"
-          >เข้าสู่ระบบ</nuxt-link></li>
-                    <li class="signup-inactive"><nuxt-link
-            class="btn"
-            :to="'register'"
-          >สมัครสมาชิก</nuxt-link></li>
-                </ul>
-            </div>
-            <div ng-app ng-init="checked = false">
-                <form class="form-signin" action="" method="post" name="form">
-                    <div class="form-login">
-                        <div class="input active">
-                            <label for="fullname">อีเมล</label>
-                            <input class="form-styling" type="email" name="email" placeholder="admin@test.om" /> 
-                        </div>
-                        
-                       <div class="input">
-                            <label for="fullname">รหัสผ่าน</label>
-                            <input class="form-styling" type="password" name="password"  /> 
-                        </div>
-                    </div> 
-                    
-                     <div class="link-forgot"><nuxt-link
-           
-            :to="'forgotpass'"
-          >ลืมรหัสผ่าน?</nuxt-link> </div>
-                   
-                    <div class="btn-animate"> <button class="btn btn-xs">เข้าสู่ระบบ <img src="~/assets/mark/icons8-right_arrow.png" /></button>  </div>
-                </form>
-               
-                  
-            </div>
-           
-           
-        </div> 
-    </div>    
-     
 
 </template>
+<style>
 
+</style>
 <script>
 export default {
   watchQuery: ["page"],

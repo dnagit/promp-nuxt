@@ -1,5 +1,8 @@
 <template>
-  <component :is="getLayout" :posts="posts[0]" />
+  <div>
+    abcc
+  </div>
+ 
 </template>
 
 <script>

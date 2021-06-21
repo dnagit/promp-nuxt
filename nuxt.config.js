@@ -43,7 +43,8 @@ module.exports = {
     ]
   },
   //css: ["@/assets/grid.css", "@/assets/content.scss", "bf-solid/dist/solid.latest.css","@/assets/main.scss"],
-  css: ["@/assets/grid.css", "@/assets/content.scss","@/assets/main.scss"],
+  css: ["@/assets/grid.css", "@/assets/content.scss","@/assets/main.scss","@/assets/promp.scss"],
+  
   // icon: {
   //   iconSrc: `${siteInfo.siteicon}`
   //  },
@@ -51,7 +52,7 @@ module.exports = {
   ** Customize the progress bar color
   */
   loading: { color: '#3B8070' },
-  modules: ['@nuxt/content', '@nuxtjs/pwa', '@nuxtjs/axios'],
+  modules: ['@nuxt/content', '@nuxtjs/pwa', '@nuxtjs/axios','@nuxtjs/auth'],
   content: {
     fullTextSearchFields: ['title', 'description', 'category']
   },
@@ -98,6 +99,24 @@ module.exports = {
       mode: 'client'
     }
   ],
+  axios: {
+    baseURL: 'http://localhost:3000/api',
+    credentials: true
+  },
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: 'login', method: 'post', propertyName: 'data.token' },
+          user: { url: 'me', method: 'get', propertyName: 'data' },
+          logout: false
+        }
+      }
+    },
+    redirect: {
+      login: '/login'
+    }
+  },
   /*
   ** Build configuration
   */
