@@ -1,5 +1,3 @@
-
-
 h1, h2, h3, h4, h5, h6{
     font-weight: bold;
 }
@@ -19,10 +17,6 @@ h1, h2, h3, h4, h5, h6{
 .login-left{
     height: 100%;
     padding: 50px;
-}
-.bg-grey{
-    background: #6D6D6D;
-    min-height: 100vh;
 }
 .align-middle {
     display: flex;
@@ -71,10 +65,6 @@ h1, h2, h3, h4, h5, h6{
     width: 100%;
     padding-top: 60px;
     padding-bottom: 100px
-}
-.container-main {
-    width: 100%;
-    
 }
 .title-forgot{
     text-align: left !important;
@@ -649,19 +639,6 @@ a.btn-goback:hover {
     margin: 0px auto;
     height: auto;
 }
-.main-left{
-    .brand-wrapper{
-        img{
-            width: 75px;
-        }
-    }
-}
-.main-right{
-    background: #ffffff;
-    border-top-left-radius: 40px;
-    border-bottom-left-radius: 40px;
-    min-height: 100vh;
-}
 @media only screen and (max-width: 40rem) {
     .login-section-wrapper{
 
@@ -678,7 +655,7 @@ a.btn-goback:hover {
     }
     .signin-active, .signup-active{
 
-        padding: 10px 14px;
+        padding: 10px 8px;
     }
     .frame .nav .btn{
         padding: .375rem 32px;
