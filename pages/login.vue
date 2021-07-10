@@ -70,9 +70,7 @@ export default {
     if (!from) return "fade";
     return +to.query.page > +from.query.page ? "slide-right" : "slide-left";
   },
-  data() {
-    return {};
-  },
+  
   head() {
     return {
       title: "Login | " + this.$store.state.info.sitename,

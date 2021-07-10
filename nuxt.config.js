@@ -52,7 +52,75 @@ module.exports = {
   ** Customize the progress bar color
   */
   loading: { color: '#3B8070' },
-  modules: ['@nuxt/content', '@nuxtjs/pwa', '@nuxtjs/axios','@nuxtjs/auth'],
+  modules: 
+  [
+    '@nuxt/content', 
+    '@nuxtjs/pwa', 
+    '@nuxtjs/axios',
+    '@nuxtjs/auth',
+    '@nuxtjs/pwa',
+    '@nuxtjs/firebase',
+    
+   
+
+  ],
+  firebase: {
+    config: {
+      apiKey: "AIzaSyAcuRid40eaVEx5TKKn5yibuDTFNDyQxAU",
+      authDomain: "promp-d2fc3.firebaseapp.com",
+      databaseURL: "https://promp-d2fc3.firebaseio.com",
+      projectId: "promp-d2fc3",
+      storageBucket: "promp-d2fc3.appspot.com",
+      messagingSenderId: "660976897097",
+      appId: "1:660976897097:web:3e99bf294512e6f1cd4398"
+     // measurementId: '<measurementId>'
+    },
+    config: {
+      foofoofoo: {
+        apiKey: "AIzaSyAcuRid40eaVEx5TKKn5yibuDTFNDyQxAU",
+        authDomain: "promp-d2fc3.firebaseapp.com",
+        databaseURL: "https://promp-d2fc3.firebaseio.com",
+        projectId: "promp-d2fc3",
+        storageBucket: "promp-d2fc3.appspot.com",
+        messagingSenderId: "660976897097",
+        appId: "1:660976897097:web:3e99bf294512e6f1cd4398"
+      },
+      faafaafaa: {
+        apiKey: "AIzaSyAcuRid40eaVEx5TKKn5yibuDTFNDyQxAU",
+        authDomain: "promp-d2fc3.firebaseapp.com",
+        databaseURL: "https://promp-d2fc3.firebaseio.com",
+        projectId: "promp-d2fc3",
+        storageBucket: "promp-d2fc3.appspot.com",
+        messagingSenderId: "660976897097",
+        appId: "1:660976897097:web:3e99bf294512e6f1cd4398"
+        //
+      }
+    },
+    env: {
+      FIRE_ENV: process.env.FIRE_ENV
+    },
+    services: {
+      auth: true,
+      firestore: true,
+      functions: true,
+      storage: true,
+      database: true,
+      messaging: true,
+      performance: true,
+      analytics: true,
+      remoteConfig: true
+      
+    },
+    
+    /*database: {
+      emulatorPort: 3000,
+      emulatorHost: 'localhost',
+    },*/
+    storage: true
+    
+    
+  },
+  
   content: {
     fullTextSearchFields: ['title', 'description', 'category']
   },
@@ -97,7 +165,7 @@ module.exports = {
     }, {
       src: "~/plugins/lazyload",
       mode: 'client'
-    }
+    },
   ],
   axios: {
     baseURL: 'http://localhost:3000/api',
