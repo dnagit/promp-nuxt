@@ -1,7 +1,7 @@
 <template>
 
 <div class="login-wrapper align-middle">
-    
+    <form @submit.prevent="userLogin">
         <div class="frame ">
             <div class="nav">
                 <ul class="links">
@@ -42,13 +42,22 @@
            
            
         </div> 
-    </div>    
+    </form>
+  </div>    
      
 
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      login: {
+        username: '',
+        password: ''
+      }
+    }
+  },
   watchQuery: ["page"],
     layout: 'login',
     layout (context) {
