@@ -85,6 +85,7 @@ export default {
   },
   async created(){
     console.log('abc');
+    await this.$fire.authReady()
      await this.$fire.auth.signInWithEmailAndPassword('sweeppers@gmail.com', '123456')
         .then((u) => {
            console.log('userauth',u.user.email);

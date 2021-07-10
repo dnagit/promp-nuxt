@@ -59,22 +59,28 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/auth',
     '@nuxtjs/pwa',
-    '@nuxtjs/firebase',
-    
+    [
+      '@nuxtjs/firebase',
+      {
+        config: {
+          apiKey: "AIzaSyAcuRid40eaVEx5TKKn5yibuDTFNDyQxAU",
+        authDomain: "promp-d2fc3.firebaseapp.com",
+        databaseURL: "https://promp-d2fc3.firebaseio.com",
+        projectId: "promp-d2fc3",
+        storageBucket: "promp-d2fc3.appspot.com",
+        messagingSenderId: "660976897097",
+        appId: "1:660976897097:web:3e99bf294512e6f1cd4398"
+        },
+        services: {
+          auth: true // Just as example. Can be any other service.
+        }
+      }
+    ]
    
 
   ],
   firebase: {
-    config: {
-      apiKey: "AIzaSyAcuRid40eaVEx5TKKn5yibuDTFNDyQxAU",
-      authDomain: "promp-d2fc3.firebaseapp.com",
-      databaseURL: "https://promp-d2fc3.firebaseio.com",
-      projectId: "promp-d2fc3",
-      storageBucket: "promp-d2fc3.appspot.com",
-      messagingSenderId: "660976897097",
-      appId: "1:660976897097:web:3e99bf294512e6f1cd4398"
-     // measurementId: '<measurementId>'
-    },
+   
     config: {
       foofoofoo: {
         apiKey: "AIzaSyAcuRid40eaVEx5TKKn5yibuDTFNDyQxAU",
@@ -86,13 +92,6 @@ module.exports = {
         appId: "1:660976897097:web:3e99bf294512e6f1cd4398"
       },
       faafaafaa: {
-        apiKey: "AIzaSyAcuRid40eaVEx5TKKn5yibuDTFNDyQxAU",
-        authDomain: "promp-d2fc3.firebaseapp.com",
-        databaseURL: "https://promp-d2fc3.firebaseio.com",
-        projectId: "promp-d2fc3",
-        storageBucket: "promp-d2fc3.appspot.com",
-        messagingSenderId: "660976897097",
-        appId: "1:660976897097:web:3e99bf294512e6f1cd4398"
         //
       }
     },
