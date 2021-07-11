@@ -17,6 +17,7 @@
 <script>
 import BaelHeader from '../components/BaelHeader.vue';
 import BaelLeft from '../components/BaelLeft.vue';
+
 export default {
   components: { BaelLeft },
   data() {

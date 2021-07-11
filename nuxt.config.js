@@ -161,7 +161,7 @@ module.exports = {
     middleware: ['title']
   },
   plugins: [
-   
+    
    
     {
       src: "~/plugins/browser",
@@ -172,6 +172,10 @@ module.exports = {
     }, {
       src: "~/plugins/lazyload",
       mode: 'client'
+    },
+    { 
+      src: '~/plugins/vue-datepicker', 
+      mode: 'client' 
     },
     
   ],
