@@ -1,7 +1,9 @@
 <template>
 
 <div class="login-wrapper align-middle">
-    
+  <div>{{ content }}</div>
+  {{ state.email }}
+    <button @click="$refresh">Refresh</button>
         <div class="frame ">
             <div class="nav">
                 <ul class="links">
@@ -15,23 +17,34 @@
           >สมัครสมาชิก</nuxt-link></li>
                 </ul>
             </div>
-            <div ng-app ng-init="checked = false">
-                <div    class="form-signin">
+            <b-alert show>
+              Hello Bootstrap!
+          </b-alert>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div >
+              
+              <form class="form-signin" @submit.prevent="refesh" method="post">
+
             
 
                     <div class="form-login">
                         <div class="input active">
                             <label for="fullname">อีเมล</label>
-                            <input class="form-styling" type="email" name="email" placeholder="admin@test.com" /> 
+                            <input class="form-styling " type="email" name="email" placeholder="admin@test.com" required /> 
                         </div>
                         
                        <div class="input">
                             <label for="fullname">รหัสผ่าน</label>
-                            <input class="form-styling" type="password" name="password"  /> 
+                            <input class="form-styling" type="password" name="password" required  /> 
                         </div>
                          <div class="input">
                             <label for="fullname">ยืนยันรหัสผ่าน</label>
-                            <input class="form-styling" type="password" name="password" placeholder="ใส่รหัสผ่านอีกครั้ง"  /> 
+                            <input class="form-styling" type="password" name="repeatpassword" placeholder="ใส่รหัสผ่านอีกครั้ง"  required sameAs(password) /> 
                         </div>
                     </div> 
                     
@@ -43,26 +56,32 @@
                         </div>
                     </div>
                        <div @click.native.stop="createUser()" class="mx-2 ">
-                    Email
-                </div>
+                        Email
+                    </div>
                    
-                    <div class="btn-animate">  <nuxt-link class="btn btn-xs" to="/a" @click.native="createUser">
-   สมัครสมาชิก <img src="~/assets/mark/icons8-right_arrow.png" />
-  </nuxt-link>   </div>
+                    <div class="btn-animate">  <button type="submit" class="btn btn-xs" >
+                  สมัครสมาชิก <img src="~/assets/mark/icons8-right_arrow.png" />
+                  </button>   </div>
+                  </form> 
                 </div>
+                
                
                   
             </div>
            
            
         </div> 
-    </div>    
+        
      
 
 </template>
 
 <script>
+import _capitalize from "lodash/capitalize";
+import { validationMixin } from "vuelidate";
+import { required, sameAs, minLength } from "vuelidate/lib/validators"
 export default {
+  mixins: [validationMixin],
   watchQuery: ["page"],
   layout: 'login',
   layout (context) {
@@ -75,69 +94,55 @@ export default {
     if (!from) return "fade";
     return +to.query.page > +from.query.page ? "slide-right" : "slide-left";
   },
+  
   data() {
-    return {};
+    return {
+      state:{
+        email:'sweeppers@gmail.com',
+        password:'123456'
+
+      },
+      email: '',
+      password: '',
+      repeatPassword: '',
+      form: {
+        email: null,
+        password: null,
+        
+      },
+      errors: [],
+    };
   },
+  
   head() {
     return {
       title: "Register | " + this.$store.state.info.sitename,
     };
   },
-  async created(){
-    console.log('abc');
-    //await this.$fire.authReady()
-     await this.$fire.auth.signInWithEmailAndPassword('sweeppers@gmail.com', '123456')
-        .then((u) => {
-           console.log('userauth',u.user.email);
-           /* uid: 'am5QftkSVReZoAYIb8FxCXc01tB3',
-    displayName: null,
-    photoURL: null,
-    email: 'sweeppers@gmail.com',
-    emailVerified: false,
-    phoneNumber: null,
-    isAnonymous: false,
-    tenantId: null,
-    metadata: Fm {
-      a: '1625933573067',
-      b: '1625933952461',
-      lastSignInTime: 'Sat, 10 Jul 2021 16:19:12 GMT',
-      creationTime: 'Sat, 10 Jul 2021 16:12:53 GMT'
-    },*/
-        }).catch((error) => {
-        switch (error.code) {
-        case 'auth/email-already-in-use':
-          console.log('Email address ${this.state.email} already in use.');
-          break;
-        case 'auth/invalid-email':
-          console.log('Email address ${this.state.email} is invalid.');
-          break;
-        case 'auth/operation-not-allowed':
-          console.log('Error during sign up.');
-          break;
-        case 'auth/weak-password':
-          console.log('Password is not strong enough. Add additional characters including special characters and numbers.');
-          break;
-        default:
-          console.log(error.message);
-          break;
-      }
+    mounted() {
+    this.$store.commit("SET_CURRENT", {
+      title: "Register",
+      dir: ''
     });
-   // console.log('test',test);
+  },
+
+   created(){
+    //console.log('abc');
     try{
       
       let data ={
         email :'deoz@windowslive.com',
         password: '123456'
       }//displayName
-      var test = await this.$fire.auth.createUserWithEmailAndPassword(
+      /*await this.$fire.auth.createUserWithEmailAndPassword(
           'sweeppers@gmail.com',
           '123456'
-      );
+      );*/
     
     }catch(error){
       switch (error.code) {
         case 'auth/email-already-in-use':
-       //   console.log('Email address '+this.email+'already in use.');
+          console.log('Email address '+this.state.email+' already in use.');
           break;
         case 'auth/invalid-email':
           console.log('Email address ${this.state.email} is invalid.');
@@ -155,26 +160,28 @@ export default {
       //handleError(e)
     }
   },
-  mounted() {
-    this.$store.commit("SET_CURRENT", {
-      title: "Register",
-      dir: ''
-    });
-  },
+   refresh() {
+        this.$nuxt.refresh()
+      },
   
   methods: {
+    say(text){
+      console.log('text',text);
+
+    },
+
+   
+    validateState(name) {
+      const { $dirty, $error } = this.$v.form[name];
+      return $dirty ? !$error : null;
+    },
+    
+   
+   
     async createUser(e) {
       console.log('abc');
      
    
-      /*try {
-        await this.$fire.auth.createUserWithEmailAndPassword(
-          'foo@foo.foo',
-          'test'
-        )
-      } catch (e) {
-        handleError(e)
-      }*/
     }
   }
 };

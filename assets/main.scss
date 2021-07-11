@@ -7,6 +7,115 @@ h1, h2, h3, h4, h5, h6{
         width: 75px;
     }
 }
+.bg-grey{
+    height: 100vh;
+    background-color: #6D6D6D;
+    padding-left: 20px;
+    img{
+        width: 100px;
+    }
+    .main-right{
+        background-color: #fff;
+        border-top-left-radius: 60px;
+        border-bottom-left-radius: 60px;
+        padding:50px;
+    }
+    .main-left{
+        font-size: 26px;
+        padding-top: 50px;
+    }
+    ul{
+        border:0px;
+    }
+    li{
+        display: block;
+        padding: 10px 0px;
+    }
+    a{
+        display: inline-block;
+        width: 100%;
+        padding: 20px 20px;
+        border-radius: 20px;
+        color:#ffffff;
+        align-items: center;
+    }
+    .nuxt-link-exact-active{
+        background-color: #FCBF10;
+        
+    }
+    .icon{
+        width: 25px;
+        margin-right: 10px;
+    }
+    .b_upgrade{
+        width: 100%;
+        font-size: 20px;
+        text-align: center;
+        background-color: #404040;
+        color: #ffffff;
+        border-radius: 30px;
+        padding: 20px;
+        border: 1px solid #707070;
+        a{
+            margin-top: 20px;
+            background-color: #FCBF10;
+            padding: 10px 0px;
+            border-radius: 10px;
+
+        }
+    }
+}
+.main-right{
+    .bg-light{
+        background-color: #ffffff !important;
+    }
+    a{
+        width: auto;
+    }
+    .notification{
+        border: 1px solid #DEDEDE;
+        text-align: center;
+        width: 50px;
+        height: 50px;
+        border-radius: 15px;
+        padding-top: 5px;
+        margin-right: 20px;
+       
+      
+        img{
+            width: 30px;
+            text-align: center;
+            margin: auto;
+        }
+    }
+    .user{
+        width: 50px;
+        border-radius: 15px;
+        margin-right: 10px;
+    }
+    .h-profile{
+        line-height: 16px;
+        span{
+            color: #707070;
+        }
+    }
+    .btn-default{
+        border: 1px solid #DEDEDE;
+        a{
+            width: 100%;
+            color: #212529;
+            background: none;
+        }
+    }
+    .dropdown-menu{
+        a{
+            width: 100%;
+            color: #212529;
+            background: none;
+        }
+
+    }
+}
 .bg-login-right{
     
     background-image: url('../static/images/background.png');
@@ -665,4 +774,20 @@ a.btn-goback:hover {
     }
     
     
+}
+.bg-light {
+    margin-bottom: 20px;
+}
+.dashboard{
+    .block{
+        border: 1px solid #DEDEDE;
+        border-radius: 10px;
+        margin: 0px 20px;
+        height: 100px;
+        padding: 20px;
+        .d-img{
+            width: 75px;
+        }
+      
+    }
 }

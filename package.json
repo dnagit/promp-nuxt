@@ -20,9 +20,12 @@
     "@nuxtjs/auth": "^4.9.1",
     "@nuxtjs/auth-next": "5.0.0-1624817847.21691f1",
     "@nuxtjs/axios": "^5.3.1",
+    "@nuxtjs/bootstrap-vue": "^2.0.4",
     "@nuxtjs/firebase": "^7.6.1",
+    "@nuxtjs/fontawesome": "^1.1.2",
     "@nuxtjs/pwa": "^3.3.5",
     "bf-solid": "^2.10.6",
+    "bootstrap-vue": "^2.21.2",
     "firebase": "^8.7.1",
     "firebase-admin": "^9.10.0",
     "intersection-observer": "^0.11.0",
@@ -48,5 +51,4 @@
     "sass-loader": "^7.0.0",
     "string.prototype.includes": "^2.0.0"
   }
-  
 }

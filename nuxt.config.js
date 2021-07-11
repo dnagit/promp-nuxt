@@ -25,7 +25,9 @@ module.exports = {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600;700;800&display=swap' },
-      { rel: 'stylesheet', href: 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' }
+      { rel: 'stylesheet', href: 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' },
+      { rel: 'stylesheet', href: 'h ttps://pro.fontawesome.com/releases/v5.10.0/css/fontawesome.css' }
+     
     ],
     script: [
       {
@@ -59,6 +61,8 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/auth',
     '@nuxtjs/pwa',
+    '@nuxtjs/bootstrap-vue',
+    ['@nuxtjs/bootstrap-vue', { css: false }],
     [
       '@nuxtjs/firebase',
       {
@@ -75,10 +79,12 @@ module.exports = {
           auth: true // Just as example. Can be any other service.
         }
       }
-    ]
+    ],
+    '@nuxtjs/fontawesome'
    
 
   ],
+  
   firebase: {
    
     config: {
@@ -155,6 +161,8 @@ module.exports = {
     middleware: ['title']
   },
   plugins: [
+   
+   
     {
       src: "~/plugins/browser",
       mode: 'client'
@@ -165,6 +173,7 @@ module.exports = {
       src: "~/plugins/lazyload",
       mode: 'client'
     },
+    
   ],
   axios: {
     baseURL: 'http://localhost:3000/api',

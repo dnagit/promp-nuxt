@@ -1,5 +1,49 @@
 <template>
-  <component :is="getLayout" :posts="posts[0]" />
+  <div class="row dashboard">
+    <div class="col-4">
+      <div class="block d-flex justify-content-between bd-highlight mb-3">
+        <div class="p-1 bd-highlight">
+          Assigned<br />
+        <b>5</b>
+        </div>
+        <div class="bd-highlight">
+           
+            <img src="~/assets/icon/Group-5.png" class="d-img"  /> 
+          
+        </div>
+        
+      </div>
+    </div>
+    <div class="col-4">
+     <div class="block d-flex justify-content-between bd-highlight mb-3">
+        <div class="p-1 bd-highlight">
+          Processing<br />
+        <b>2</b>
+        </div>
+        <div class="bd-highlight">
+           
+            <img src="~/assets/icon/Group-6.png" class="d-img"  /> 
+          
+        </div>
+        
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="block d-flex justify-content-between bd-highlight mb-3">
+        <div class="p-1 bd-highlight">
+          Delivered<br />
+        <b>3</b>
+        </div>
+        <div class="bd-highlight">
+           
+            <img src="~/assets/icon/Group-4.png" class="d-img"  /> 
+          
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
 </template>
 
 <script>

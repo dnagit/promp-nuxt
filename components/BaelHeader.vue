@@ -1,33 +1,28 @@
 <template>
-  <nav ref="navBar" :data-nav="`${pagetitle}`" id="navbar">
-    <div class="r xs-border-bottom">
-      <div class="c-4 xs-text-left xs-p2 sm-border-right">
-        <div class="item">
-          <nuxt-link class="sitename" to="/" exact>{{$store.state.info.sitename}}</nuxt-link>
-        </div>
-      </div>
 
-      <div
-        class="c-4 xs-border-top xs-border-bottom sm-border-bottom-none sm-border-top-none sm-border-left-none sm-border-right xs-p2"
-      >
-        <div class="item xs-flex">
-          <lazy-bael-search />
-        </div>
-      </div>
-      <div v-if="pagetitle" style="z-index:55;" class="c-12 sm-border-top xs-p2 xs-text-6 titlebar">
-        <div class="item">
-          <nuxt-link to="/" exact>Home</nuxt-link>
-          <span v-if="path">
-            &nbsp;
-            <span class="text-gray-lightest">></span>
-            &nbsp; {{path}}
-          </span> &nbsp;
-          <span class="text-gray-lightest">></span>
-          &nbsp; {{pagetitle}}
-        </div>
+  <nav class="navbar navbar-light bg-light justify-content-between">
+  <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+  
+
+  <div class="btn-group" role="group">
+      <button id="btnGroupDrop1" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+       <img src="~/assets/icon/logocompany.png" class="icon" /> บริษัทฟาสต์เวิร์ค เทคโนโลยีส์ จำก...
+      </button>
+      <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+        <a class="dropdown-item" href="#"><img src="~/assets/icon/logocompany.png" class="icon" /> บริษัทฟาสต์เวิร์ค เทคโนโลยีส์ จำก...</a>
+        <a class="dropdown-item" href="#"><img src="~/assets/icon/logocompany.png" class="icon" /> บริษัทฟาสต์เวิร์ค เทคโนโลยีส์ จำก...</a>
       </div>
     </div>
-  </nav>
+  </div>
+  <form class="form-inline">
+    <div class="notification"><img src="~/assets/icon/icons-39.png" class="icon" /></div>
+    <img src="~/assets/icon/user.png" class="user" />
+   <div class="h-profile">
+     Patsanan…<br />
+     <span style="font-size:14px;">Smart</span>
+   </div>
+  </form>
+</nav>
 </template>
 <script>
 import _capitalize from "lodash/capitalize";

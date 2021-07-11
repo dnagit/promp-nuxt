@@ -58,6 +58,13 @@ export default {
       }
     }
   },
+  methods:{
+    userLogin(){
+      console.log('login');
+      
+    }
+
+  },
   watchQuery: ["page"],
     layout: 'login',
     layout (context) {
@@ -70,12 +77,51 @@ export default {
     if (!from) return "fade";
     return +to.query.page > +from.query.page ? "slide-right" : "slide-left";
   },
+  created(){
+     this.$fire.auth.signInWithEmailAndPassword('sweeppers@gmail.com', '123456')
+        .then((u) => {
+           console.log('userauth',u.user.email);
+           /* uid: 'am5QftkSVReZoAYIb8FxCXc01tB3',
+    displayName: null,
+    photoURL: null,
+    email: 'sweeppers@gmail.com',
+    emailVerified: false,
+    phoneNumber: null,
+    isAnonymous: false,
+    tenantId: null,
+    metadata: Fm {
+      a: '1625933573067',
+      b: '1625933952461',
+      lastSignInTime: 'Sat, 10 Jul 2021 16:19:12 GMT',
+      creationTime: 'Sat, 10 Jul 2021 16:12:53 GMT'
+    },*/
+        }).catch((error) => {
+        switch (error.code) {
+        case 'auth/email-already-in-use':
+          console.log('Email address ${this.state.email} already in use.');
+          break;
+        case 'auth/invalid-email':
+          console.log('Email address ${this.state.email} is invalid.');
+          break;
+        case 'auth/operation-not-allowed':
+          console.log('Error during sign up.');
+          break;
+        case 'auth/weak-password':
+          console.log('Password is not strong enough. Add additional characters including special characters and numbers.');
+          break;
+        default:
+          console.log(error.message);
+          break;
+      }
+    });
+  },
   
   head() {
     return {
       title: "Login | " + this.$store.state.info.sitename,
     };
   },
+  
   mounted() {
     this.$store.commit("SET_CURRENT", {
       title: "Login",
