@@ -1,7 +1,7 @@
 <template>
 
 <div class="login-wrapper align-middle">
-    <form @submit.prevent="userLogin">
+    
         <div class="frame ">
             <div class="nav">
                 <ul class="links">
@@ -42,7 +42,7 @@
            
            
         </div> 
-    </form>
+    
   </div>    
      
 

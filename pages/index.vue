@@ -125,6 +125,20 @@
                 </tr>
               </tbody>
             </table>
+             
+            
+          </div>
+          <div class="row mt-3">
+              <span class="col-8 justify-content-start align-middle show-pagination">
+                Show 1 from 10
+              </span>
+              <ul class="col-4 pagination  justify-content-end">
+                <li class="page-item "><a class="page-link" href="#"></a></li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">></a></li>
+              </ul>
           </div>
         </div>
         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
@@ -194,36 +208,16 @@ export default {
       date_today:new Date()
     };
   },
-  async asyncData({ $content, params, error, store }) {
-    const blogPosts = await $content("blog")
-      .sortBy("createdAt", "desc")
-      .only(["title", "path"])
-      .fetch()
-      .catch((err) => {
-        error({ statusCode: 404, message: "Page not found" });
-      });
-    const chunk = _chunk(blogPosts, 12);
-    if (blogPosts.length > 12) {
-      store.commit("SET_PAGINATION", {
-        active: true,
-        page: 1,
-        itemsOnPage: chunk[0].length,
-        totalItems: blogPosts.length,
-        totalPages: chunk.length,
-      });
-    } else {
-      store.commit("SET_PAGINATION", {
-        active: false,
-        page: 1,
-        itemsOnPage: blogPosts.length,
-        totalItems: blogPosts.length,
-        totalPages: chunk.length,
-      });
-    }
-    return {
-      posts: chunk,
-      count: blogPosts.length,
-    };
+  watchQuery: ["page"],
+  
+  async asyncData({ params, app, payload, route, store }) {
+    await store.commit("SET_TITLE", "Categories");
+  },
+  mounted() {
+    this.$store.commit("SET_CURRENT", {
+      title: "Dashboard",
+      dir: ''
+    });
   },
 
   transition(to, from) {

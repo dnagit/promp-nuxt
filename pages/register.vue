@@ -1,9 +1,8 @@
 <template>
 
 <div class="login-wrapper align-middle">
-  <div>{{ content }}</div>
-  {{ state.email }}
-    <button @click="$refresh">Refresh</button>
+  
+    
         <div class="frame ">
             <div class="nav">
                 <ul class="links">
@@ -17,15 +16,7 @@
           >สมัครสมาชิก</nuxt-link></li>
                 </ul>
             </div>
-            <b-alert show>
-              Hello Bootstrap!
-          </b-alert>
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-              <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
+          
             <div >
               
               <form class="form-signin" @submit.prevent="refesh" method="post">
@@ -55,9 +46,7 @@
                             <label class="form-check-label" for="exampleCheck1">ยอมรับ<a>เงื่อนไข</a>และ<a>ข้อตกลง</a></label>
                         </div>
                     </div>
-                       <div @click.native.stop="createUser()" class="mx-2 ">
-                        Email
-                    </div>
+                       
                    
                     <div class="btn-animate">  <button type="submit" class="btn btn-xs" >
                   สมัครสมาชิก <img src="~/assets/mark/icons8-right_arrow.png" />

@@ -3,12 +3,7 @@
         <div class="row bg-login">
             <div class="col-sm-6 login-section-wrapper">
                  <div class="brand-wrapper"><img src="~/static/images/logo.png" /></div>
-                 <div v-if="$auth.looggedIn">
-                   {{ $auth.user.email }}
-                   <v-btn text>Logout</v-btn>
-                   
-                 </div>
-                 <div v-else><v-btn text>Logout</v-btn></div>
+                 
                 <nuxt />
             </div>
             <div class="col-md-12 col-lg-6 bg-login-right align-middle text-center">

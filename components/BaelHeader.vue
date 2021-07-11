@@ -1,10 +1,10 @@
 <template>
 
   <nav class="navbar navbar-light bg-light justify-content-between">
-  <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+  <div class="btn-group" role="group" aria-label="Button group with nested dropdown" v-if="title=='index'">
   
 
-  <div class="btn-group" role="group">
+  <div class="btn-group" role="group" >
       <button id="btnGroupDrop1" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
        <img src="~/assets/icon/logocompany.png" class="icon" /> บริษัทฟาสต์เวิร์ค เทคโนโลยีส์ จำก...
       </button>
@@ -14,6 +14,28 @@
       </div>
     </div>
   </div>
+  <div class="head-right"  v-else-if="title=='company'">
+    <h5>My Company </h5>
+    <span>2 list</span>
+  </div>
+  <div class="head-right"  v-else-if="title=='bussinesses'">
+    <h5>Business Handbook </h5>
+    <span>24 Documents</span>
+  </div>
+  <div class="head-right"  v-else-if="title=='health'">
+    <h5>Legal Health Check </h5>
+    <span>Please select all your business activites.</span>
+  </div>
+  <div class="head-right"  v-else-if="title=='services'">
+    <h5>Sevice Request </h5>
+    <span>Please choose what you want from the list of our serive.</span>
+  </div>
+  <div class="head-right"  v-else-if="title=='legals'">
+    <h5>Legal Advice </h5>
+    
+  </div>
+  
+  
   <form class="form-inline">
     <div class="notification"><img src="~/assets/icon/icons-39.png" class="icon" /></div>
     <img src="~/assets/icon/user.png" class="user" />
@@ -28,10 +50,19 @@
 import _capitalize from "lodash/capitalize";
 export default {
   data() {
-    return {};
+    return {
+      title:'index'
+    };
+  },
+  
+  created(){
+   // const split = _get(this.$store, "state.current.dir").split("/");
+   this.title = this.$route.name;
+    console.log('title', this.$route);
   },
   computed: {
     pagetitle() {
+     
       return this.$store.state.current.title;
     },
 

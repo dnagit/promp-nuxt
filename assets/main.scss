@@ -1,6 +1,9 @@
 h1, h2, h3, h4, h5, h6{
     font-weight: bold;
 }
+body{
+    overflow-x: hidden;
+}
 .bg-login{
     height: 100vh;
     img{
@@ -19,6 +22,46 @@ h1, h2, h3, h4, h5, h6{
         border-top-left-radius: 60px;
         border-bottom-left-radius: 60px;
         padding:50px;
+        height: 100vh;
+        overflow-y: auto;
+        position: relative;
+        padding-bottom: 100px;
+        .fixed_request{
+            position: fixed;
+            bottom: 0px;
+            width: 100%;
+            background: #FCBF10;
+            height: 90px;
+            margin-left: -35px;
+            border-top-left-radius: 30px;
+            padding: 30px;
+            .request-left{
+                position: absolute;
+                left: 60px;
+                font-size: 32px;
+                color: #272727;
+                font-weight: bold;
+                padding-top: 0px;
+            }
+            .request-right{
+                position: absolute;
+                left: 65%;
+                padding-top: 0px;
+                font-size: 32px;
+                color: #272727;
+                font-weight: bold;
+            }
+            img{
+                width: 48px;
+                margin-left: 20px;
+            }
+            button{
+                background: #fff;
+                padding: 0px 10px;
+                margin-left: 20px;
+                border-radius: 10px;
+            }
+        }
     }
     .main-left{
         font-size: 26px;
@@ -793,6 +836,19 @@ a.btn-goback:hover {
     
     
 }
+.pagination{
+    a{
+        padding: 10px 16px;
+        border: 0px;
+        color: #676767;
+    }
+    .active{
+       
+        a{
+            background: #FFC00F !important;
+        }
+    }
+}
 .tab-content{
     margin-top: 40px;
     .t-radius{
@@ -850,5 +906,161 @@ a.btn-goback:hover {
             font-weight: bold;
         }
        
+    }
+}
+.show-pagination{
+    color: #676767;
+    font-size: 16px;
+    line-height: 48px;
+}
+.d-company{
+    width: 70px;
+}
+.company{
+    .block{
+        height: 220px;
+    }
+    img{
+        width: 65px;
+        margin-bottom: 10px;
+    }
+    .detail{
+        margin-top: 10px;
+        color: #707070;
+        font-size: 14px;
+    }
+    .add-company{
+        img{
+            width: 50px;
+            margin: 0px auto;
+            
+        }
+        border-color: #FCBF10;
+        background: #FFFAEB;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        flex-direction: column;
+
+    }
+    
+}
+.bussiness{
+    .btn{
+        color: #272727;
+    }
+}
+.bussiness-filter{
+    margin-top: 80px;
+    border:1px solid #DEDEDE;
+    border-radius: 10px;
+    padding: 20px;
+    color: #272727;
+    font-size: 18px;
+    p{
+        padding:0px 12px;
+    }
+    #accordion{
+        margin-top: -20px;
+    }
+    .card{
+        background: none;
+        border: 0px;
+        .card-header{
+            padding: 0px;
+            margin-bottom: 0;
+            background: transparent;
+         
+        }
+        h5{
+            border: 0px;
+        }
+        .card-body{
+            border: 0px;
+        }
+        .btn-link{
+            color: #272727;
+        }
+        .form-check{
+            font-size: 16px;
+        }
+       
+    }
+}
+.servies-menu{
+    border:1px solid #DEDEDE;
+    border-radius: 10px;
+   
+    color: #272727;
+    font-size: 18px;
+    margin-top: 40px;
+    h5{
+        padding:20px 20px 10px 20px;
+    }
+    ul{
+        margin: 0px;
+        li{
+            color:#272727;
+            padding: 20px;
+        }
+        .active{
+            font-weight: bold;
+            background: #FCBF10;
+        }
+    }
+}
+.message{
+    border:1px solid #DEDEDE;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+   
+    textarea{
+        margin: 10px 0px;
+        height: 500px;
+        padding: 30px;
+        background: #F2F2F2;
+    }
+    .row{
+        font-size: 16px;
+        margin: 10px 0px;
+    }
+    label{
+        margin-left: 20px;
+    }
+    .col-md-auto{
+        margin-right: 50px;
+    }
+
+}
+.health{
+    .card{
+        border-color: #FFC00F;
+        border-radius: 10px;
+    }
+    .card-header{
+        background: #FFEFC3;
+        border-color: #FFC00F;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        text-align: center;
+        color: #272727;
+        font-weight: bold;
+    }
+    .form-check{
+        padding-top: 10px;
+    }
+}
+.head-right{
+    h5{
+        font-size: 20px;
+        line-height: 20px;
+        padding: 0px;
+        margin-bottom: 0px;
+    }
+    span{
+        font-size: 16px;
+        color:#A8A8A8;
     }
 }
