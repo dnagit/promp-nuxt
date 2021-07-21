@@ -12,7 +12,7 @@
                     <li class="signup-inactive"><nuxt-link
             class="btn"
             :to="'register'"
-          >สมัครสมาชิก</nuxt-link></li>
+          >สมัครสมาชิกa</nuxt-link></li>
                 </ul>
             </div>
             <div ng-app ng-init="checked = false">
