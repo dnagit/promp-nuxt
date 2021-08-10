@@ -25,11 +25,14 @@
         </div>
       </div>
        <div class="col-3">
-        <div class="block add-company ">
-           <img src="~/assets/icon/icons8-add.png"  /> 
+      
+          <div class="block add-company ">
+              <nuxt-link :to="'/form/company'">
+           <img src="~/assets/icon/icons8-add.png"  /> </nuxt-link>
             Add company
-
-        </div>
+             
+          </div>
+       
       </div>
    </div>
 </template>
@@ -45,35 +48,9 @@ export default {
     };
   },
   async asyncData({ $content, params, error, store }) {
-    const blogPosts = await $content("blog")
-      .sortBy("createdAt", "desc")
-      .only(["title", "path"])
-      .fetch()
-      .catch((err) => {
-        error({ statusCode: 404, message: "Page not found" });
-      });
-    const chunk = _chunk(blogPosts, 12);
-    if (blogPosts.length > 12) {
-      store.commit("SET_PAGINATION", {
-        active: true,
-        page: 1,
-        itemsOnPage: chunk[0].length,
-        totalItems: blogPosts.length,
-        totalPages: chunk.length,
-      });
-    } else {
-      store.commit("SET_PAGINATION", {
-        active: false,
-        page: 1,
-        itemsOnPage: blogPosts.length,
-        totalItems: blogPosts.length,
-        totalPages: chunk.length,
-      });
-    }
-    return {
-      posts: chunk,
-      count: blogPosts.length,
-    };
+    
+   
+   
   },
 
   transition(to, from) {
