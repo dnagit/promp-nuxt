@@ -175,7 +175,8 @@ module.exports = {
     },
     { 
       src: '~/plugins/vue-datepicker', 
-      mode: 'client' 
+      mode: 'client' ,
+      
     },
     
   ],
