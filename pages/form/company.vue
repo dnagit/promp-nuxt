@@ -11,6 +11,14 @@
     </div>
   </div>
   <div class="form-group row">
+      
+    <label for="company_namee" class="col-sm-2 col-form-label">รูปภาพ</label>
+    <div class="col-sm-10">
+     <input type="file" @change="previewFiles" multiple>
+    </div>
+  </div>
+  
+  <div class="form-group row">
     <label for="bussiness_type" class="col-sm-2 col-form-label">ประเภทกิจการ</label>
     <div class="col-sm-10">
       <input type="text" class="form-control" id="bussiness_type" placeholder="ประเภทกิจการ">
@@ -25,10 +33,12 @@
   <div class="form-group row">
     <label for="company_registration" class="col-sm-2 col-form-label">วันที่จดทะเบียน</label>
     <div class="col-sm-10">
-      <client-only><date-picker
-placeholder="MM/DD/YYYY"
-format="MM/dd/yyyy"
-v-model="date_today" /></client-only>
+       <base-input>
+  <el-date-picker 
+                  
+                    placeholder="Select date and time">
+    </el-date-picker>
+</base-input>
     </div>
   </div>
   <h5>สำนักงานที่ตั้ง</h5>
@@ -47,17 +57,17 @@ v-model="date_today" /></client-only>
     </div>
   </div>
   <div class="form-row">
-    <div class="col-md-6 mb-3">
-      <label for="validationDefault03">City</label>
-      <input type="text" class="form-control" id="validationDefault03" placeholder="City" required>
+    <div class="col-md-4 mb-3">
+      <label for="road">ถนน</label>
+      <input type="text" class="form-control" id="road" placeholder="ถนน" required>
     </div>
-    <div class="col-md-3 mb-3">
-      <label for="validationDefault04">State</label>
-      <input type="text" class="form-control" id="validationDefault04" placeholder="State" required>
+    <div class="col-md-4 mb-3">
+      <label for="distict">ตำบล</label>
+      <input type="text" class="form-control" id="distict" placeholder="ตำบล" required>
     </div>
-    <div class="col-md-3 mb-3">
-      <label for="validationDefault05">Zip</label>
-      <input type="text" class="form-control" id="validationDefault05" placeholder="Zip" required>
+    <div class="col-md-4 mb-3">
+      <label for="province">จังหวัด</label>
+      <input type="text" class="form-control" id="province" placeholder="จังหวัด" required>
     </div>
   </div>
   <div class="form-group">
@@ -81,7 +91,9 @@ import BaelGrid from "~/components/BaelGrid";
 import FullGrid from "~/components/FullGrid";
 import _chunk from "lodash/chunk";
 
+
 export default {
+  
    head() {
     return {
       title: "My Company | " + this.$store.state.info.sitename,
@@ -96,11 +108,11 @@ export default {
   
   data(){
     return{
-      
+         datePicker: '',
     date_today:new Date()
     }
   },
-    components: {datepicker},
+    
   transition(to, from) {
     if (!from) return "fade";
     return +to.query.page > +from.query.page ? "slide-right" : "slide-left";

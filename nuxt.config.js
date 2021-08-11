@@ -64,6 +64,13 @@ module.exports = {
     '@nuxtjs/bootstrap-vue',
     ['@nuxtjs/bootstrap-vue', { css: false }],
     [
+      'nuxt-element-ui',
+      {
+        components: ['Button', 'DatePicker'],
+        locale: 'fr',
+      },
+    ],
+    [
       '@nuxtjs/firebase',
       {
         config: {
@@ -174,7 +181,8 @@ module.exports = {
       mode: 'client'
     },
     { 
-      src: '~/plugins/vue-datepicker', 
+      src: '~/plugins/vue-datepicker',
+      ssr: false, 
       mode: 'client' ,
       
     },
