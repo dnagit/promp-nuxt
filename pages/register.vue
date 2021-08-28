@@ -4,7 +4,7 @@
   
     
         <div class="frame ">
-            <div class="nav">
+            <div class="nav" id="navbar">
                 <ul class="links">
                     <li class="signin-inactive"><nuxt-link
             class="btn"
@@ -19,7 +19,7 @@
           
             <div >
               
-              <form class="form-signin" @submit.prevent="refesh" method="post">
+              <form class="form-signin" v-on:submit.prevent="sendMessage" method="post">
 
             
 
@@ -159,8 +159,12 @@ export default {
 
     },
 
-   
+   sendMessage(){
+     console.log('55');
+     return false;
+   },
     validateState(name) {
+      console.log('name',name);
       const { $dirty, $error } = this.$v.form[name];
       return $dirty ? !$error : null;
     },

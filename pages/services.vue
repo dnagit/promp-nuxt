@@ -1,5 +1,7 @@
 <template>
-  <div class="row">
+<div>
+  <div class="row" v-if="!formaction">
+    
     <div class="col-3">
       <div class="servies-menu">
         <h5>Sevice List</h5>
@@ -29,108 +31,25 @@
         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
           
           <div class="t-radius">
+           
             <table class="table bussiness">
               <thead class="thead-light">
                 <tr>
-                  <th scope="col"><input  type="checkbox" value="" ></th>
+                  <th scope="col"><input  type="checkbox" @click="selectAll" v-model="allSelected" value="" ></th>
                   <th scope="col">Types of Registration</th>
                   <th scope="col">Processing time</th>
                   <th scope="col">Price (Baht)</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td><input  type="checkbox" value="" ></td>
-                  <td>จัดตั้งบริษัทจํากัด</td>
-                  <td>7 - 10 Days</td>
-                  <td>1,000</td>
+                <tr v-for="(frm,id) in forms" :key="id">
+                  <td><input type="checkbox" @click="changeInput($event)" v-model="formIds" :value="frm.id" ></td>
+                  <td>{{ frm.name }}</td>
+                  <td>{{ frm.process_time }}</td>
+                  <td>{{ frm.price }}</td>
                   
                 </tr>
-                <tr>
-                  <td><input  type="checkbox" value="" ></td>
-                  <td>แก้ไขรายชื่อกรรมการ</td>
-                  <td>7 - 10 Days</td>
-                  <td>1,000</td>
-                  
-                </tr>
-                <tr>
-                  <td><input  type="checkbox" value="" ></td>
-                  <td>แก้ไขจํานวนหรือชื่อกรรมการซึ่งลงชื่อผูกพันบริษัท</td>
-                  <td>7 - 10 Days</td>
-                  <td>1,000</td>
-                  
-                </tr>
-                <tr>
-                  <td><input  type="checkbox" value="" ></td>
-                  <td>เปลี่ยนแปลงข้อมูลผู้ถือหุ้น</td>
-                  <td>7 - 10 Days</td>
-                  <td>1,000</td>
-                  
-                </tr>
-                <tr>
-                  <td><input  type="checkbox" value="" ></td>
-                  <td>เปลี่ยนแปลงทุนจดทะเบียนของบริษัท</td>
-                  <td>7 - 10 Days</td>
-                  <td>1,000</td>
-                  
-                </tr>
-                <tr>
-                  <td><input  type="checkbox" value="" ></td>
-                  <td>เปลี่ยนแปลงจำนวนหุ้นหรือมูลค่าหุ้น</td>
-                  <td>7 - 10 Days</td>
-                  <td>1,000</td>
-                  
-                </tr>
-                <tr>
-                  <td><input  type="checkbox" value="" ></td>
-                  <td>เปลี่ยนแปลงชื่อบริษัท</td>
-                  <td>7 - 10 Days</td>
-                  <td>1,000</td>
-                  
-                </tr>
-                <tr>
-                  <td><input  type="checkbox" value="" ></td>
-                  <td>เปลี่ยนแปลงจำนวนหุ้นหรือมูลค่าหุ้น</td>
-                  <td>7 - 10 Days</td>
-                  <td>1,000</td>
-                  
-                </tr>
-                <tr>
-                  <td><input  type="checkbox" value="" ></td>
-                  <td>เปลี่ยนแปลงชื่อบริษัท</td>
-                  <td>7 - 10 Days</td>
-                  <td>1,000</td>
-                  
-                </tr>
-                <tr>
-                  <td><input  type="checkbox" value="" ></td>
-                  <td>แก้ไขเพิ่มเติมตราของบริษัท</td>
-                  <td>7 - 10 Days</td>
-                  <td>1,000</td>
-                  
-                </tr>
-                <tr>
-                  <td><input  type="checkbox" value="" ></td>
-                  <td>แก้ไขเพิ่มเติมที่ตั้งสํานักงานแห่งใหญ่ และ / หรือ สํานักงานสาขา</td>
-                  <td>7 - 10 Days</td>
-                  <td>1,000</td>
-                  
-                </tr>
-                <tr>
-                  <td><input  type="checkbox" value="" ></td>
-                  <td>แก้ไขวัตถุประสงค์ของบริษัท</td>
-                  <td>7 - 10 Days</td>
-                  <td>1,000</td>
-                  
-                </tr>
-                <tr>
-                  <td><input  type="checkbox" value="" ></td>
-                  <td>แก้ไขข้อบังคับของบริษัท</td>
-                  <td>7 - 10 Days</td>
-                  <td>1,000</td>
-                  
-                </tr>
-               
+                
               </tbody>
             </table>
              
@@ -145,19 +64,21 @@
     </div>
     </div>
     <div class="fixed_request">
-         <div class="request-left">0 items</div>
+         <div class="request-left">{{ itmc }} items</div>
         <div class="request-right">
-          ฿0.00
+          ฿{{ total }}
           <button class="btn btn-xs">Submit Request <img src="~/assets/mark/icons8-up_arrow.png" /></button>
          
         </div>
     </div>
   </div>
+</div>
 </template>
 
 <script>
 import BaelGrid from "~/components/BaelGrid";
 import FullGrid from "~/components/FullGrid";
+import BaelSearch from "~/components/BaelSearch";
 import _chunk from "lodash/chunk";
 export default {
   head() {
@@ -202,12 +123,86 @@ export default {
     return +to.query.page > +from.query.page ? "slide-right" : "slide-left";
   },
   name: "Services",
-  components: { BaelGrid, FullGrid },
+  components: { BaelGrid, FullGrid,BaelSearch },
   computed: {
     getLayout() {
       return this.$store.state.info.altlayout ? "FullGrid" : "BaelGrid";
     },
   },
+  data() {
+    return {
+       allSelected: false,
+        formIds: [],
+        total:'0.00',
+        formaction:false,
+        itmc:0,
+        forms: [ 
+              { "id": "1", "name": "จัดตั้งบริษัทจํากัด", "process_time": "7 - 10 Days", "price":"1,000"}, 
+              { "id": "2", "name": "แก้ไขรายชื่อกรรมการ", "process_time": "7 - 10 Days", "price":"1,000"}, 
+              { "id": "3", "name": "แก้ไขจํานวนหรือชื่อกรรมการซึ่งลงชื่อผูกพันบริษัท", "process_time": "7 - 10 Days", "price":"1,000"}, 
+              { "id": "4", "name": "เปลี่ยนแปลงข้อมูลผู้ถือหุ้น", "process_time": "7 - 10 Days", "price":"1,000"}, 
+              { "id": "5", "name": "เปลี่ยนแปลงทุนจดทะเบียนของบริษัท", "process_time": "7 - 10 Days", "price":"1,000"}, 
+              { "id": "6", "name": "เปลี่ยนแปลงจำนวนหุ้นหรือมูลค่าหุ้น", "process_time": "7 - 10 Days", "price":"1,000"}, 
+              { "id": "7", "name": "เปลี่ยนแปลงชื่อบริษัท", "process_time": "7 - 10 Days", "price":"1,000"}, 
+              { "id": "8", "name": "เปลี่ยนแปลงจำนวนหุ้นหรือมูลค่าหุ้น", "process_time": "7 - 10 Days", "price":"1,000"}, 
+              { "id": "9", "name": "เปลี่ยนแปลงชื่อบริษัท", "process_time": "7 - 10 Days", "price":"1,000"}, 
+              { "id": "10", "name": "แก้ไขเพิ่มเติมตราของบริษัท", "process_time": "7 - 10 Days", "price":"1,000"}, 
+              { "id": "11", "name": "แก้ไขเพิ่มเติมที่ตั้งสํานักงานแห่งใหญ่ และ / หรือ สํานักงานสาขา", "process_time": "7 - 10 Days", "price":"1,000"}, 
+              { "id": "12", "name": "แก้ไขวัตถุประสงค์ของบริษัท", "process_time": "7 - 10 Days", "price":"1,000"}, 
+              { "id": "13", "name": "แก้ไขข้อบังคับของบริษัท", "process_time": "7 - 10 Days", "price":"1,000"}, 
+          ],
+        };
+  },
+  
+  methods:{
+    changeInput(event){
+      var form = this.forms;
+      
+      var ind = form.findIndex(({ id }) => id === event.target.value);
+      var price = this.forms[ind].price.replace(',','');
+      console.log('ind',price);
+      if(event.target.checked){
+        this.formIds.push(event.target.value);
+        this.itmc += 1;
+        this.total = (this.total*1)+(price*1);
+        
+      }else{
+         var formin = this.formIds;
+        var index = formin.indexOf(event.target.value);
+        console.log('index',index);
+        this.formIds.splice(index,1);
+        this.itmc -= 1;
+       this.total = (this.total*1)-(price*1);
+      }
+     // console.log('event', this.formIds);
+
+    },
+    selectAll: function() {
+        this.formIds = [];
+        var formids = [];
+        this.itmc = 0;
+        this.total = 0;
+        var total = 0;
+        
+        if (!this.allSelected) {
+            this.itmc = this.forms.length;
+          this.forms.map(function(value, key) {
+            formids.push(value.id);
+            var price = value.price.replace(',','');
+           // console.log(price);
+            total += (price*1);
+            //console.log(key,value);
+              //list.push(value);
+          });
+          this.formIds =formids;
+          this.total = total;
+            /*for (frm in this.forms) {
+              console.log('frm',frm);
+               // this.formIds.push(this.forms[frm].id);
+            }*/
+        }
+    },
+  }
 };
 </script>
 

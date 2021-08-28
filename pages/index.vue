@@ -197,12 +197,13 @@
 <script>
 import BaelGrid from "~/components/BaelGrid";
 import FullGrid from "~/components/FullGrid";
-import _chunk from "lodash/chunk";
+//import _chunk from "lodash/chunk";
 
 
 
 
 export default {
+   
   data(){
     return {
       date_today:new Date()

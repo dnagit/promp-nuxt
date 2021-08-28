@@ -1,6 +1,6 @@
 <template>
-    <div class="main-left">
-         <div class="brand-wrapper"><img src="~/static/images/logo.png" /></div>
+    <div class="main-left" id="navbar">
+         <div class="brand-wrapper" @click="toggle"><img src="~/static/images/logo.png" /></div>
          <ul>
             <li v-bind:class="{ active: isActive }"><nuxt-link :to="'/'"><img src="~/assets/icon/icons-43.png" class="icon" />Dashboard</nuxt-link></li>
             <li ><nuxt-link :to="'/company'"><img src="~/assets/icon/icons-12.png" class="icon" />
@@ -27,6 +27,12 @@ export default {
       uri:'',
       isActive:true
     };
+  },
+  methods:{
+    toggle(){
+      alert(1);
+        console.log('toggle');
+    }
   },
   computed: {
     pagetitle() {

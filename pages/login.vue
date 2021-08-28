@@ -3,7 +3,7 @@
 <div class="login-wrapper align-middle">
     
         <div class="frame ">
-            <div class="nav">
+            <div class="nav" id="navbar">
                 <ul class="links">
                     <li class="signin-active"><nuxt-link
             class="btn"
@@ -12,7 +12,7 @@
                     <li class="signup-inactive"><nuxt-link
             class="btn"
             :to="'register'"
-          >สมัครสมาชิกa</nuxt-link></li>
+          >สมัครสมาชิก</nuxt-link></li>
                 </ul>
             </div>
             <div ng-app ng-init="checked = false">

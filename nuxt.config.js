@@ -26,7 +26,7 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600;700;800&display=swap' },
       { rel: 'stylesheet', href: 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' },
-      { rel: 'stylesheet', href: 'h ttps://pro.fontawesome.com/releases/v5.10.0/css/fontawesome.css' }
+      { rel: 'stylesheet', href: 'https://pro.fontawesome.com/releases/v5.10.0/css/fontawesome.css' }
      
     ],
     script: [
@@ -56,18 +56,20 @@ module.exports = {
   loading: { color: '#3B8070' },
   modules: 
   [
+    '@nuxtjs/bootstrap-vue',
     '@nuxt/content', 
     '@nuxtjs/pwa', 
     '@nuxtjs/axios',
     '@nuxtjs/auth',
     '@nuxtjs/pwa',
-    '@nuxtjs/bootstrap-vue',
+   
+    
     ['@nuxtjs/bootstrap-vue', { css: false }],
     [
       'nuxt-element-ui',
       {
         components: ['Button', 'DatePicker'],
-        locale: 'fr',
+        locale: 'en',
       },
     ],
     [
@@ -182,7 +184,7 @@ module.exports = {
     },
     { 
       src: '~/plugins/vue-datepicker',
-      ssr: false, 
+     
       mode: 'client' ,
       
     },
