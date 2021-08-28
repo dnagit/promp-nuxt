@@ -33,12 +33,10 @@
   <div class="form-group row">
     <label for="company_registration" class="col-sm-2 col-form-label">วันที่จดทะเบียน</label>
     <div class="col-sm-10">
-       <base-input>
-  <el-date-picker 
-                  
-                    placeholder="Select date and time">
-    </el-date-picker>
-</base-input>
+       <date-picker
+placeholder="MM/DD/YYYY"
+format="MM/dd/yyyy"
+v-model="date_today" />
     </div>
   </div>
   <h5>สำนักงานที่ตั้ง</h5>
@@ -114,6 +112,11 @@ export default {
     }
   },
     
+  methods:{
+    previewFiles(){
+      
+    }
+  },
   transition(to, from) {
     if (!from) return "fade";
     return +to.query.page > +from.query.page ? "slide-right" : "slide-left";

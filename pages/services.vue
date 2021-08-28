@@ -64,12 +64,115 @@
     </div>
     </div>
     <div class="fixed_request">
-         <div class="request-left">{{ itmc }} items</div>
+        <div class="request-left">{{ itmc }} items</div>
+        <div class="request-right">
+          ฿{{ total }}
+          <button class="btn btn-xs" @click="nextform()">Submit Request <img src="~/assets/mark/icons8-up_arrow.png" /></button>
+         
+        </div>
+    </div>
+  </div>
+  <div v-if="formaction">
+    <div class="row" v-if="formIds.includes('1')">
+        <div class="col-12">
+          <h5>จัดตั้งบริษัทจํากัด</h5>
+          <hr />
+        </div>
+        
+    </div>
+    <div class="row" v-if="formIds.includes('2')">
+        <div class="col-12">
+          <h5>แก้ไขรายชื่อกรรมการ</h5>
+          <hr />
+        </div>
+        
+    </div>
+    <div class="row" v-if="formIds.includes('3')">
+        <div class="col-12">
+          <h5>แก้ไขจํานวนหรือชื่อกรรมการซึ่งลงชื่อผูกพันบริษัท</h5>
+          <hr />
+        </div>
+        
+    </div>
+    <div class="row" v-if="formIds.includes('4')">
+        <div class="col-12">
+          <h5>เปลี่ยนแปลงข้อมูลผู้ถือหุ้น</h5>
+          <hr />
+        </div>
+        
+    </div>
+    <div class="row" v-if="formIds.includes('5')">
+        <div class="col-12">
+          <h5>เปลี่ยนแปลงทุนจดทะเบียนของบริษัท</h5>
+          <hr />
+        </div>
+        
+    </div>
+    <div class="row" v-if="formIds.includes('6')">
+        <div class="col-12">
+          <h5>เปลี่ยนแปลงจำนวนหุ้นหรือมูลค่าหุ้น</h5>
+          <hr />
+        </div>
+        
+    </div>
+    <div class="row" v-if="formIds.includes('7')">
+        <div class="col-12">
+          <h5>เปลี่ยนแปลงชื่อบริษัท</h5>
+          <hr />
+        </div>
+        
+    </div>
+    <div class="row" v-if="formIds.includes('8')">
+        <div class="col-12">
+          <h5>เปลี่ยนแปลงจำนวนหุ้นหรือมูลค่าหุ้น</h5>
+          <hr />
+        </div>
+        
+    </div>
+    <div class="row" v-if="formIds.includes('9')">
+        <div class="col-12">
+          <h5>เปลี่ยนแปลงชื่อบริษัท</h5>
+          <hr />
+        </div>
+        
+    </div>
+    <div class="row" v-if="formIds.includes('10')">
+        <div class="col-12">
+          <h5>แก้ไขเพิ่มเติมตราของบริษัท</h5>
+          <hr />
+        </div>
+        
+    </div>
+    <div class="row" v-if="formIds.includes('11')">
+        <div class="col-12">
+          <h5>แก้ไขเพิ่มเติมที่ตั้งสํานักงานแห่งใหญ่ และ / หรือ สํานักงานสาขา</h5>
+          <hr />
+        </div>
+        
+    </div>
+    <div class="row" v-if="formIds.includes('12')">
+        <div class="col-12">
+          <h5>แก้ไขวัตถุประสงค์ของบริษัท	</h5>
+          <hr />
+        </div>
+        
+    </div>
+    <div class="row" v-if="formIds.includes('13')">
+        <div class="col-12">
+          <h5>แก้ไขข้อบังคับของบริษัท	</h5>
+          <hr />
+        </div>
+        
+    </div>
+    <div class="row">
+       <div class="fixed_request">
+        <div class="request-left">{{ itmc }} items</div>
         <div class="request-right">
           ฿{{ total }}
           <button class="btn btn-xs">Submit Request <img src="~/assets/mark/icons8-up_arrow.png" /></button>
          
         </div>
+    </div>
     </div>
   </div>
 </div>
@@ -155,6 +258,13 @@ export default {
   },
   
   methods:{
+    filter(nationality){
+    // We can't find 'Taiwan' in nationalityArr
+      return this.formIds.filter(n=>n===nationality).length===0?false:true; // false
+    },
+    nextform(){
+      this.formaction = true;
+    },
     changeInput(event){
       var form = this.forms;
       
