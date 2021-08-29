@@ -189,6 +189,24 @@ export default {
       title: "Sevice Request | " + this.$store.state.info.sitename,
     };
   },
+  filters: {
+    getcomma(text){
+      if(!text){
+        return ''
+
+      }
+			 var nStr = text;
+			nStr += '';
+			var x = nStr.split('.');
+			var x1 = x[0];
+			var x2 = x.length > 1 ? '.' + x[1] : '';
+			var rgx = /(\d+)(\d{3})/;
+			while (rgx.test(x1)) {
+				x1 = x1.replace(rgx, '$1' + ',' + '$2');
+			}
+			return x1 ;
+		},
+  },
   async asyncData({ $content, params, error, store }) {
     const blogPosts = await $content("blog")
       .sortBy("createdAt", "desc")
@@ -271,6 +289,7 @@ export default {
       var ind = form.findIndex(({ id }) => id === event.target.value);
       var price = this.forms[ind].price.replace(',','');
       console.log('ind',price);
+      this.total = this.total.replace(',','');
       if(event.target.checked){
         this.formIds.push(event.target.value);
         this.itmc += 1;
@@ -284,9 +303,23 @@ export default {
         this.itmc -= 1;
        this.total = (this.total*1)-(price*1);
       }
+      this.getcomma();
      // console.log('event', this.formIds);
 
     },
+    getcomma(){
+      
+			 var nStr = this.total;
+			nStr += '';
+			var x = nStr.split('.');
+			var x1 = x[0];
+			var x2 = x.length > 1 ? '.' + x[1] : '';
+			var rgx = /(\d+)(\d{3})/;
+			while (rgx.test(x1)) {
+				x1 = x1.replace(rgx, '$1' + ',' + '$2');
+			}
+		this.total = x1;
+		},
     selectAll: function() {
         this.formIds = [];
         var formids = [];
@@ -306,6 +339,7 @@ export default {
           });
           this.formIds =formids;
           this.total = total;
+          this.getcomma();
             /*for (frm in this.forms) {
               console.log('frm',frm);
                // this.formIds.push(this.forms[frm].id);
