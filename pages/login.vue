@@ -16,17 +16,31 @@
                 </ul>
             </div>
             <div ng-app ng-init="checked = false">
-               <form class="form-signin" v-on:submit.prevent="submit" method="post">
+              <validation-observer ref="simpleRules" v-slot="{ handleSubmit }">
+               <form class="form-signin" @submit.stop.prevent="handleSubmit(onSubmit)" method="post">
                     <div class="form-login">
+                        <validation-provider
+                          #default="{ errors }"
+                          rules="required|email"
+                          name="email"
+                        >
                         <div class="input active">
                             <label for="fullname">อีเมล</label>
-                            <input class="form-styling" type="email" name="email" placeholder="admin@test.om" /> 
+                            <input class="form-styling" type="email" name="email" v-model="email" placeholder="admin@test.om" /> 
+                            <small class="text-danger">{{ errors[0] }}</small>
                         </div>
-                        
+                        </validation-provider>
+                         <validation-provider
+                          #default="{ errors }"
+                          rules="required"
+                          name="password"
+                        >
                        <div class="input">
                             <label for="fullname">รหัสผ่าน</label>
-                            <input class="form-styling" type="password" name="password"  /> 
+                            <input class="form-styling" type="password" v-model="password" name="password"  /> 
+                            <small class="text-danger">{{ errors[0] }}</small>
                         </div>
+                         </validation-provider>
                     </div> 
                     
                      <div class="link-forgot"><nuxt-link
@@ -34,9 +48,9 @@
             :to="'forgotpass'"
           >ลืมรหัสผ่าน?</nuxt-link> </div>
                    
-                    <div class="btn-animate"> <button class="btn btn-xs">เข้าสู่ระบบ <img src="~/assets/mark/icons8-right_arrow.png" /></button>  </div>
+                    <div class="btn-animate"> <button class="btn btn-xs"   @click.prevent="validationForm" >เข้าสู่ระบบ <img src="~/assets/mark/icons8-right_arrow.png" /></button>  </div>
                 </form>
-               
+              </validation-observer> 
                   
             </div>
            
@@ -49,13 +63,20 @@
 </template>
 
 <script>
+import { ValidationProvider, ValidationObserver } from "vee-validate";
 export default {
+  components: {
+    ValidationProvider,
+    ValidationObserver
+  },
   data() {
     return {
       login: {
         username: '',
         password: ''
-      }
+      },
+      email:'',
+      password:''
     }
   },
   methods:{
@@ -109,9 +130,43 @@ export default {
     };
   },
   methods:{
-    submit(){
-      alert(5);
-    }
+       makeToast(params) {
+            
+        this.$bvToast.toast(params.message, {
+            title: 'Send Mail Contact',
+            autoHideDelay: 5000,
+            solid: true,
+            variant: params.variant,
+            
+        })
+    },
+   
+    validationForm() {
+       let params = {};
+      this.$refs.simpleRules.validate().then(success => {
+        console.log('success',success);
+        if(success){
+            this.$fire.auth.signInWithEmailAndPassword(this.email, this.password)
+              .then((u) => {
+                params.variant = 'success';
+                  params.message = 'Register Success';
+                console.log('userauth',u.user.email);
+                this.makeToast(params);
+               // this.$router.push("/login");
+              }).catch((error) => {
+                console.log('err',error);
+                params.variant = 'danger';
+                params.message = error.message;
+                 
+                  this.makeToast(params);
+          });
+           
+            
+            
+        }
+         
+      });
+    },
 
   },
   

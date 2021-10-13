@@ -1,7 +1,11 @@
 // window resize handler
 export const resizeHandler = store => {
     const navbar = document.getElementById('navbar');
-    const navHeight =  navbar.clientHeight;
+    const navHeight =  '100vh';
+    if(navbar){
+        const navHeight =  navbar.clientHeight;
+    }
+    
     /*if(navbar){
          navHeight = navbar.clientHeight;
     }*/
