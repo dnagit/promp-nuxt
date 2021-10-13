@@ -7,16 +7,16 @@
                 <ul class="links">
                     <li class="signin-active"><nuxt-link
             class="btn"
-            :to="'login'"
+            :to="'/login'"
           >เข้าสู่ระบบ</nuxt-link></li>
                     <li class="signup-inactive"><nuxt-link
             class="btn"
-            :to="'register'"
+            :to="'/register'"
           >สมัครสมาชิก</nuxt-link></li>
                 </ul>
             </div>
             <div ng-app ng-init="checked = false">
-                <form class="form-signin" action="" method="post" name="form">
+               <form class="form-signin" v-on:submit.prevent="submit" method="post">
                     <div class="form-login">
                         <div class="input active">
                             <label for="fullname">อีเมล</label>
@@ -78,23 +78,10 @@ export default {
     return +to.query.page > +from.query.page ? "slide-right" : "slide-left";
   },
   created(){
-     this.$fire.auth.signInWithEmailAndPassword('sweeppers@gmail.com', '123456')
+     /*this.$fire.auth.signInWithEmailAndPassword('sweeppers@gmail.com', '123456')
         .then((u) => {
            console.log('userauth',u.user.email);
-           /* uid: 'am5QftkSVReZoAYIb8FxCXc01tB3',
-    displayName: null,
-    photoURL: null,
-    email: 'sweeppers@gmail.com',
-    emailVerified: false,
-    phoneNumber: null,
-    isAnonymous: false,
-    tenantId: null,
-    metadata: Fm {
-      a: '1625933573067',
-      b: '1625933952461',
-      lastSignInTime: 'Sat, 10 Jul 2021 16:19:12 GMT',
-      creationTime: 'Sat, 10 Jul 2021 16:12:53 GMT'
-    },*/
+          
         }).catch((error) => {
         switch (error.code) {
         case 'auth/email-already-in-use':
@@ -113,13 +100,19 @@ export default {
           console.log(error.message);
           break;
       }
-    });
+    });*/
   },
   
   head() {
     return {
       title: "Login | " + this.$store.state.info.sitename,
     };
+  },
+  methods:{
+    submit(){
+      alert(5);
+    }
+
   },
   
   mounted() {

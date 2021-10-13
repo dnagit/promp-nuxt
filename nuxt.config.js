@@ -93,7 +93,10 @@ module.exports = {
    
 
   ],
-  
+  bootstrapVue: {
+    // Add the desired icon components to the `components` array
+    components: ['BIcon', 'BIconAlertFill', 'BIconCalendar', 'BIconGears','BForm']
+  },
   firebase: {
    
     config: {
@@ -188,14 +191,15 @@ module.exports = {
       mode: 'client' ,
       
     },
+    "~/plugins/vee-validate.js"
     
   ],
   axios: {
     baseURL: 'http://localhost:3000/api',
     credentials: true
   },
-  auth: {
-    strategies: {
+ /*  auth: {
+   strategies: {
       local: {
         endpoints: {
           login: { url: 'login', method: 'post', propertyName: 'data.token' },
@@ -207,12 +211,13 @@ module.exports = {
     redirect: {
       login: '/login'
     }
-  },
+  },*/
   /*
   ** Build configuration
   */
 
   build: {
+    transpile: ["vee-validate/dist/rules"],
     extractCSS: false,
     html: {
       minify: {

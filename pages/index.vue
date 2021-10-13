@@ -203,7 +203,7 @@ import FullGrid from "~/components/FullGrid";
 
 
 export default {
-   
+  middleware: ['auth'],
   data(){
     return {
       date_today:new Date()

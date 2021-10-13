@@ -1,6 +1,6 @@
 <template>
   <section class="container-fluid">
-        <div class="row bg-login">
+        <div class="row bg-login" id="navbar">
             <div class="col-sm-6 login-section-wrapper">
                  <div class="brand-wrapper"><img src="~/static/images/logo.png" /></div>
                  

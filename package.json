@@ -25,6 +25,7 @@
     "@nuxtjs/fontawesome": "^1.1.2",
     "@nuxtjs/pwa": "^3.3.5",
     "bf-solid": "^2.10.6",
+    "bootstrap": "^4.6.0",
     "bootstrap-vue": "^2.21.2",
     "firebase": "^8.7.1",
     "firebase-admin": "^9.10.0",
