@@ -93,6 +93,9 @@ module.exports = {
    
 
   ],
+  router: {
+    middleware: 'router-auth'
+  },
   bootstrapVue: {
     // Add the desired icon components to the `components` array
     components: ['BIcon', 'BIconAlertFill', 'BIconCalendar', 'BIconGears','BForm']

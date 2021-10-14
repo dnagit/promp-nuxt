@@ -99,6 +99,7 @@ export default {
     return +to.query.page > +from.query.page ? "slide-right" : "slide-left";
   },
   created(){
+    
      /*this.$fire.auth.signInWithEmailAndPassword('sweeppers@gmail.com', '123456')
         .then((u) => {
            console.log('userauth',u.user.email);
@@ -150,9 +151,22 @@ export default {
               .then((u) => {
                 params.variant = 'success';
                   params.message = 'Register Success';
-                console.log('userauth',u.user.email);
+                 // console.log('user',u.user.uid);
+               // console.log('userauth',u.user.email);
+                let user = {
+                  uid : u.user.uid,
+                  email : u.user.email
+                }
+
+                console.log('user',user);
+                this.$auth.setUser({
+                  loggedIn:true,
+                  strategy: 'local',
+                  user:user
+                });
+               // store.commit('setUser', user)
                 this.makeToast(params);
-               // this.$router.push("/login");
+                this.$router.push("/");
               }).catch((error) => {
                 console.log('err',error);
                 params.variant = 'danger';
