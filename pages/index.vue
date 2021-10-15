@@ -5,7 +5,7 @@
         <div class="block d-flex justify-content-between bd-highlight mb-3">
           <div class="p-1 bd-highlight">
             Assigned<br />
-          <b>5</b>
+          <b>1</b>
           </div>
           <div class="bd-highlight">
             
@@ -19,7 +19,7 @@
       <div class="block d-flex justify-content-between bd-highlight mb-3">
           <div class="p-1 bd-highlight">
             Processing<br />
-          <b>2</b>
+          <b>0</b>
           </div>
           <div class="bd-highlight">
             
@@ -32,8 +32,8 @@
       <div class="col-4">
         <div class="block d-flex justify-content-between bd-highlight mb-3">
           <div class="p-1 bd-highlight">
-            Delivered<br />
-          <b>3</b>
+            Complete<br />
+          <b>0</b>
           </div>
           <div class="bd-highlight">
             
@@ -51,8 +51,8 @@
         
     
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-          <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">My job request (10)</a>
-          <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Pending Payment(2)</a>
+          <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">My job request (1)</a>
+          <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Pending Payment(0)</a>
         
         </div>
   
@@ -96,10 +96,10 @@
                 <tr>
                   <td>จดทะเบียนบริษัท</td>
                   <td>12/04/2020  12:00</td>
-                  <td><img src="~/assets/icon/user.png" class="icon" /> Patsanan</td>
-                  <td><span class="btn btn-xs btn-outline-warning">Processing</span></td>
+                  <td><!--<img src="~/assets/icon/user.png" class="icon" /> Patsanan--></td>
+                  <td><span class="btn btn-xs btn-outline-warning">Assigned</span></td>
                 </tr>
-                <tr>
+                <!--<tr>
                   <td>เปลี่ยนชื่อบริษัทใหม่</td>
                   <td>12/04/2020  12:00</td>
                   <td><img src="~/assets/icon/user.png" class="icon" /> Patsanan</td>
@@ -122,7 +122,7 @@
                   <td>12/04/2020  12:00</td>
                   <td><img src="~/assets/icon/user.png" class="icon" /> Patsanan</td>
                   <td><span class="btn btn-xs btn-outline-success">Completed</span></td>
-                </tr>
+                </tr>-->
               </tbody>
             </table>
              
@@ -130,15 +130,15 @@
           </div>
           <div class="row mt-3">
               <span class="col-8 justify-content-start align-middle show-pagination">
-                Show 1 from 10
+                Show 1 from 1
               </span>
-              <ul class="col-4 pagination  justify-content-end">
+             <!-- <ul class="col-4 pagination  justify-content-end">
                 <li class="page-item "><a class="page-link" href="#"></a></li>
                 <li class="page-item active"><a class="page-link" href="#">1</a></li>
                 <li class="page-item"><a class="page-link" href="#">2</a></li>
                 <li class="page-item"><a class="page-link" href="#">3</a></li>
                 <li class="page-item"><a class="page-link" href="#">></a></li>
-              </ul>
+              </ul>-->
           </div>
         </div>
         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
@@ -153,6 +153,9 @@
               </thead>
               <tbody>
                 <tr>
+                  <td colspan="4"><center>No data</center></td>
+                </tr>
+                <!--<tr>
                   <td>จดทะเบียนบริษัท</td>
                   <td>12/04/2020  12:00</td>
                   <td><img src="~/assets/icon/user.png" class="icon" /> Patsanan</td>
@@ -181,7 +184,7 @@
                   <td>12/04/2020  12:00</td>
                   <td><img src="~/assets/icon/user.png" class="icon" /> Patsanan</td>
                   <td><span class="btn btn-xs btn-outline-danger">Pending payment</span></td>
-                </tr>
+                </tr>-->
               </tbody>
             </table>
         </div>
@@ -232,6 +235,17 @@ export default {
       return this.$store.state.info.altlayout ? "FullGrid" : "BaelGrid";
     },
   },
+  created(){
+    this.getJobspending();
+
+  },
+  methods:{
+    getJobspending(){
+       //let app = this.$fire.auth.signInWithEmailAndPassword('de','123')
+       // const messageRef = this.$fire.database.ref('cases')
+       //console.log('app',messageRef);
+    }
+  }
 };
 </script>
 

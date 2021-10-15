@@ -4,9 +4,9 @@
   <div class="btn-group" role="group" aria-label="Button group with nested dropdown" v-if="title=='index'">
   
 
-  <div class="btn-group" role="group" >
+    <div class="btn-group" role="group" >
       <button id="btnGroupDrop1" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-       <img src="~/assets/icon/logocompany.png" class="icon" /> บริษัทฟาสต์เวิร์ค เทคโนโลยีส์ จำก...
+        <img src="~/assets/icon/logocompany.png" class="icon" /> บริษัทฟาสต์เวิร์ค เทคโนโลยีส์ จำก...
       </button>
       <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
         <a class="dropdown-item" href="#"><img src="~/assets/icon/logocompany.png" class="icon" /> บริษัทฟาสต์เวิร์ค เทคโนโลยีส์ จำก...</a>
@@ -37,12 +37,19 @@
   
   
   <form class="form-inline">
+    
     <div class="notification"><img src="~/assets/icon/icons-39.png" class="icon" /></div>
-    <img src="~/assets/icon/user.png" class="user" />
-   <div class="h-profile">
-     Patsanan…<br />
-     <span style="font-size:14px;">Smart</span>
-   </div>
+    <div class="btn-group" role="group" >
+      <button id="btnGroupDrop1" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <img src="~/assets/icon/user.png" class="user" /> {{ user.email }}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+        <a class="dropdown-item" href="#">Profile</a>
+        <a class="dropdown-item" href="#" @click="logout">Logout</a>
+      </div>
+    </div>
+  
+   
   </form>
 </nav>
 </template>
@@ -51,7 +58,8 @@ import _capitalize from "lodash/capitalize";
 export default {
   data() {
     return {
-      title:'index'
+      title:'index',
+      user: this.$auth.$storage.getLocalStorage('user')
     };
   },
   
@@ -72,6 +80,28 @@ export default {
       return split.length && split[1] !== "page" ? _capitalize(split[1]) : null;
     },
   },
+  methods:{
+    async logout(){
+       let params = {};
+     await  this.$auth.$storage.removeLocalStorage('user');
+      this.$router.go("/login",()=>{
+          params.variant = 'success';
+          params.message = 'Logout Success';
+          this.makeToast(params);
+        
+      });
+    },
+    makeToast(params) {
+            
+        this.$bvToast.toast(params.message, {
+            title: 'Logout',
+            autoHideDelay: 5000,
+            solid: true,
+            variant: params.variant,
+            
+        })
+    },
+  }
 };
 </script>
 <style>
@@ -103,6 +133,9 @@ nav {
   text-transform: uppercase;
   font-weight: 800;
   font-size: 18px;
+}
+.dropdown-menu{
+  width: 100%;
 }
 @media only screen and (max-width: 40rem) {
   .results {

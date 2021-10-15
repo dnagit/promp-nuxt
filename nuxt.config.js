@@ -77,15 +77,21 @@ module.exports = {
       {
         config: {
           apiKey: "AIzaSyAcuRid40eaVEx5TKKn5yibuDTFNDyQxAU",
-        authDomain: "promp-d2fc3.firebaseapp.com",
-        databaseURL: "https://promp-d2fc3.firebaseio.com",
-        projectId: "promp-d2fc3",
-        storageBucket: "promp-d2fc3.appspot.com",
-        messagingSenderId: "660976897097",
-        appId: "1:660976897097:web:3e99bf294512e6f1cd4398"
+          authDomain: "promp-d2fc3.firebaseapp.com",
+          databaseURL: "https://promp-d2fc3.firebaseio.com",
+          projectId: "promp-d2fc3",
+          storageBucket: "promp-d2fc3.appspot.com",
+          messagingSenderId: "660976897097",
+          appId: "1:660976897097:web:3e99bf294512e6f1cd4398"
         },
         services: {
-          auth: true // Just as example. Can be any other service.
+          auth: true, // Just as example. Can be any other service.,
+          realtimeDb: true,
+        },
+        terminateDatabasesAfterGenerate:true,
+        database: {
+          emulatorPort: 9000,
+          emulatorHost: 'localhost',
         }
       }
     ],
@@ -93,6 +99,10 @@ module.exports = {
    
 
   ],
+  database: {
+    emulatorPort: 9000,
+    emulatorHost: 'localhost',
+  },
   router: {
     middleware: 'router-auth'
   },
@@ -128,8 +138,14 @@ module.exports = {
       messaging: true,
       performance: true,
       analytics: true,
-      remoteConfig: true
+      remoteConfig: true,
       
+      
+    },
+    terminateDatabasesAfterGenerate:true,
+    database: {
+      emulatorPort: 9000,
+      emulatorHost: 'localhost',
     },
     
     /*database: {
@@ -194,7 +210,9 @@ module.exports = {
       mode: 'client' ,
       
     },
-    "~/plugins/vee-validate.js"
+    "~/plugins/vee-validate.js",
+    { src: '~/plugins/localstorage.js', mode: 'client' }
+   
     
   ],
   axios: {

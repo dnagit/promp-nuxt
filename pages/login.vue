@@ -65,6 +65,7 @@
 <script>
 import { ValidationProvider, ValidationObserver } from "vee-validate";
 export default {
+ // middleware: ['router-auth'],
   components: {
     ValidationProvider,
     ValidationObserver
@@ -91,6 +92,7 @@ export default {
     layout (context) {
     return 'login'
   },
+  
   async asyncData({ params, app, payload, route, store }) {
     await store.commit("SET_TITLE", "Login");
   },
@@ -98,7 +100,20 @@ export default {
     if (!from) return "fade";
     return +to.query.page > +from.query.page ? "slide-right" : "slide-left";
   },
+
   created(){
+    if( this.$auth.$storage.getLocalStorage('user')){
+      
+       this.$router.push("/",()=>{
+         let params = {}
+          params.variant = 'success';
+          params.message = 'Login Sucess';
+          this.makeToast(params);
+                 
+        })
+
+    }
+     //console.log('user',  this.$auth.$storage.getLocalStorage('userDetails'));
     
      /*this.$fire.auth.signInWithEmailAndPassword('sweeppers@gmail.com', '123456')
         .then((u) => {
@@ -150,7 +165,7 @@ export default {
             this.$fire.auth.signInWithEmailAndPassword(this.email, this.password)
               .then((u) => {
                 params.variant = 'success';
-                  params.message = 'Register Success';
+                  params.message = 'Login Success';
                  // console.log('user',u.user.uid);
                // console.log('userauth',u.user.email);
                 let user = {
@@ -158,15 +173,19 @@ export default {
                   email : u.user.email
                 }
 
-                console.log('user',user);
-                this.$auth.setUser({
-                  loggedIn:true,
-                  strategy: 'local',
-                  user:user
-                });
+
+                //console.log('user',user);
+               this.$auth.setUser(user)  
+                this.$auth.$storage.setLocalStorage('user',user);
+                //localStorage.setItem("userDetails",user);
+                
                // store.commit('setUser', user)
-                this.makeToast(params);
-                this.$router.push("/");
+               // this.makeToast(params);
+                
+                this.$router.push("/",()=>{
+                   this.makeToast(params);
+                 
+                })
               }).catch((error) => {
                 console.log('err',error);
                 params.variant = 'danger';

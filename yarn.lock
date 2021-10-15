@@ -5597,7 +5597,7 @@
     "@google-cloud/firestore" "^4.5.0"
     "@google-cloud/storage" "^5.3.0"
 
-"firebase@^8.3.1", "firebase@^8.7.1":
+"firebase@^8.10.0", "firebase@^8.3.1":
   "integrity" "sha512-GCABTbJdo88QgzX5OH/vsfKBWvTRbLUylGlYXtO7uYo1VErfGd2BWW9ATlJP5Gxx+ClDfyvVTvcs2rcNWn3uUA=="
   "resolved" "https://registry.npmjs.org/firebase/-/firebase-8.10.0.tgz"
   "version" "8.10.0"
@@ -12218,6 +12218,11 @@
     "resolve" "^1.2.0"
     "serialize-javascript" "^3.1.0"
     "source-map" "0.5.6"
+
+"vue-session@^1.0.0":
+  "integrity" "sha512-Ep9lRKGgCZdcGV3In3R3zoSp5Wr+hlcIc8WJ9BG+QKzibwaFZnnvp9HBVdd+dU8d6HGLSi5sWywDmd5MkrkfoQ=="
+  "resolved" "https://registry.npmjs.org/vue-session/-/vue-session-1.0.0.tgz"
+  "version" "1.0.0"
 
 "vue-smooth-reflow@^0.1.12":
   "integrity" "sha512-cic+dmqsBzu/lRMXf/mhUPMM0g0vancJGUyNMMGHjis0ilSFd1RjIrZYcU5B7ef+n5oshH33/zbMA8OYyRTu7Q=="
