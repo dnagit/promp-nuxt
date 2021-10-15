@@ -41,7 +41,7 @@
     <div class="notification"><img src="~/assets/icon/icons-39.png" class="icon" /></div>
     <div class="btn-group" role="group" >
       <button id="btnGroupDrop1" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <img src="~/assets/icon/user.png" class="user" /> {{ user.email }}
+        <img src="~/assets/icon/user.png" class="user" /> deoz@windowslive.com
       </button>
       <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
         <a class="dropdown-item" href="#">Profile</a>
