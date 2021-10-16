@@ -1,0 +1,60 @@
+.register-company{
+    .header{
+        background-color: #7C7C7C;
+        .bg-light{
+            background-color: #7C7C7C !important;
+        }
+        a{
+            color:#fff;
+        }
+        ul{
+            border: 0px;
+            margin-bottom: 0px;
+        }
+    }
+    
+}
+
+.company-footer{
+    background-color: #7C7C7C;
+    padding: 0 20px;
+    color: #fff;
+    .container{
+        padding-bottom: 20px;
+    }
+    .logo-footer{
+        width: 100px;
+        margin-bottom: 30px;
+    }
+    .footer-5{
+        font-size: 14px;
+    }
+    .social{
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        div{
+            padding-right: 10px;
+        }
+        div:last-child{
+            padding-right: 0px;
+        }
+        
+    }
+    ul{
+        border: 0px;
+
+        li{
+            float: none;
+            display: block;
+            padding-left:0px;
+            padding-top: 20px;
+           
+            a{
+                color: #fff;
+            }
+        }
+    }
+
+}
