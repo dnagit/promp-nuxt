@@ -228,7 +228,6 @@ module.exports = {
        minifyJS: false
       }
     },
-    
     plugins: [
       new webpack.ProvidePlugin({
         _get: 'lodash/get',
