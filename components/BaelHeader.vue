@@ -41,7 +41,7 @@
     <div class="notification"><img src="~/assets/icon/icons-39.png" class="icon" /></div>
     <div class="btn-group" role="group" >
       <button id="btnGroupDrop1" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <img src="~/assets/icon/user.png" class="user" /> deoz@windowslive.com
+        <img src="~/assets/icon/user.png" class="user" /> {{ user.email  }}
       </button>
       <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
         <a class="dropdown-item" href="#">Profile</a>
@@ -59,11 +59,20 @@ export default {
   data() {
     return {
       title:'index',
-      user: this.$auth.$storage.getLocalStorage('user')
+      user: {
+        email: '',
+        uid:''
+      }
     };
   },
   
   created(){
+    let user =  this.$auth.$storage.getLocalStorage('user');
+    if(user){
+       this.user.emai = user.email;
+      this.user.uid = user.id
+    }
+   
    // const split = _get(this.$store, "state.current.dir").split("/");
    this.title = this.$route.name;
     console.log('title', this.$route);
