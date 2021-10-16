@@ -13,11 +13,11 @@
       <div class="col-2">
         <bael-left />
       </div>
-      <div class="col-8 main-right">
+      <div class="col-7 main-right">
         <bael-header />
         <nuxt />
       </div>
-      <div class="col-2">
+      <div class="col-3 right-job p-0">
         <bael-right />
       </div>
     </div>

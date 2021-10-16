@@ -2202,3 +2202,65 @@ a{
         height: 24px;
     }
 }
+.right-job{
+    background: #fff;
+    border-left: 1px solid #DEDEDE;
+    box-shadow: -1px 0px 5px 0px #DEDEDE;
+    .job-right-head{
+        padding: 10px;
+        text-align: center;
+    }
+    .job-right-body{
+        padding: 10px;;
+    }
+    .card{
+        border:0px;
+        margin-left: -10px;
+        margin-right: 10px;
+        .card-body{
+            padding: 0px 10px;
+        }
+    }
+    .active{
+        color:#508967;
+        .text-muted{
+            color:#508967 !important;
+        }
+    }
+    .hr-dot{
+        border-bottom:3px dotted #DEDEDE;
+    }
+    .lawyer{
+        width: 57px;
+        border:1px solid #fff;
+        margin-right: 10px;
+        .lawyer-text{
+            font-size: 12px;
+            .small{
+                font-size: 10px;
+                color: #707070;
+            }
+        }
+    }
+}
+.job-process{
+    .btn-danger{
+        border:1px solid #F0735D !important;
+        background-color: #FFDCD6 !important;
+        color: #F0735D !important;
+    }
+    .btn-default{
+        font-size: 12px;
+        border:1px solid #707070 !important;
+        background-color: #707070 !important;
+        color: #fff !important;
+    }
+    .img-process{
+        width: 25px;
+        margin-right: 5px;
+    }
+    .font-dis{
+        color: #DEDEDE;
+    }
+
+}
