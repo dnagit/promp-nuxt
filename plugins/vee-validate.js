@@ -1,5 +1,5 @@
 import { extend } from "vee-validate";
-import { required, alpha, email,confirmed } from "vee-validate/dist/rules";
+import { required, alpha, email,confirmed,min } from "vee-validate/dist/rules";
 
 extend("required", {
   ...required,
@@ -17,6 +17,10 @@ extend("email", {
   extend("confirmed", {
     ...confirmed,
     message: "The Password Confirm field confirmation does not match"
+  });
+  extend("min", {
+    ...min,
+    message: "กรุณากรอก"
   });
   
   

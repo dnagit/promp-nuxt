@@ -95,6 +95,7 @@ export default {
    head() {
     return {
       title: "My Company | " + this.$store.state.info.sitename,
+      
     };
   },
 
@@ -107,10 +108,11 @@ export default {
   
   data(){
     return{
-         datePicker: '',
-    date_today:new Date()
+        date_today:new Date(),
+
     }
   },
+  
     
   methods:{
     previewFiles(){

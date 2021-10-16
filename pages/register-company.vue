@@ -90,7 +90,7 @@
 
             </div>
             <div class="p-3">
-                <nuxt-link to="/" class="btn-yellow">
+                <nuxt-link :to="'/form/add-company?job_id='+job_id" class="btn-yellow">
                     เริ่มกรอกข้อมูล 
                     <svg xmlns="http://www.w3.org/2000/svg" width="48.006" height="24.047" viewBox="0 0 48.006 24.047">
                         <path id="icons8-up_arrow" d="M25,1.023,13.641,11.531a2,2,0,1,0,2.719,2.938L23,8.324V47a2,2,0,1,0,4,0V8.324l6.641,6.145a2,2,0,1,0,2.719-2.937Z" transform="translate(49.029 -12.976) rotate(90)" fill="#fff"/>
@@ -126,7 +126,8 @@ export default {
     middleware: ['router-auth'],
     data(){
         return {
-        date_today:new Date()
+            date_today:new Date(),
+            job_id:this.$route.query.job_id
         };
     },
     watchQuery: ["page"],
@@ -142,6 +143,10 @@ export default {
         title: "Job Detail",
         dir: ''
         });
+    },
+    created(){
+        //console.log('router',this.$route.query.job_id);
+
     },
     transition(to, from) {
         if (!from) return "fade";
