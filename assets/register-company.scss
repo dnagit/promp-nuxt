@@ -11,6 +11,9 @@
             border: 0px;
             margin-bottom: 0px;
         }
+        .dropdown-item{
+            color: #7C7C7C;
+        }
     }
     
 }
@@ -56,5 +59,44 @@
             }
         }
     }
+    
 
+}
+.container-desktop{
+   /* max-width: 1140px;*/
+   width: 80%;
+   color: #7C7C7C;
+   h1{
+        color: #7C7C7C;
+   }
+
+   .text-yellow{
+    color: #FFC00F;
+   }
+  
+   .div-doc{
+        background: #6D6D6D;
+        width: 100%;
+        padding: 20px;
+        display: flex;
+        color: #fff;
+        font-size: 22px;
+        font-weight: bold;
+    }
+    .list-doc{
+        display: flex;
+    }
+    .text-bold{
+        font-weight: bold;
+        line-height: 40px;
+    }
+    .btn-yellow{
+        display: block;
+        background: #FCBF10;
+        text-align: center;
+        color: #fff;
+        padding: 20px;
+        font-weight: bold;
+        font-size: 22px;
+    }
 }
