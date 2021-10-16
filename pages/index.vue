@@ -82,7 +82,7 @@
       <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
           
-          <div class="t-radius">
+          <div class="t-radius job-dashboard">
             <table class="table">
               <thead class="thead-light">
                 <tr>
@@ -97,7 +97,7 @@
                   <td>จดทะเบียนบริษัท</td>
                   <td>12/04/2020  12:00</td>
                   <td><!--<img src="~/assets/icon/user.png" class="icon" /> Patsanan--></td>
-                  <td><span class="btn btn-xs btn-outline-warning">Assigned</span></td>
+                  <td><nuxt-link to="/job/defd" class="btn btn-xs btn-primary">Assigned</nuxt-link></td>
                 </tr>
                 <!--<tr>
                   <td>เปลี่ยนชื่อบริษัทใหม่</td>

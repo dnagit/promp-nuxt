@@ -1,6 +1,6 @@
 <template>
 
-  <nav class="navbar navbar-light bg-light justify-content-between">
+<nav class="navbar navbar-light bg-light justify-content-between">
   <div class="btn-group" role="group" aria-label="Button group with nested dropdown" v-if="title=='index'">
   
 
@@ -34,9 +34,14 @@
     <h5>Legal Advice </h5>
     
   </div>
+  <div class="head-right"  v-else-if="title=='job-slug'">
+    <h5><a class="icon-back"><img src="~assets/icon/icons-back.png" /></a>จดทะเบียนจัดตั้งบริษัท</h5>
+    
+  </div>
   
   
-  <form class="form-inline">
+  
+  <form class="form-inline" v-if="title!='job-slug'">
     
     <div class="notification"><img src="~/assets/icon/icons-39.png" class="icon" /></div>
     <div class="btn-group" role="group" >
@@ -51,6 +56,7 @@
   
    
   </form>
+  
 </nav>
 </template>
 <script>
@@ -65,13 +71,17 @@ export default {
       }
     };
   },
-  
-  created(){
-    let user =  this.$auth.$storage.getLocalStorage('user');
+  mounted() {
+     let user =  this.$auth.$storage.getLocalStorage('user');
+ 
     if(user){
-       this.user.emai = user.email;
+      console.log('u',user);
+       this.user.email = user.email;
       this.user.uid = user.id
     }
+  },
+  created(){
+   
    
    // const split = _get(this.$store, "state.current.dir").split("/");
    this.title = this.$route.name;
@@ -89,6 +99,13 @@ export default {
       return split.length && split[1] !== "page" ? _capitalize(split[1]) : null;
     },
   },
+    watch: {
+      '$route.name'(newId, oldId) {
+        this.title = newId;
+        console.log('newId',newId);
+          
+        }
+    },
   methods:{
     async logout(){
        let params = {};
@@ -100,6 +117,7 @@ export default {
         
       });
     },
+  
     makeToast(params) {
             
         this.$bvToast.toast(params.message, {
