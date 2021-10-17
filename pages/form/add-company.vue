@@ -2640,6 +2640,8 @@ export default {
                 this.form.meeting_road =this.form.road;
                 this.form.meeting_provice = this.form.provice;
                 this.form.meeting_states = this.form.states;
+                this.form.meeting_city = this.form.city;
+                
                 this.form.meeting_postcode = this.form.postcode;
 
             }else{
@@ -2651,6 +2653,7 @@ export default {
                 this.form.meeting_road = null;
                 this.form.meeting_provice = null;
                 this.form.meeting_states = null;
+                this.form.meeting_city ='';
                 thithis.forms.meeting_postcode = null;
                
             }
