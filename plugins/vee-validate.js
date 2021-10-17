@@ -1,5 +1,5 @@
 import { extend } from "vee-validate";
-import { required, alpha, email,confirmed,min } from "vee-validate/dist/rules";
+import { required, alpha, email,confirmed,min,numeric } from "vee-validate/dist/rules";
 
 extend("required", {
   ...required,
@@ -21,6 +21,10 @@ extend("email", {
   extend("min", {
     ...min,
     message: "กรุณากรอก"
+  });
+  extend("numeric", {
+    ...numeric,
+    message: "Number Only!"
   });
   
   

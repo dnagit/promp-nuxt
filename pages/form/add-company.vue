@@ -125,6 +125,7 @@
                             </b-button>
                         </b-col>
                     </b-row>
+                    <hr />
                     
                     <div v-if="step_id==1" class="mt-3">
                        
@@ -212,13 +213,13 @@
                                     rules="min:0"
                                     name="objective"
                                     >
-                                    <b-form-group label="วัตถุประสงค์บริษัท*" v-slot="{ ariaDescribedby }">
-                                        <b-form-radio v-model="form.objective" :aria-describedby="ariaDescribedby" name="some-radios" value="ธุรกิจค้าขาย">ธุรกิจค้าขาย</b-form-radio>
-                                        <b-form-radio v-model="form.objective" :aria-describedby="ariaDescribedby" name="some-radios" value="ธุรกิจบริการ">ธุรกิจบริการ</b-form-radio>
-                                        <b-form-radio v-model="form.objective" :aria-describedby="ariaDescribedby" name="some-radios" value="ธุรกิจการผลิตสินค้าอุตสาหกรรมหรือหัตถกรรม">ธุรกิจการผลิตสินค้าอุตสาหกรรมหรือหัตถกรรม</b-form-radio>
+                                    <b-form-group label="วัตถุประสงค์บริษัท*" >
+                                        <b-form-radio v-model="form.objective" name="some-radios" value="ธุรกิจค้าขาย">ธุรกิจค้าขาย</b-form-radio>
+                                        <b-form-radio v-model="form.objective"  name="some-radios" value="ธุรกิจบริการ">ธุรกิจบริการ</b-form-radio>
+                                        <b-form-radio v-model="form.objective" name="some-radios" value="ธุรกิจการผลิตสินค้าอุตสาหกรรมหรือหัตถกรรม">ธุรกิจการผลิตสินค้าอุตสาหกรรมหรือหัตถกรรม</b-form-radio>
       
-                                        <b-form-radio v-model="form.objective" :aria-describedby="ariaDescribedby" name="some-radios" value="ธุรกิจเกษตรกรรม">ธุรกิจเกษตรกรรม</b-form-radio>
-                                        <b-form-radio v-model="form.objective" :aria-describedby="ariaDescribedby" name="some-radios" value="ธุรกิจเกษตรกรรม">สำนักงานผู้แทน</b-form-radio>
+                                        <b-form-radio v-model="form.objective"  name="some-radios" value="ธุรกิจเกษตรกรรม">ธุรกิจเกษตรกรรม</b-form-radio>
+                                        <b-form-radio v-model="form.objective" name="some-radios" value="ธุรกิจเกษตรกรรม">สำนักงานผู้แทน</b-form-radio>
                                         <b-form-input
                                             id="company_en"
                                             v-model="form.objective_other"
@@ -764,10 +765,21 @@
                     <div v-if="step_id==4" class="mt-3">
                         <validation-observer ref="step4" v-slot="{ handleSubmit }">
                             <b-form @submit.stop.prevent="handleSubmit(onSubmit)" method="post">
-                                <b-row v-for="(shareholder,key) in form.shareholders" :key="key">
-                                    <b-col md="10"><h5>ผู้ก่อตั้งคนที่ {{ key+1 }}</h5></b-col>
-                                    <b-col md="2">
+                                <b-row v-for="(shareholder,key) in form.shareholders" :key="key" class="mb-3">
+                                    <b-col md="10"><h5>ผู้ถื้อหุ้น {{ key+1 }}</h5></b-col>
+                                    <b-col md="2" class="text-right">
+                                        <b-button variant="outline-secondary" v-if="key > 2" @click="removeshare(key)">
+                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 37 37">
+                                                <defs>
+                                                    <pattern id="pattern" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 64 64">
+                                                    <image width="64" height="64" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QA/wD/AP+gvaeTAAAEbUlEQVR4nO2bT2gcVRzHP795kxoFJSGpolaMSLRY8eCfxuK5eFIQsUKN0It/mp3Z7CktiBq9qKWHbCbZgK0aELzEUknx1JNQqE31oFEoRUGwQsBsAlrDxuzMz0Nmw7JN4s5kJ9PS+Vxm3773+813vjszb96+N5CRkZFxEyNJ72BwcLAvCILnVbU7YuifxpgzxWLxQiLCQhIzwHXdW0TkpKr2bzHV58Brnuctt0JXI3YSSQFUdRSoHbwCV1R1pZlYEWkDdrH6A70KLAFvJqEzkTMgn8/3quolwAJmgBc9z7sSJcfAwMB9xpgvgb1A4Pv+w6VS6ZdWa7VanRAgCIL9dblfj3rwAKVS6XdjzBth0TLG7G+ZwDoSMUBE1m54XV1ds3HzdHR0/FhX3LklURsQ+xI4fPhwZ3t7e+d6ddVqdRDIA9i2/WDcfYS5fg0/jtq2XVyvTaVSWZyYmFiMkz+yAY7jvCQi7wJ74uwwQWZV9b2xsbFTUYJMlMaO4wyJyMfAnZGkbQ93iciBvr6+qzMzM+ebDWr6DHAcZ7eIzLLadS4Cnoj8EUNoy1HVewEX6ASqQRDsGR8fv9xMbNPPASLySq29ZVnPFovFi3HEJoXrul8DFwDbGNMPvNNMXJReoHYzm7veDh7A87wZYC4sNn3jjWJAOdzuLBQKd0eI2xYcx7mHsKtU1flm46I8Cp8BHMD4vj/tOM6Rtra236LJTIaVlZUeETlGeFMXkelmYyN1g67rTgPPRZO37Xzled4LzTaO9CRo2/bLwCSrg5vrDQU+tW37YJSgWE+Crus+DdT62kkRabrfbSWqug84FBb3eZ73bdQcsYbDxpg53/drxW9GR0cn4+TZKq7r/ktogDFm7n+ar0sig6EbicT+EAEYHh625ufn9wVB8EOpVLraWJ/P53ur1aquN84fGhq6fWlp6bHu7u7zw8PDQVIaEz0DyuXyURE5Z4y5ZoBSKBR6VPUnY8zPuVzu/sb6SqVySkTOLSwsHElSY9KXQG+4faixolqt9gA7gB0i8kBjvar2httrYlvJTX8PyAxIW0DaZAakLSBtMgPSFpA2mQFpC0ibzIC0BaRNZkDaAtImMyBtAWmTGZC2gLTJDEhbQNpkBqQtIG0yAxLOX23YrmGMqf9uvRWkG8a2kkRnhoBPgEdE5LPGiiAILorIlKqqiHy3Tuwx4JBlWSeTFJioAeFs7TMb1C0DBzaJPQGcSEjaGrEugUqlslRXvLVFWiKjqrfVPvu+/0+cHLEMKJfLZeAqgIg8FSdHi9gbbv/u6uoqb9pyA2IZMDU15avqWQBV7c/lctu+ajSfzz8qIrXVIGfjziDH7gUsyzrO6rKUNsuyTudyucfj5oqK4zhPquppoA3QIAiOx821pfcFXNf9EKifvr4ERF4aH5FdwO668kee5x2Nm2yrL0yI67pvAW+zOtW9nSwD73ue9wFbWLTVkjdGCoVCj+/7B4EngDtakXMT/gK+N8Z8MTIycl2sU8zIyMi4YfkP0StKOqaS3koAAAAASUVORK5CYII="/>
+                                                    </pattern>
+                                                </defs>
+                                                <rect id="icons8-delete-64" width="37" height="37" rx="18.5" fill="url(#pattern)"/>
+                                            </svg>
 
+                                            ลบ
+                                        </b-button>
                                     </b-col>
                                     <b-col md="12">
                                          <validation-provider
@@ -783,8 +795,8 @@
                                             >
                                             <div  class="radio-flex">
 
-                                                <b-form-radio v-model="form.shareholders[key].type_value" :aria-describedby="ariaDescribedby" :name="'title['+key+']'" value="บุคคลธรรมดา">บุคคลธรรมดา</b-form-radio>
-                                                <b-form-radio v-model="form.shareholders[key].type_value" :aria-describedby="ariaDescribedby" :name="'title['+key+']'" value="นิติบุคคล">นิติบุคคล</b-form-radio>
+                                                <b-form-radio v-model="form.shareholders[key].type_value" :name="'title['+key+']'" value="บุคคลธรรมดา">บุคคลธรรมดา</b-form-radio>
+                                                <b-form-radio v-model="form.shareholders[key].type_value"  :name="'title['+key+']'" value="นิติบุคคล">นิติบุคคล</b-form-radio>
                                             </div>
                                             </b-form-group>
                                               <small class="text-danger">{{ errors[0] }}</small>
@@ -1055,10 +1067,10 @@
                                                 </b-form-group>
                                             </validation-provider>
                                         </b-col>
-                                        <b-col md="12" v-for="(value,k) in form.shareholders[key].legal_people" :key="'child'+k">
+                                        <b-col md="12" >
                                             ชื่อกรรมการผู้มัอำนาจลงนาม
-                                            <b-row>
-                                                <b-col md="2">
+                                            <b-row v-for="(value,k) in form.shareholders[key].legal_people" :key="'child'+k">
+                                                <b-col md="3">
                                                      <validation-provider
                                                         #default="{ errors }"
                                                         rules="required"
@@ -1123,13 +1135,158 @@
                                                             </b-form-group>
                                                         </validation-provider>
                                                 </b-col>
-                                                <b-col md="2"></b-col>
+                                                <b-col md="1">
+                                                    <label></label>
+                                                    <div>
+                                                    <a class="cursor" v-if="k>0" @click="removePeople(key,k)">
+                                                        
+                                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="42.479" height="42.479" viewBox="0 0 42.479 42.479">
+                                                            <defs>
+                                                                <pattern id="pattern" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 64 64">
+                                                                <image width="64" height="64" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QA/wD/AP+gvaeTAAAEbUlEQVR4nO2bT2gcVRzHP795kxoFJSGpolaMSLRY8eCfxuK5eFIQsUKN0It/mp3Z7CktiBq9qKWHbCbZgK0aELzEUknx1JNQqE31oFEoRUGwQsBsAlrDxuzMz0Nmw7JN4s5kJ9PS+Vxm3773+813vjszb96+N5CRkZFxEyNJ72BwcLAvCILnVbU7YuifxpgzxWLxQiLCQhIzwHXdW0TkpKr2bzHV58Brnuctt0JXI3YSSQFUdRSoHbwCV1R1pZlYEWkDdrH6A70KLAFvJqEzkTMgn8/3quolwAJmgBc9z7sSJcfAwMB9xpgvgb1A4Pv+w6VS6ZdWa7VanRAgCIL9dblfj3rwAKVS6XdjzBth0TLG7G+ZwDoSMUBE1m54XV1ds3HzdHR0/FhX3LklURsQ+xI4fPhwZ3t7e+d6ddVqdRDIA9i2/WDcfYS5fg0/jtq2XVyvTaVSWZyYmFiMkz+yAY7jvCQi7wJ74uwwQWZV9b2xsbFTUYJMlMaO4wyJyMfAnZGkbQ93iciBvr6+qzMzM+ebDWr6DHAcZ7eIzLLadS4Cnoj8EUNoy1HVewEX6ASqQRDsGR8fv9xMbNPPASLySq29ZVnPFovFi3HEJoXrul8DFwDbGNMPvNNMXJReoHYzm7veDh7A87wZYC4sNn3jjWJAOdzuLBQKd0eI2xYcx7mHsKtU1flm46I8Cp8BHMD4vj/tOM6Rtra236LJTIaVlZUeETlGeFMXkelmYyN1g67rTgPPRZO37Xzled4LzTaO9CRo2/bLwCSrg5vrDQU+tW37YJSgWE+Crus+DdT62kkRabrfbSWqug84FBb3eZ73bdQcsYbDxpg53/drxW9GR0cn4+TZKq7r/ktogDFm7n+ar0sig6EbicT+EAEYHh625ufn9wVB8EOpVLraWJ/P53ur1aquN84fGhq6fWlp6bHu7u7zw8PDQVIaEz0DyuXyURE5Z4y5ZoBSKBR6VPUnY8zPuVzu/sb6SqVySkTOLSwsHElSY9KXQG+4faixolqt9gA7gB0i8kBjvar2httrYlvJTX8PyAxIW0DaZAakLSBtMgPSFpA2mQFpC0ibzIC0BaRNZkDaAtImMyBtAWmTGZC2gLTJDEhbQNpkBqQtIG0yAxLOX23YrmGMqf9uvRWkG8a2kkRnhoBPgEdE5LPGiiAILorIlKqqiHy3Tuwx4JBlWSeTFJioAeFs7TMb1C0DBzaJPQGcSEjaGrEugUqlslRXvLVFWiKjqrfVPvu+/0+cHLEMKJfLZeAqgIg8FSdHi9gbbv/u6uoqb9pyA2IZMDU15avqWQBV7c/lctu+ajSfzz8qIrXVIGfjziDH7gUsyzrO6rKUNsuyTudyucfj5oqK4zhPquppoA3QIAiOx821pfcFXNf9EKifvr4ERF4aH5FdwO668kee5x2Nm2yrL0yI67pvAW+zOtW9nSwD73ue9wFbWLTVkjdGCoVCj+/7B4EngDtakXMT/gK+N8Z8MTIycl2sU8zIyMi4YfkP0StKOqaS3koAAAAASUVORK5CYII="/>
+                                                                </pattern>
+                                                            </defs>
+                                                            <rect id="icons8-delete-64" width="42.479" height="42.479" rx="21.24" fill="url(#pattern)"/>
+                                                        </svg>
+
+                                                    </a>
+                                                    </div>
+                                                </b-col>
                                             </b-row>
+                                            <a class="b-2 cursor" @click="addPepoles(key)">
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30" viewBox="0 0 30 30">
+                                                    <image id="icons8-plus-_-30" data-name="icons8-plus-+-30" width="30" height="30" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAACPElEQVRIie2Wv24TQRDGv9nbVMHnfwUSsSJQKPwIkFxIHSJhU4OQED0gCkokeAR6JKTQWii2I/rksPwG6aJICaTBjs+W3NzeDgVBOq/vvI4TQ5Ov25nZ/e232lktcK1/JJq2sOvnlx2KKtC0BcJtAKXz1AkYRyBuqkjuFDe6x1cCHraKS4rVO2a8AOBYyjURapGgt/n7vaOZwf29XJUFbwO4YdugoQGBnrper55WINISwX7uFQuuzQAFgAyDvwbf3ZdpBYmOz53WJm1sSmkCPU5yPgbutAslqaIDWJyS0GvQUjD0vgU+kFgoL3q/fsaDY46cMPpggwKAuzpoud6Zb6sDkAkRvjeDI+Cun18mwrMpFruQCHjeaRdK8dgI2KGoCnvLzCJHhqqSCgbT5hygf0T0MB0M3J0bGFiJD6SRvGlWk9Br7uqglbZa1gvGOqPv572E234rPrD3qZr+PY/JOsd0fAogEw+wEH7gZ8cm/nUa+Fk2cwydxPoRH5iOD207vYRG1jbAvDsvKhOaqWAVyR0A0Ry4KnKcRiq4uNE9ZuDzVVMJ+FS81z0xYqMatopLoVYHMC7Z2GJaexBSMPSehduXOiwvPhieTgQDQOC7mwA1cPnnUxOLqrt+1jATiX2c9frfQPwGSO6LaaEgfp0EBWxfHz/3iMFfYDn2pKnE+om7PmimFUx8uVyvVxc6WgHTRwBqCqAG0bbUYXkSFLjA97bTLpRkqCog2gJwB/HvLXAI5l21IOvm7b3Wf9dvgk6/8KBFbfoAAAAASUVORK5CYII="/>
+                                                </svg>
+
+                                                เพิ่มชื่อกรรมการผู้มัอำนาจลงนาม
+                                            </a>
                                         </b-col>
                                         
                                     </template>
+                                    <b-col md="6" class="form-flex">
+                                         <b-form-radio class="pr-2" v-model="form.shareholders[key].type_share" :name="'shareholders['+key+']'" value="ผู้ถือหุ้นสามัญ">ผู้ถือหุ้นสามัญ*</b-form-radio>
+                                          <validation-provider
+                                            #default="{ errors }"
+                                            rules="required|numeric"
+                                            :name="'sharevalue'+key"
+                                            >
+                                            <b-form-group
+                                                :id="'sharevalue-group'+key"
+                                               
+                                                label-for="sharevalue"
+                                            
+                                            >
+                                                <b-form-input
+                                                :id="'sharevalue'+key"
+                                                v-model="form.shareholders[key].sharevalue"
+                                                type="text"
+                                                placeholder=""
+                                                @change="changeshare(key)"
+                                                
+                                                > </b-form-input>
+                                                
+                                                <small class="text-danger">{{ errors[0] }}</small>
+                                            </b-form-group>
+                                        </validation-provider>
+                                        <div>หุ้น</div>
+                                    </b-col>
+                                    <b-col md="6" class="form-flex">
+                                         <div class="pr-2">ชำระค่าหุ้นแล้ว</div>
+                                       
+                                          <validation-provider
+                                            #default="{ errors }"
+                                            rules="numeric"
+                                            :name="'shareprice'+key"
+                                            >
+                                            <b-form-group
+                                                :id="'shareprice-group'+key"
+                                               
+                                                label-for="shareprice"
+                                            
+                                            >
+                                                <b-form-input
+                                                :id="'shareprice'+key"
+                                                v-model="form.shareholders[key].shareprice"
+                                                type="text"
+                                                placeholder="จำนวนเงิน"
+                                                readonly
+                                                
+                                                > </b-form-input>
+                                                
+                                                <small class="text-danger">{{ errors[0] }}</small>
+                                            </b-form-group>
+                                        </validation-provider>
+                                         บาท
+                                    </b-col>
+                                    <b-col md="6">
+                                    </b-col>
+                                    <b-col md="6" class="form-flex">
+                                        <b-form-checkbox v-model="form.shareholders[key].sharepayment" value="cash" aria-readonly="true" class="pr-2">ด้วยเงิน</b-form-checkbox>
+                                        <b-form-checkbox v-model="form.shareholders[key].sharepayment" value="labor" disabled>ด้วยทรัพย์สิน/แรงงาน</b-form-checkbox>
+                                    </b-col>
+                                    <b-col md="6" class="form-flex disabled">
+                                         <b-form-radio class="pr-2" v-model="form.shareholders[key].type_share" :name="'shareholders['+key+']'" disabled value="ถือหุ้นบุริมสิทธิ์">ถือหุ้นบุริมสิทธิ์</b-form-radio>
+                                          
+                                            <b-form-group
+                                                
+                                               
+                                              
+                                                class="pr-2"
+                                            
+                                            >
+                                                <b-form-input
+                                               
+                                                readonly
+                                                type="text"
+                                                placeholder=""
+                                                
+                                                > </b-form-input>
+                                                
+                                               
+                                            </b-form-group>
+                                       
+                                        <div>หุ้น</div>
+                                    </b-col>
+                                    <b-col md="6" class="form-flex">
+                                         <div class="pr-2">ชำระค่าหุ้นแล้ว</div>
+                                       
+                                            <b-form-group
+                                               
+                                            class="pr-2"
+                                            >
+                                                <b-form-input
+                                               
+                                               
+                                                type="text"
+                                                placeholder="จำนวนเงิน"
+                                                readonly
+                                                
+                                                > </b-form-input>
+                                                
+                                               
+                                            </b-form-group>
+                                        
+                                         บาท
+                                    </b-col>
+                                    <b-col md="6">
+                                    </b-col>
+                                    <b-col md="6" class="form-flex">
+                                        <b-form-checkbox  value="cash" disabled class="pr-2">ด้วยเงิน</b-form-checkbox>
+                                        <b-form-checkbox value="labor" disabled>ด้วยทรัพย์สิน/แรงงาน</b-form-checkbox>
+                                    </b-col>
+                                    <b-col md="12">
+                                        <hr />
+                                    </b-col>
                                     
                                 </b-row>
+                                <b-button type="button" variant="outline-warning" class="btn-add-share mb-3" @click="add_share">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41">
+                                        <path id="icons8-add" d="M22.5,2A20.5,20.5,0,1,0,43,22.5,20.5,20.5,0,0,0,22.5,2Zm6.15,22.55h-4.1v4.1A2.051,2.051,0,0,1,22.5,30.7h0a2.051,2.051,0,0,1-2.05-2.05v-4.1h-4.1A2.051,2.051,0,0,1,14.3,22.5h0a2.051,2.051,0,0,1,2.05-2.05h4.1v-4.1A2.051,2.051,0,0,1,22.5,14.3h0a2.051,2.051,0,0,1,2.05,2.05v4.1h4.1A2.051,2.051,0,0,1,30.7,22.5h0A2.051,2.051,0,0,1,28.65,24.55Z" transform="translate(-2 -2)" fill="#fcbf10"/>
+                                    </svg>
+
+                                    เพิ่มผู้ถือหุ้น
+                                </b-button>
+                                <hr />
                                 <b-button type="button" variant="outline-warning" @click.prevent="backstep(3)">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="48.006" height="24.048" viewBox="0 0 48.006 24.048">
   <path id="icons8-up_arrow" d="M12.024,0,.664,10.508a2,2,0,1,0,2.719,2.938L10.024,7.3V45.977a2,2,0,1,0,4,0V7.3l6.641,6.145a2,2,0,1,0,2.719-2.937Z" transform="translate(0 24.048) rotate(-90)" fill="#ffc00f"/>
@@ -1147,6 +1304,1106 @@
                                 </b-button>
                             </b-form>
                         </validation-observer>
+                    </div>
+                    <div v-if="step_id==5" class="mt-3">
+                        <validation-observer ref="step5" v-slot="{ handleSubmit }">
+                            <b-form @submit.stop.prevent="handleSubmit(onSubmit)" method="post">
+                                    
+                                <b-row v-for="(founder,key) in form.founders" :key="key" class="mb-3">
+                                    <b-col md="10"><h5>ผู้ก่อตั้งคนที่ {{ key+1 }}</h5></b-col>
+                                    <b-col md="2" class="text-right">
+                                        <b-button variant="outline-secondary" v-if="key > 2" @click="removefounder(key)">
+                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 37 37">
+                                                <defs>
+                                                    <pattern id="pattern" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 64 64">
+                                                    <image width="64" height="64" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QA/wD/AP+gvaeTAAAEbUlEQVR4nO2bT2gcVRzHP795kxoFJSGpolaMSLRY8eCfxuK5eFIQsUKN0It/mp3Z7CktiBq9qKWHbCbZgK0aELzEUknx1JNQqE31oFEoRUGwQsBsAlrDxuzMz0Nmw7JN4s5kJ9PS+Vxm3773+813vjszb96+N5CRkZFxEyNJ72BwcLAvCILnVbU7YuifxpgzxWLxQiLCQhIzwHXdW0TkpKr2bzHV58Brnuctt0JXI3YSSQFUdRSoHbwCV1R1pZlYEWkDdrH6A70KLAFvJqEzkTMgn8/3quolwAJmgBc9z7sSJcfAwMB9xpgvgb1A4Pv+w6VS6ZdWa7VanRAgCIL9dblfj3rwAKVS6XdjzBth0TLG7G+ZwDoSMUBE1m54XV1ds3HzdHR0/FhX3LklURsQ+xI4fPhwZ3t7e+d6ddVqdRDIA9i2/WDcfYS5fg0/jtq2XVyvTaVSWZyYmFiMkz+yAY7jvCQi7wJ74uwwQWZV9b2xsbFTUYJMlMaO4wyJyMfAnZGkbQ93iciBvr6+qzMzM+ebDWr6DHAcZ7eIzLLadS4Cnoj8EUNoy1HVewEX6ASqQRDsGR8fv9xMbNPPASLySq29ZVnPFovFi3HEJoXrul8DFwDbGNMPvNNMXJReoHYzm7veDh7A87wZYC4sNn3jjWJAOdzuLBQKd0eI2xYcx7mHsKtU1flm46I8Cp8BHMD4vj/tOM6Rtra236LJTIaVlZUeETlGeFMXkelmYyN1g67rTgPPRZO37Xzled4LzTaO9CRo2/bLwCSrg5vrDQU+tW37YJSgWE+Crus+DdT62kkRabrfbSWqug84FBb3eZ73bdQcsYbDxpg53/drxW9GR0cn4+TZKq7r/ktogDFm7n+ar0sig6EbicT+EAEYHh625ufn9wVB8EOpVLraWJ/P53ur1aquN84fGhq6fWlp6bHu7u7zw8PDQVIaEz0DyuXyURE5Z4y5ZoBSKBR6VPUnY8zPuVzu/sb6SqVySkTOLSwsHElSY9KXQG+4faixolqt9gA7gB0i8kBjvar2httrYlvJTX8PyAxIW0DaZAakLSBtMgPSFpA2mQFpC0ibzIC0BaRNZkDaAtImMyBtAWmTGZC2gLTJDEhbQNpkBqQtIG0yAxLOX23YrmGMqf9uvRWkG8a2kkRnhoBPgEdE5LPGiiAILorIlKqqiHy3Tuwx4JBlWSeTFJioAeFs7TMb1C0DBzaJPQGcSEjaGrEugUqlslRXvLVFWiKjqrfVPvu+/0+cHLEMKJfLZeAqgIg8FSdHi9gbbv/u6uoqb9pyA2IZMDU15avqWQBV7c/lctu+ajSfzz8qIrXVIGfjziDH7gUsyzrO6rKUNsuyTudyucfj5oqK4zhPquppoA3QIAiOx821pfcFXNf9EKifvr4ERF4aH5FdwO668kee5x2Nm2yrL0yI67pvAW+zOtW9nSwD73ue9wFbWLTVkjdGCoVCj+/7B4EngDtakXMT/gK+N8Z8MTIycl2sU8zIyMi4YfkP0StKOqaS3koAAAAASUVORK5CYII="/>
+                                                    </pattern>
+                                                </defs>
+                                                <rect id="icons8-delete-64" width="37" height="37" rx="18.5" fill="url(#pattern)"/>
+                                            </svg>
+
+                                            ลบ
+                                        </b-button>
+                                    </b-col>
+                                    <b-col md="2">
+                                            <validation-provider
+                                            #default="{ errors }"
+                                            rules="required"
+                                            :name="'ftitle'+key"
+                                            >
+                                                <b-form-group
+                                                    :id="'ftitle-group'+key"
+                                                    label="คำนำหน้า*"
+                                                    label-for="ftitle"
+                                                
+                                                >
+                                                    <b-form-select v-model="form.founders[key].title" :options="options_title" ></b-form-select>
+                                                    <small class="text-danger">{{ errors[0] }}</small>
+                                                </b-form-group>
+                                            </validation-provider>
+                                           
+                                        </b-col>
+                                        <b-col md="5">
+                                             <validation-provider
+                                            #default="{ errors }"
+                                            rules="required"
+                                            :name="'ffirstname'+key"
+                                            >
+                                                <b-form-group
+                                                    :id="'ffirstname-group'+key"
+                                                    label="ชื่อ*"
+                                                    label-for="ffirstname"
+                                                
+                                                >
+                                                 <b-form-input
+                                                    :id="'ffirstname'+key"
+                                                    v-model="form.founders[key].firstname"
+                                                    type="text"
+                                                    placeholder="ชื่อ"
+                                                    
+                                                    > </b-form-input>
+                                                   
+                                                    <small class="text-danger">{{ errors[0] }}</small>
+                                                </b-form-group>
+                                            </validation-provider>
+                                            
+                                        </b-col>
+                                        <b-col md="5">
+                                            <validation-provider
+                                            #default="{ errors }"
+                                            rules="required"
+                                            :name="'flastname'+key"
+                                            >
+                                                <b-form-group
+                                                    :id="'flastname-group'+key"
+                                                    label="นามสกุล*"
+                                                    label-for="flastname"
+                                                
+                                                >
+                                                 <b-form-input
+                                                    :id="'flastname'+key"
+                                                    v-model="form.founders[key].lastname"
+                                                    type="text"
+                                                    placeholder="นามสกุล"
+                                                    
+                                                    >  </b-form-input>
+                                                   
+                                                    <small class="text-danger">{{ errors[0] }}</small>
+                                                </b-form-group>
+                                            </validation-provider>
+                                        </b-col>
+                                        <b-col md="6">
+                                             <validation-provider
+                                            #default="{ errors }"
+                                            rules="required"
+                                            :name="'fphone'+key"
+                                            >
+                                                <b-form-group
+                                                    :id="'fphone-group'+key"
+                                                    label="หมายเลขโทรศัพท์*"
+                                                    label-for="fphone"
+                                                
+                                                >
+                                                 <b-form-input
+                                                    :id="'fphone'+key"
+                                                    v-model="form.founders[key].phone"
+                                                    type="text"
+                                                    placeholder="หมายเลขโทรศัพท์"
+                                                    
+                                                    > </b-form-input>
+                                                   
+                                                    <small class="text-danger">{{ errors[0] }}</small>
+                                                </b-form-group>
+                                            </validation-provider>
+                                            
+                                        </b-col>
+                                        <b-col md="6">
+                                            <validation-provider
+                                            #default="{ errors }"
+                                            rules="min:0"
+                                            :name="'fidcardfile'+key"
+                                            >
+                                                <b-form-group
+                                                    :id="'fidcardfile-group'+key"
+                                                    label="อัพโหลดบัตรประชาชน"
+                                                    label-for="fidcardfile"
+                                                
+                                                >
+                                                  <b-form-file
+                                                    v-model="form.founders[key].idcardfile"
+                                                    :state="Boolean(form.founders[key].idcardfile)"
+                                                    placeholder="Choose a file or drop it here..."
+                                                    drop-placeholder="Drop file here..."
+                                                    ></b-form-file>
+                                                   
+                                                    <small class="text-danger">{{ errors[0] }}</small>
+                                                </b-form-group>
+                                            </validation-provider>
+                                        </b-col>
+                                        <b-col md="12">
+                                            <validation-provider
+                                                #default="{ errors }"
+                                                rules="min:0"
+                                                :name="'isdirector'+key"
+                                                >
+                                                <b-form-group>
+                                                    <b-form-checkbox v-model="form.founders[key].isdirector"  unchecked-value="" value="1">เป็นกรรมการบริษัท</b-form-checkbox>
+                                                <small class="text-danger">{{ errors[0] }}</small>
+                                            </b-form-group>
+                                                
+                                            </validation-provider>
+                                        </b-col>
+                                        <b-col md="12">
+                                            <hr />
+                                        </b-col>
+
+                                    </b-row>
+                                <b-button type="button" variant="outline-warning" class="btn-add-share mb-3" @click="add_fo">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41">
+                                        <path id="icons8-add" d="M22.5,2A20.5,20.5,0,1,0,43,22.5,20.5,20.5,0,0,0,22.5,2Zm6.15,22.55h-4.1v4.1A2.051,2.051,0,0,1,22.5,30.7h0a2.051,2.051,0,0,1-2.05-2.05v-4.1h-4.1A2.051,2.051,0,0,1,14.3,22.5h0a2.051,2.051,0,0,1,2.05-2.05h4.1v-4.1A2.051,2.051,0,0,1,22.5,14.3h0a2.051,2.051,0,0,1,2.05,2.05v4.1h4.1A2.051,2.051,0,0,1,30.7,22.5h0A2.051,2.051,0,0,1,28.65,24.55Z" transform="translate(-2 -2)" fill="#fcbf10"/>
+                                    </svg>
+
+                                    เพิ่มผู้ก่อตั้ง
+                                </b-button>
+                                <hr />
+                                <b-button type="button" variant="outline-warning" @click.prevent="backstep(4)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="48.006" height="24.048" viewBox="0 0 48.006 24.048">
+  <path id="icons8-up_arrow" d="M12.024,0,.664,10.508a2,2,0,1,0,2.719,2.938L10.024,7.3V45.977a2,2,0,1,0,4,0V7.3l6.641,6.145a2,2,0,1,0,2.719-2.937Z" transform="translate(0 24.048) rotate(-90)" fill="#ffc00f"/>
+</svg>
+
+                                    ย้อนกลับ
+                                   
+                                </b-button>
+                                <b-button type="submit" variant="warning" @click.prevent="validationStep5">
+                                    ถัดไป
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="48.006" height="24.048" viewBox="0 0 48.006 24.048">
+  <path id="icons8-up_arrow" d="M12.024,0,.664,10.508a2,2,0,1,0,2.719,2.938L10.024,7.3V45.977a2,2,0,1,0,4,0V7.3l6.641,6.145a2,2,0,1,0,2.719-2.937Z" transform="translate(48.006) rotate(90)" fill="#fff"/>
+</svg>
+
+                                </b-button>
+                                
+                            </b-form>
+                         </validation-observer>
+                    </div>
+                    <div v-if="step_id==6" class="mt-3">
+                        <validation-observer ref="step6" v-slot="{ handleSubmit }">
+                            <b-form @submit.stop.prevent="handleSubmit(onSubmit)" method="post">
+                                    
+                                <b-row v-for="(direct,key) in form.director" :key="key" class="mb-3">
+                                    <b-col md="10"><h5>กรรมการ {{ key+1 }}</h5></b-col>
+                                    <b-col md="2" class="text-right">
+                                        <b-button variant="outline-secondary" v-if="key > 0" @click="removedirector(key)">
+                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 37 37">
+                                                <defs>
+                                                    <pattern id="pattern" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 64 64">
+                                                    <image width="64" height="64" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QA/wD/AP+gvaeTAAAEbUlEQVR4nO2bT2gcVRzHP795kxoFJSGpolaMSLRY8eCfxuK5eFIQsUKN0It/mp3Z7CktiBq9qKWHbCbZgK0aELzEUknx1JNQqE31oFEoRUGwQsBsAlrDxuzMz0Nmw7JN4s5kJ9PS+Vxm3773+813vjszb96+N5CRkZFxEyNJ72BwcLAvCILnVbU7YuifxpgzxWLxQiLCQhIzwHXdW0TkpKr2bzHV58Brnuctt0JXI3YSSQFUdRSoHbwCV1R1pZlYEWkDdrH6A70KLAFvJqEzkTMgn8/3quolwAJmgBc9z7sSJcfAwMB9xpgvgb1A4Pv+w6VS6ZdWa7VanRAgCIL9dblfj3rwAKVS6XdjzBth0TLG7G+ZwDoSMUBE1m54XV1ds3HzdHR0/FhX3LklURsQ+xI4fPhwZ3t7e+d6ddVqdRDIA9i2/WDcfYS5fg0/jtq2XVyvTaVSWZyYmFiMkz+yAY7jvCQi7wJ74uwwQWZV9b2xsbFTUYJMlMaO4wyJyMfAnZGkbQ93iciBvr6+qzMzM+ebDWr6DHAcZ7eIzLLadS4Cnoj8EUNoy1HVewEX6ASqQRDsGR8fv9xMbNPPASLySq29ZVnPFovFi3HEJoXrul8DFwDbGNMPvNNMXJReoHYzm7veDh7A87wZYC4sNn3jjWJAOdzuLBQKd0eI2xYcx7mHsKtU1flm46I8Cp8BHMD4vj/tOM6Rtra236LJTIaVlZUeETlGeFMXkelmYyN1g67rTgPPRZO37Xzled4LzTaO9CRo2/bLwCSrg5vrDQU+tW37YJSgWE+Crus+DdT62kkRabrfbSWqug84FBb3eZ73bdQcsYbDxpg53/drxW9GR0cn4+TZKq7r/ktogDFm7n+ar0sig6EbicT+EAEYHh625ufn9wVB8EOpVLraWJ/P53ur1aquN84fGhq6fWlp6bHu7u7zw8PDQVIaEz0DyuXyURE5Z4y5ZoBSKBR6VPUnY8zPuVzu/sb6SqVySkTOLSwsHElSY9KXQG+4faixolqt9gA7gB0i8kBjvar2httrYlvJTX8PyAxIW0DaZAakLSBtMgPSFpA2mQFpC0ibzIC0BaRNZkDaAtImMyBtAWmTGZC2gLTJDEhbQNpkBqQtIG0yAxLOX23YrmGMqf9uvRWkG8a2kkRnhoBPgEdE5LPGiiAILorIlKqqiHy3Tuwx4JBlWSeTFJioAeFs7TMb1C0DBzaJPQGcSEjaGrEugUqlslRXvLVFWiKjqrfVPvu+/0+cHLEMKJfLZeAqgIg8FSdHi9gbbv/u6uoqb9pyA2IZMDU15avqWQBV7c/lctu+ajSfzz8qIrXVIGfjziDH7gUsyzrO6rKUNsuyTudyucfj5oqK4zhPquppoA3QIAiOx821pfcFXNf9EKifvr4ERF4aH5FdwO668kee5x2Nm2yrL0yI67pvAW+zOtW9nSwD73ue9wFbWLTVkjdGCoVCj+/7B4EngDtakXMT/gK+N8Z8MTIycl2sU8zIyMi4YfkP0StKOqaS3koAAAAASUVORK5CYII="/>
+                                                    </pattern>
+                                                </defs>
+                                                <rect id="icons8-delete-64" width="37" height="37" rx="18.5" fill="url(#pattern)"/>
+                                            </svg>
+
+                                            ลบ
+                                        </b-button>
+                                    </b-col>
+                                    <b-col md="2">
+                                            <validation-provider
+                                            #default="{ errors }"
+                                            rules="required"
+                                            :name="'dtitle'+key"
+                                            >
+                                                <b-form-group
+                                                    :id="'dtitle-group'+key"
+                                                    label="คำนำหน้า*"
+                                                    label-for="dtitle"
+                                                
+                                                >
+                                                    <b-form-select v-model="form.director[key].title" :options="options_title" ></b-form-select>
+                                                    <small class="text-danger">{{ errors[0] }}</small>
+                                                </b-form-group>
+                                            </validation-provider>
+                                           
+                                        </b-col>
+                                        <b-col md="5">
+                                             <validation-provider
+                                            #default="{ errors }"
+                                            rules="required"
+                                            :name="'dfirstname'+key"
+                                            >
+                                                <b-form-group
+                                                    :id="'dfirstname-group'+key"
+                                                    label="ชื่อ*"
+                                                    label-for="dfirstname"
+                                                
+                                                >
+                                                 <b-form-input
+                                                    :id="'dfirstname'+key"
+                                                    v-model="form.director[key].firstname"
+                                                    type="text"
+                                                    placeholder="ชื่อ"
+                                                    
+                                                    > </b-form-input>
+                                                   
+                                                    <small class="text-danger">{{ errors[0] }}</small>
+                                                </b-form-group>
+                                            </validation-provider>
+                                            
+                                        </b-col>
+                                        <b-col md="5">
+                                            <validation-provider
+                                            #default="{ errors }"
+                                            rules="required"
+                                            :name="'dlastname'+key"
+                                            >
+                                                <b-form-group
+                                                    :id="'dlastname-group'+key"
+                                                    label="นามสกุล*"
+                                                    label-for="dlastname"
+                                                
+                                                >
+                                                 <b-form-input
+                                                    :id="'dlastname'+key"
+                                                    v-model="form.director[key].lastname"
+                                                    type="text"
+                                                    placeholder="นามสกุล"
+                                                    
+                                                    >  </b-form-input>
+                                                   
+                                                    <small class="text-danger">{{ errors[0] }}</small>
+                                                </b-form-group>
+                                            </validation-provider>
+                                        </b-col>
+                                        <b-col md="6">
+                                             <validation-provider
+                                            #default="{ errors }"
+                                            rules="required"
+                                            :name="'dphone'+key"
+                                            >
+                                                <b-form-group
+                                                    :id="'dphone-group'+key"
+                                                    label="หมายเลขโทรศัพท์*"
+                                                    label-for="dphone"
+                                                
+                                                >
+                                                 <b-form-input
+                                                    :id="'dphone'+key"
+                                                    v-model="form.director[key].phone"
+                                                    type="text"
+                                                    placeholder="หมายเลขโทรศัพท์"
+                                                    
+                                                    > </b-form-input>
+                                                   
+                                                    <small class="text-danger">{{ errors[0] }}</small>
+                                                </b-form-group>
+                                            </validation-provider>
+                                            
+                                        </b-col>
+                                        <b-col md="6">
+                                            <validation-provider
+                                                #default="{ errors }"
+                                                rules="min:0"
+                                                :name="'issign'+key"
+                                                >
+                                                <b-form-group>
+                                                    <b-form-checkbox v-model="form.director[key].issign"  unchecked-value="" value="1">มีอำนาจลงนาม</b-form-checkbox>
+                                                <small class="text-danger">{{ errors[0] }}</small>
+                                            </b-form-group>
+                                                
+                                            </validation-provider>
+                                            
+                                        </b-col>
+                                        <b-col md="12">
+                                            <hr />
+                                        </b-col>
+                                        
+
+                                </b-row>
+                                <b-button type="button" variant="outline-warning" class="btn-add-share mb-3" @click="add_director">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41">
+                                        <path id="icons8-add" d="M22.5,2A20.5,20.5,0,1,0,43,22.5,20.5,20.5,0,0,0,22.5,2Zm6.15,22.55h-4.1v4.1A2.051,2.051,0,0,1,22.5,30.7h0a2.051,2.051,0,0,1-2.05-2.05v-4.1h-4.1A2.051,2.051,0,0,1,14.3,22.5h0a2.051,2.051,0,0,1,2.05-2.05h4.1v-4.1A2.051,2.051,0,0,1,22.5,14.3h0a2.051,2.051,0,0,1,2.05,2.05v4.1h4.1A2.051,2.051,0,0,1,30.7,22.5h0A2.051,2.051,0,0,1,28.65,24.55Z" transform="translate(-2 -2)" fill="#fcbf10"/>
+                                    </svg>
+
+                                    เพิ่มกรรมการ
+                                </b-button>
+                                <h5>อำนาจกรรมการ</h5>
+                                <b-row>
+                                    <b-col md="12">
+                                        <b-form-radio class="pr-2" v-model="form.director_power" name="director_power" value="not_specified">อำนาจกรรมการแบบไม่ระบุชื่อกรรมการที่มีอำนาจลงนาม</b-form-radio>
+                                            
+                                    </b-col>
+                                   
+                                    <b-col md="12">
+                                        <div style="padding-left:35px;">โปรดระบุจำนวนกรรมการที่ต้องลงลายมือชื่อเพื่อผูกพันบริษัท</div>
+                                        
+                                    </b-col>
+                                    <b-col md="12"  >
+                                        <div style="padding-left:35px;" class="form-flex">
+                                            <span>กรรมการ </span>
+                                            <b-form-input
+                                                    id="director_count"
+                                                    v-model="form.director_count"
+                                                    type="text"
+                                                    placeholder="จำนวน"
+                                                    style="width:250px; "
+                                                
+                                                    
+                                            ></b-form-input> 
+                                            <span style="padding-left:10px">คน ลงลายมือชื่อ</span>
+                                        </div>
+                                    </b-col>
+                                    <b-col md="12">
+                                        <b-form-radio class="pr-2" v-model="form.director_power" name="director_power" value="specified">อำนาจกรรมการแบบระบุชื่อกรรมการที่มีอำนาจลงนาม</b-form-radio>
+                                            
+                                    </b-col>
+                                    <b-col md="6" class="mt-2">
+                                        <div style="padding-left:35px;">
+                                             <validation-provider
+                                                #default="{ errors }"
+                                                rules="min:0"
+                                                name="specify_director"
+                                                >
+                                                    <b-form-group
+                                                        id="specify_director"
+                                                        label="โปรดระบุอำนาจกรรมการ"
+                                                        label-for="specify_director"
+                                                    
+                                                    >
+                                                    <b-form-input
+                                                        id="specify_director"
+                                                        v-model="form.specify_director"
+                                                        type="text"
+                                                        placeholder="อำนาจกรรมการ"
+                                                        
+                                                        > </b-form-input>
+                                                    
+                                                        <small class="text-danger">{{ errors[0] }}</small>
+                                                    </b-form-group>
+                                                </validation-provider>
+                                                
+                                        </div>
+                                        
+                                    </b-col>
+                                </b-row>
+
+                                <hr />
+                                <b-button type="button" variant="outline-warning" @click.prevent="backstep(5)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="48.006" height="24.048" viewBox="0 0 48.006 24.048">
+  <path id="icons8-up_arrow" d="M12.024,0,.664,10.508a2,2,0,1,0,2.719,2.938L10.024,7.3V45.977a2,2,0,1,0,4,0V7.3l6.641,6.145a2,2,0,1,0,2.719-2.937Z" transform="translate(0 24.048) rotate(-90)" fill="#ffc00f"/>
+</svg>
+
+                                    ย้อนกลับ
+                                   
+                                </b-button>
+                                <b-button type="submit" variant="warning" @click.prevent="validationStep6">
+                                    ถัดไป
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="48.006" height="24.048" viewBox="0 0 48.006 24.048">
+  <path id="icons8-up_arrow" d="M12.024,0,.664,10.508a2,2,0,1,0,2.719,2.938L10.024,7.3V45.977a2,2,0,1,0,4,0V7.3l6.641,6.145a2,2,0,1,0,2.719-2.937Z" transform="translate(48.006) rotate(90)" fill="#fff"/>
+</svg>
+
+                                </b-button>
+                            </b-form>
+                         </validation-observer>
+                    </div>
+                    <div v-if="step_id==7" class="mt-3">
+                        
+                        <validation-observer ref="step7" v-slot="{ handleSubmit }">
+                            <b-form @submit.stop.prevent="handleSubmit(onSubmit)" method="post">
+                                <b-row>
+                                    <b-col md="6">
+                                        <validation-provider
+                                            #default="{ errors }"
+                                            rules="required"
+                                            name="meeting_date"
+                                            >
+                                            <b-form-group
+                                                id="meeting_date"
+                                                label="วันที่*"
+                                                label-for="meeting_date"
+                                            
+                                            >
+                                            <b-form-datepicker id="meeting_date" v-model="form.meeting_date" class="mb-2" ></b-form-datepicker>
+                                               
+                                                <small class="text-danger">{{ errors[0] }}</small>
+                                            </b-form-group>
+                                        </validation-provider>
+
+                                    </b-col>
+                                     <b-col md="6">
+                                        <validation-provider
+                                            #default="{ errors }"
+                                            rules="required"
+                                            name="meeting_time"
+                                            >
+                                            <b-form-group
+                                                id="meeting_time"
+                                                label="เวลา*"
+                                                label-for="meeting_time"
+                                            
+                                            >
+                                            <b-form-timepicker
+                                            id="meeting_time"
+                                             v-model="form.meeting_time"
+                                            ></b-form-timepicker>
+                                            
+                                               
+                                                <small class="text-danger">{{ errors[0] }}</small>
+                                            </b-form-group>
+                                        </validation-provider>
+
+                                    </b-col>
+                                    <b-col md="2">
+                                        <h5>สถานที่</h5>
+                                    </b-col>
+                                    <b-col md="10">
+                                        <b-form-checkbox
+                                            id="same_address"
+                                            v-model="form.same_address"
+                                            name="same_address"
+                                            value="yes"
+                                            unchecked-value="no"
+                                            @change="chage_sameaddress"
+                                            >
+                                           ใช้ข้อมูลสถานที่ตั้งสำนักงาน
+                                        </b-form-checkbox>
+                                        
+                                    </b-col>
+                                    <b-col md="3">
+                                        <validation-provider
+                                            #default="{ errors }"
+                                            rules="required"
+                                            name="meeting_addess_no"
+                                            >
+                                            <b-form-group
+                                                id="meeting_addess_no-group"
+                                                label="บ้านเลขที่*"
+                                                label-for="meeting_addess_no"
+                                            
+                                            >
+                                                <b-form-input
+                                                id="meeting_addess_no"
+                                                v-model="form.meeting_addess_no"
+                                                type="text"
+                                                placeholder="บ้านเลขที่*"
+                                                
+                                                ></b-form-input>
+                                                <small class="text-danger">{{ errors[0] }}</small>
+                                            </b-form-group>
+                                            
+                                        </validation-provider>
+                                    </b-col>
+                                    <b-col md="3">
+                                        <validation-provider
+                                            #default="{ errors }"
+                                            rules="min:0"
+                                            name="meeting_building"
+                                            >
+                                            <b-form-group
+                                                id="meeting_building-group"
+                                                label="อาคาร"
+                                                label-for="meeting_building"
+                                            
+                                            >
+                                                <b-form-input
+                                                id="meeting_building"
+                                                v-model="form.meeting_building"
+                                                type="text"
+                                                placeholder="อาคาร"
+                                                
+                                                ></b-form-input>
+                                                <small class="text-danger">{{ errors[0] }}</small>
+                                            </b-form-group>
+                                            
+                                        </validation-provider>
+                                    </b-col>
+                                    <b-col md="3">
+                                        <validation-provider
+                                            #default="{ errors }"
+                                            rules="min:0"
+                                            name="meeting_level"
+                                            >
+                                            <b-form-group
+                                                id="meeting_level-group"
+                                                label="ชั้น"
+                                                label-for="meeting_level"
+                                            
+                                            >
+                                                <b-form-input
+                                                id="meeting_level"
+                                                v-model="form.meeting_level"
+                                                type="text"
+                                                placeholder="ขั้น"
+                                                
+                                                ></b-form-input>
+                                                <small class="text-danger">{{ errors[0] }}</small>
+                                            </b-form-group>
+                                            
+                                        </validation-provider>
+                                    </b-col>
+                                    <b-col md="3">
+                                        <validation-provider
+                                            #default="{ errors }"
+                                            rules="min:0"
+                                            name="meeting_room_no"
+                                            >
+                                            <b-form-group
+                                                id="meeting_room_no-group"
+                                                label="ห้องเลขที่"
+                                                label-for="meeting_room_no"
+                                            
+                                            >
+                                                <b-form-input
+                                                id="meeting_room_no"
+                                                v-model="form.meeting_room_no"
+                                                type="text"
+                                                placeholder="ห้องเลขที่"
+                                                
+                                                ></b-form-input>
+                                                <small class="text-danger">{{ errors[0] }}</small>
+                                            </b-form-group>
+                                            
+                                        </validation-provider>
+                                    </b-col>
+                                    <b-col md="6">
+                                        <validation-provider
+                                            #default="{ errors }"
+                                            rules="min:0"
+                                            name="meeting_soi"
+                                            >
+                                            <b-form-group
+                                                id="meeting_soi-group"
+                                                label="ซอย"
+                                                label-for="meeting_soi"
+                                            
+                                            >
+                                                <b-form-input
+                                                id="soi"
+                                                v-model="form.meeting_soi"
+                                                type="text"
+                                                placeholder="ซอย"
+                                                
+                                                ></b-form-input>
+                                                <small class="text-danger">{{ errors[0] }}</small>
+                                            </b-form-group>
+                                            
+                                        </validation-provider>
+                                    </b-col>
+                                    <b-col md="6">
+                                        <validation-provider
+                                            #default="{ errors }"
+                                            rules="min:0"
+                                            name="meeting_road"
+                                            >
+                                            <b-form-group
+                                                id="meeting_road-group"
+                                                label="ถนน"
+                                                label-for="meeting_road"
+                                            
+                                            >
+                                                <b-form-input
+                                                id="meeting_road"
+                                                v-model="form.meeting_road"
+                                                type="text"
+                                                placeholder="ถนน"
+                                                
+                                                ></b-form-input>
+                                                <small class="text-danger">{{ errors[0] }}</small>
+                                            </b-form-group>
+                                            
+                                        </validation-provider>
+                                    </b-col>
+                                    <b-col md="6">
+                                        <validation-provider
+                                            #default="{ errors }"
+                                            rules="required"
+                                            name="meeting_provice"
+                                            >
+                                            <b-form-group
+                                                id="meeting_provice-group"
+                                                label="จังหวัด*"
+                                                label-for="meeting_provice"
+                                            
+                                            >
+                                                <b-form-input
+                                                id="meeting_rovice"
+                                                v-model="form.meeting_provice"
+                                                type="text"
+                                                placeholder="จังหวัด"
+                                                
+                                                ></b-form-input>
+                                                <small class="text-danger">{{ errors[0] }}</small>
+                                            </b-form-group>
+                                            
+                                        </validation-provider>
+
+                                    </b-col>
+                                    <b-col md="6">
+                                        <validation-provider
+                                            #default="{ errors }"
+                                            rules="required"
+                                            name="meeting_states"
+                                            >
+                                            <b-form-group
+                                                id="meeting_states-group"
+                                                label="เขต/อำเภอ*"
+                                                label-for="meeting_states"
+                                            
+                                            >
+                                                <b-form-input
+                                                id="meeting_states"
+                                                v-model="form.meeting_states"
+                                                type="text"
+                                                placeholder="เขต/อำเภอ"
+                                                
+                                                ></b-form-input>
+                                                <small class="text-danger">{{ errors[0] }}</small>
+                                            </b-form-group>
+                                            
+                                        </validation-provider>
+
+                                    </b-col>
+                                    <b-col md="6">
+                                        <validation-provider
+                                            #default="{ errors }"
+                                            rules="required"
+                                            name="meeting_city"
+                                            >
+                                            <b-form-group
+                                                id="meeting_city-group"
+                                                label="แขวง/ตำบล*"
+                                                label-for="meeting_city"
+                                            
+                                            >
+                                                <b-form-input
+                                                id="meeting_city"
+                                                v-model="form.meeting_city"
+                                                type="text"
+                                                placeholder="แขวง/ตำบล"
+                                                
+                                                ></b-form-input>
+                                                <small class="text-danger">{{ errors[0] }}</small>
+                                            </b-form-group>
+                                            
+                                        </validation-provider>
+
+                                    </b-col>
+                                    <b-col md="6">
+                                        <validation-provider
+                                            #default="{ errors }"
+                                            rules="required"
+                                            name="meeting_postcode"
+                                            >
+                                            <b-form-group
+                                                id="meeting_postcode-group"
+                                                label="รหัสไปรษณีย์*"
+                                                label-for="postcode"
+                                            
+                                            >
+                                                <b-form-input
+                                                id="postcode"
+                                                v-model="form.meeting_postcode"
+                                                type="text"
+                                                placeholder="รหัสไปรษณีย์"
+                                                
+                                                ></b-form-input>
+                                                <small class="text-danger">{{ errors[0] }}</small>
+                                            </b-form-group>
+                                            
+                                        </validation-provider>
+
+                                    </b-col>
+                                    <b-col md="12">
+                                        <hr />
+                                    </b-col>
+                                    <b-col md="12">
+                                        <h5>ประธานที่ประชุม</h5>
+                                    </b-col>
+                                    <b-col md="2">
+                                        <validation-provider
+                                        #default="{ errors }"
+                                        rules="required"
+                                        name="president_title"
+                                        >
+                                            <b-form-group
+                                                id="president_title"
+                                                label="คำนำหน้า*"
+                                                label-for="president_title"
+                                            
+                                            >
+                                                <b-form-select v-model="form.president_title" :options="options_title" ></b-form-select>
+                                                <small class="text-danger">{{ errors[0] }}</small>
+                                            </b-form-group>
+                                        </validation-provider>
+                                        
+                                    </b-col>
+                                        <b-col md="5">
+                                             <validation-provider
+                                            #default="{ errors }"
+                                            rules="required"
+                                            name="president_firstname"
+                                            >
+                                                <b-form-group
+                                                    id="president_firstname-group"
+                                                    label="ชื่อ*"
+                                                    label-for="president_firstname"
+                                                
+                                                >
+                                                 <b-form-input
+                                                    id="president_firstname"
+                                                    v-model="form.president_firstname"
+                                                    type="text"
+                                                    placeholder="ชื่อ"
+                                                    
+                                                    > </b-form-input>
+                                                   
+                                                    <small class="text-danger">{{ errors[0] }}</small>
+                                                </b-form-group>
+                                            </validation-provider>
+                                            
+                                        </b-col>
+                                        <b-col md="5">
+                                            <validation-provider
+                                            #default="{ errors }"
+                                            rules="required"
+                                            name="'president_lastname'"
+                                            >
+                                                <b-form-group
+                                                    id="president_lastname-group"
+                                                    label="นามสกุล*"
+                                                    label-for="president_lastname"
+                                                
+                                                >
+                                                 <b-form-input
+                                                    id="president_lastname"
+                                                    v-model="form.president_lastname"
+                                                    type="text"
+                                                    placeholder="นามสกุล"
+                                                    
+                                                    >  </b-form-input>
+                                                   
+                                                    <small class="text-danger">{{ errors[0] }}</small>
+                                                </b-form-group>
+                                            </validation-provider>
+                                        </b-col>
+                                        <b-col md="12"><hr /></b-col>
+                                        <b-col md="12"><h5>จำนวนเงินที่ผู้ก่อตั้งได้ใช้จ่ายไปเพื่อประโยชน์ของบริษัทก่อนวันจดทะเบียนจัดตั้งบริษัท</h5></b-col>
+                                      
+                                        <b-col md="12" class="form-flex">
+                                            <b-form-checkbox v-model="form.payment_register" class="pr-3"  unchecked-value="" value="1">มี</b-form-checkbox>
+                                         
+                                          <validation-provider
+                                            #default="{ errors }"
+                                            rules="required|numeric"
+                                            name="payment_price"
+                                            >
+                                            <b-form-group
+                                                id="payment_price-group"
+                                               
+                                                label-for="payment_price"
+                                            
+                                            >
+                                                <b-form-input
+                                                id="payment_price"
+                                                v-model="form.payment_price"
+                                                type="text"
+                                                placeholder="จำนวน"
+                                             
+                                                
+                                                > </b-form-input>
+                                                
+                                                <small class="text-danger">{{ errors[0] }}</small>
+                                            </b-form-group>
+                                        </validation-provider>
+                                        <div>บาท</div>
+                                    </b-col>
+                                    <b-col md="12" >
+                                         <validation-provider
+                                            #default="{ errors }"
+                                            rules="min:0"
+                                            name="payment_detial"
+                                            >
+                                            <b-form-group
+                                                id="payment_detial-group"
+                                               
+                                                label-for="payment_detial"
+                                            
+                                            >
+                                                <b-form-input
+                                                id="payment_detial"
+                                                v-model="form.payment_detial"
+                                                type="text"
+                                                placeholder="โปรดระบบุรายละเอียด"
+                                             
+                                                
+                                                > </b-form-input>
+                                                
+                                                <small class="text-danger">{{ errors[0] }}</small>
+                                            </b-form-group>
+                                        </validation-provider>
+                                    </b-col>
+                                     <b-col md="12"><hr /></b-col>
+                                    <b-col md="12"><h5>ค่าใช้จ่ายในการจัดตั้งบริษัท</h5></b-col>
+                                    <b-col md="12" class="form-flex">
+                                         <div class="mr-3">กำหนดค่าใช้จ่ายในการจัดตั้งบริษัทจำนวน*</div>
+                                         
+                                          <validation-provider
+                                            #default="{ errors }"
+                                            rules="required|numeric"
+                                            name="expenses"
+                                            >
+                                            <b-form-group
+                                                id="expenses-group"
+                                               
+                                                label-for="expenses"
+                                            
+                                            >
+                                                <b-form-input
+                                                id="expenses"
+                                                v-model="form.expenses"
+                                                type="text"
+                                                placeholder="จำนวน"
+                                             
+                                                
+                                                > </b-form-input>
+                                                
+                                                <small class="text-danger">{{ errors[0] }}</small>
+                                            </b-form-group>
+                                        </validation-provider>
+                                        <div>บาท</div>
+                                    </b-col>
+                                    <b-col md="12"><hr /></b-col>
+                                    <b-col md="2">
+                                        <h5>ข้อบังคับบริษัท</h5>
+                                    </b-col>
+                                    <b-col md="10">
+                                        <b-form-checkbox
+                                            id="same_address"
+                                            v-model="form.standard_rule"
+                                            name="standard_rule"
+                                            value="yes"
+                                            unchecked-value=""
+                                           
+                                            >
+                                             ใช้ข้อบังคับมาตรฐาน <small>ดูข้อบังคับแบบมาตรฐาน ที่นี่</small>
+                                        </b-form-checkbox>
+                                        
+                                    </b-col>
+                                    <b-col  md="4">อัพโหลดไฟล์ข้อบังคับแบบกำหนดเอง</b-col>
+                                    <b-col md="8" >
+                                        
+                                        <b-form-file
+                                           disabled
+                                            ></b-form-file>
+                                    </b-col>
+                                    <b-col md="12"><hr /></b-col>
+                                    <b-col md="12">
+                                        <h5>รอบปีบัญชี</h5>
+                                    </b-col>
+                                    <b-col md="12" class="form-flex">
+                                         <div class="mr-5">รอบปีบัญชีของบริษัทเริ่มต้นวันที่*</div>
+                                         
+                                          <validation-provider
+                                            #default="{ errors }"
+                                            rules="required|numeric"
+                                            name="blling_day"
+                                            >
+                                            <b-form-group
+                                                id="blling_day-group"
+                                               
+                                                label-for="blling_day"
+                                            
+                                            >
+                                                <b-form-input
+                                                id="blling_day"
+                                                v-model="form.blling_day"
+                                                type="text"
+                                                placeholder="วันที่"
+                                             
+                                                
+                                                > </b-form-input>
+                                                
+                                                <small class="text-danger">{{ errors[0] }}</small>
+                                            </b-form-group>
+                                        </validation-provider>
+                                         <validation-provider
+                                            #default="{ errors }"
+                                            rules="required"
+                                            name="blling_month"
+                                            >
+                                            <b-form-group
+                                                id="blling_month-group"
+                                               
+                                                label-for="blling_month"
+                                            
+                                            >
+                                                <b-form-input
+                                                id="blling_month"
+                                                v-model="form.blling_month"
+                                                type="text"
+                                                placeholder="เดือน"
+                                             
+                                                
+                                                > </b-form-input>
+                                                
+                                                <small class="text-danger">{{ errors[0] }}</small>
+                                            </b-form-group>
+                                        </validation-provider>
+                                        
+                                        <div class="pl-5">ของทุกปี</div>
+                                    </b-col>
+                                   <b-col md="12"><hr /></b-col>
+                                    <b-col md="2">
+                                        <h5>ผู้สอบบัญชี</h5>
+                                    </b-col>
+                                    <b-col md="10">
+                                        <b-form-checkbox
+                                            id="isauditor"
+                                            v-model="form.isauditor"
+                                            name="isauditor"
+                                            value="yes"
+                                            unchecked-value=""
+                                           
+                                            >
+                                            ใช้บริการผู้สอบบัญชี
+                                        </b-form-checkbox>
+                                        
+                                    </b-col>
+                                    <b-col md="2">
+                                        <validation-provider
+                                        #default="{ errors }"
+                                        rules="required"
+                                        name="auditor_title"
+                                        >
+                                            <b-form-group
+                                                id="auditor_title"
+                                                label="คำนำหน้า*"
+                                                label-for="auditor_title"
+                                            
+                                            >
+                                                <b-form-select v-model="form.auditor_title" :options="options_title" ></b-form-select>
+                                                <small class="text-danger">{{ errors[0] }}</small>
+                                            </b-form-group>
+                                        </validation-provider>
+                                        
+                                    </b-col>
+                                        <b-col md="5">
+                                             <validation-provider
+                                            #default="{ errors }"
+                                            rules="required"
+                                            name="auditor_firstname"
+                                            >
+                                                <b-form-group
+                                                    id="auditor_firstname-group"
+                                                    label="ชื่อ*"
+                                                    label-for="auditor_firstname"
+                                                
+                                                >
+                                                 <b-form-input
+                                                    id="auditor_firstname"
+                                                    v-model="form.auditor_firstname"
+                                                    type="text"
+                                                    placeholder="ชื่อ"
+                                                    
+                                                    > </b-form-input>
+                                                   
+                                                    <small class="text-danger">{{ errors[0] }}</small>
+                                                </b-form-group>
+                                            </validation-provider>
+                                            
+                                        </b-col>
+                                        <b-col md="5">
+                                            <validation-provider
+                                            #default="{ errors }"
+                                            rules="required"
+                                            name="'auditor_lastname'"
+                                            >
+                                                <b-form-group
+                                                    id="auditor_lastname-group"
+                                                    label="นามสกุล*"
+                                                    label-for="auditor_lastname"
+                                                
+                                                >
+                                                 <b-form-input
+                                                    id="auditor_lastname"
+                                                    v-model="form.auditor_lastname"
+                                                    type="text"
+                                                    placeholder="นามสกุล"
+                                                    
+                                                    >  </b-form-input>
+                                                   
+                                                    <small class="text-danger">{{ errors[0] }}</small>
+                                                </b-form-group>
+                                            </validation-provider>
+                                        </b-col>
+                                        <b-col md="12" class="form-flex">
+                                         <div class="mr-5">เลขที่ใบอนุญาต*</div>
+                                            
+                                          <validation-provider
+                                            #default="{ errors }"
+                                            rules="required"
+                                            name="license_number"
+                                            >
+                                            <b-form-group
+                                                id="license_number-group"
+                                               
+                                                label-for="license_number"
+                                            
+                                            >
+                                                <b-form-input
+                                                id="license_number"
+                                                v-model="form.license_number"
+                                                type="text"
+                                                placeholder="เลขที่ใบอนุญาต"
+                                             
+                                                
+                                                > </b-form-input>
+                                                
+                                                <small class="text-danger">{{ errors[0] }}</small>
+                                            </b-form-group>
+                                        </validation-provider>
+                                        <div class="pl-5 pr-3">กำหนดค่าตอบแทน*</div>
+                                         <validation-provider
+                                            #default="{ errors }"
+                                            rules="required|numeric"
+                                            name="compensation"
+                                            >
+                                            <b-form-group
+                                                id="compensation-group"
+                                               
+                                                label-for="compensation"
+                                            
+                                            >
+                                                <b-form-input
+                                                id="compensation"
+                                                v-model="form.compensation"
+                                                type="text"
+                                                placeholder="บาท"
+                                             
+                                                
+                                                > </b-form-input>
+                                                
+                                                <small class="text-danger">{{ errors[0] }}</small>
+                                            </b-form-group>
+                                        </validation-provider>
+                                        
+                                        <div class="pl-3">บาท</div>
+                                    </b-col>
+                                </b-row>
+                                 <hr />
+                                  <b-button type="button" variant="outline-warning" @click.prevent="backstep(6)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="48.006" height="24.048" viewBox="0 0 48.006 24.048">
+                                            <path id="icons8-up_arrow" d="M12.024,0,.664,10.508a2,2,0,1,0,2.719,2.938L10.024,7.3V45.977a2,2,0,1,0,4,0V7.3l6.641,6.145a2,2,0,1,0,2.719-2.937Z" transform="translate(0 24.048) rotate(-90)" fill="#ffc00f"/>
+                                        </svg>
+
+                                        ย้อนกลับ
+                                        
+                                </b-button>
+                                <b-button type="submit" variant="warning" @click.prevent="validationStep7">
+                                    ยืนยันข้อมูลการจดทะเบียน
+                                    
+
+                                </b-button>
+                            </b-form>
+                        </validation-observer>
+                      
                     </div>
 
                 </div>
@@ -1171,7 +2428,7 @@ export default {
         return {
             date_today:new Date(),
             job_id:this.$route.query.job_id,
-            step_id:4,
+            step_id:1,
             step:["ข้อมูลบริษัท","ที่ตั้งสำนักงาน","ทุนจดทะเบียน","ผู้ถือหุ้น","ผู้ก่อตั้ง","กรรมการ","การประชุมจัดตั้งบริษัท"],
             selected:null,
             options: [
@@ -1188,7 +2445,40 @@ export default {
                 { value: 'นาง', text: 'นาง' },
                 { value: 'นางสาว', text: 'นางสาว' }
             ],
+            
             form:{
+                compensation:null,
+                license_number:null,
+                isauditor:'yes',
+                auditor_title:'',
+                auditor_firstname:null,
+                auditor_lastname:null,
+                blling_day:null,
+                blling_month:null,
+                standard_rule:'yes',
+                expenses:null,
+                payment_detial:null,
+                payment_price:'',
+                payment_register:'1',
+                president_title:'',
+                president_firstname:null,
+                president_lastname:null,
+                same_address:null,
+                meeting_date:null,
+                meeting_time:null,
+                meeting_addess_no:null,
+                meeting_building:null,
+                meeting_level:null,
+                meeting_room_no:null,
+                meeting_soi:null,
+                meeting_road:null,
+                meeting_provice:null,
+                meeting_states:null,
+                meeting_city:null,
+                meeting_postcode:null,
+                director_count:null,
+                specify_director:null,
+                director_power:'not_specified',
                 company_th:null,
                 company_en:null,
                 stamp:null,
@@ -1215,10 +2505,13 @@ export default {
                 ordinary_total:null,
                 number_share_pre:null,
                 payment_percent:25,
+                isdirector:'',
                 options_types:[
                     { text: 'บุคคลธรรมดา', value: 'บุคคลธรรมดา' },
                     { text: 'นิติบุคคล', value: 'นิติบุคคล' }
                 ],
+                director:[],
+                founders:[],
                 shareholders:[
                     {
                         type_value:'บุคคลธรรมดา',
@@ -1233,6 +2526,10 @@ export default {
                         legal_number:null,
                         legal_phone:null,
                         legal_file:null,
+                        type_share:'ผู้ถือหุ้นสามัญ',
+                        sharevalue:null,
+                        shareprice:null,
+                        sharepayment:'cash',
                         legal_people:[
                             {
                                 title:'',
@@ -1255,6 +2552,10 @@ export default {
                         legal_number:null,
                         legal_phone:null,
                         legal_file:null,
+                        type_share:'ผู้ถือหุ้นสามัญ',
+                        sharevalue:null,
+                        shareprice:null,
+                        sharepayment:'cash',
                         legal_people:[
                             {
                                 title:'',
@@ -1277,6 +2578,10 @@ export default {
                         legal_number:null,
                         legal_phone:null,
                         legal_file:null,
+                        type_share:'ผู้ถือหุ้นสามัญ',
+                        sharevalue:null,
+                        shareprice:null,
+                        sharepayment:'cash',
                         legal_people:[
                             {
                                 title:'',
@@ -1322,8 +2627,158 @@ export default {
     },
     watch: {
        
+       
     },
     methods:{
+        chage_sameaddress(){
+            if(this.form.same_address == 'yes'){
+                this.form.meeting_addess_no = this.form.addess_no;
+                this.form.meeting_building = this.form.building;
+                this.form.meeting_level = this.form.level;
+                this.form.meeting_room_no = this.form.room_no;
+                this.form.meeting_soi = this.form.soi;
+                this.form.meeting_road =this.form.road;
+                this.form.meeting_provice = this.form.provice;
+                this.form.meeting_states = this.form.states;
+                this.form.meeting_postcode = this.form.postcode;
+
+            }else{
+                this.form.meeting_addess_no = null;
+                this.form.meeting_building = null;
+                this.form.meeting_level = null;
+                this.form.meeting_room_no = null;
+                this.form.meeting_soi = null;
+                this.form.meeting_road = null;
+                this.form.meeting_provice = null;
+                this.form.meeting_states = null;
+                thithis.forms.meeting_postcode = null;
+               
+            }
+           // alert(this.form.same_address);
+        },
+        changedirect(key){
+            if(this.form.founders[key].isdirector){
+                this.form.founders[key].isdirector='';
+                
+            }else{
+                this.form.founders[key].isdirector = '1';
+            }
+            console.log('isdirector',this.form.founders[key].isdirector);
+
+        },
+        add_share(){
+            let shared_default = {
+                type_value:'บุคคลธรรมดา',
+                title:'',
+                firstname:'null',
+                lastname:null,
+                idcard:null,
+                occupation:null,
+                phone:null,
+                idcardfile:null,
+                legal_name:null,
+                legal_number:null,
+                legal_phone:null,
+                legal_file:null,
+                type_share:'ผู้ถือหุ้นสามัญ',
+                sharevalue:null,
+                shareprice:null,
+                sharepayment:'cash',
+                director:[
+
+                ],
+                legal_people:[
+                    {
+                        title:'',
+                        firstname:null,
+                        lastname:null
+
+                    }
+                ]
+
+            };
+            /*let shares =  this.form.shareholders;
+            shares.push(this.shared_default);
+            this.form.shareholders = [];
+            this.form.shareholders = shares;*/
+            this.form.shareholders.push(shared_default);
+            console.log('check',this.form.shareholders);
+        },
+        addPepoles(key){
+            let people = {
+                        title:'',
+                        firstname:null,
+                        lastname:null
+
+                    };
+            this.form.shareholders[key].legal_people.push(people);
+
+        },
+        removePeople(key,index){
+            this.form.shareholders[key].legal_people.splice(index,1);
+        },
+        add_fo(){
+            let founder = {
+                title:'',
+                firstname:'',
+                lastname:'',
+                phone:'',
+                idcard:'',
+                isdirector:''
+
+            };
+            this.form.founders.push(founder);
+
+        },
+        add_director(){
+             let director = {
+                title:'',
+                firstname:'',
+                lastname:'',
+                phone:'',
+                issign:''
+
+            }
+             this.form.director.push(director);
+
+        },
+        removefounder(index){
+             this.form.founders.splice(index,1);
+
+        },
+        removedirector(index){
+            this.form.director.splice(index,1);
+        },  
+        changeshare(key){
+            let total = 0;
+            let share_total = this.form.share_total;
+            share_total = share_total*1;
+            this.form.shareholders.map(share => {
+                total += (share.sharevalue)*1
+               
+            });
+            console.log(total,share_total);
+             let sharevalue = this.form.shareholders[key].sharevalue;
+            if(total > share_total){
+                alert('เกินจำนวน หุ้นทั้งหมด');
+                let diff = total-share_total;
+                let balance = sharevalue-diff;
+                sharevalue = balance;
+                 this.form.shareholders[key].sharevalue = sharevalue;
+               
+            }
+            
+            
+            let price = this.form.share_value*(this.form.payment_percent/100)
+            this.form.shareholders[key].shareprice = sharevalue*price;
+            
+
+            //share_total
+        },
+        removeshare(index){
+             this.form.shareholders.splice(index, 1)
+
+        },
         calshare(){
             console.log('payment_percent', this.form.payment_percent);
             this.form.share_total = this.form.amount_cap/this.form.share_value;
@@ -1331,6 +2786,7 @@ export default {
             this.form.payment_amount = this.form.amount_cap*(this.form.payment_percent/100);
              console.log('payment_percent', this.form.payment_amount);
         },
+        
         validationStep1() {
             this.$refs.step1.validate().then(success => {
                 if(success){
@@ -1367,14 +2823,126 @@ export default {
         },
         validationStep4() {
             this.$refs.step4.validate().then(success => {
+                let founders = [];
                 if(success){
-                    console.log('input4',this.form);
+                    if(this.form.founders.length == 0){
+                        this.form.shareholders.map(share => {
+                            console.log('founders',share.type_share);
+                            if(share.type_value == 'บุคคลธรรมดา'){
+                                let founder = {
+                                        title:share.title,
+                                        firstname:share.firstname,
+                                        lastname:share.lastname,
+                                        phone:share.phone,
+                                        idcard:share.idcard,
+                                        isdirector:''
+
+                                    }
+                                    this.form.founders.push(founder);
+                                
+                            }
+                            
+                            //total += (share.sharevalue)*1
+                        
+                        });
+                        let count =  this.form.founders.length;
+                        if(count < 3){
+                            let val = 3-count;
+                            for(let i=0; i<val; i++){
+                                let founder = {
+                                        title:'',
+                                        firstname:'',
+                                        lastname:'',
+                                        phone:'',
+                                        idcard:'',
+                                        isdirector:''
+
+                                    };
+                                this.form.founders.push(founder);
+
+
+                            }
+
+                        }
+
+                    }
+                     
+                   // this.form.founders = founders;
+                    console.log('founders',  this.form.founders);
+                 
+                   
+                    /* {
+                        title:'',
+                        firstname:null,
+                        lastname:null,
+                         phone:null,
+                         idcard:null,
+                    }*/
                     this.step_id=5;
 
                 }
                 console.log('step4',success);
             });
         },
+        validationStep5(){
+            this.$refs.step5.validate().then(success => {
+                if(success){
+                     if(this.form.director.length == 0){
+                        this.form.founders.map(founder => {
+                            if(founder.isdirector == '1'){
+                                let director = {
+                                        title:founder.title,
+                                        firstname:founder.firstname,
+                                        lastname:founder.lastname,
+                                        phone:founder.phone,
+                                        issign:''
+
+                                    }
+                                    this.form.director.push(director);
+                                
+                            }
+                        });
+                        if(this.form.director.length == 0){
+                             let director = {
+                                title:'',
+                                firstname:'',
+                                lastname:'',
+                                phone:'',
+                                issign:''
+
+                            }
+                            this.form.director.push(director);
+                        }
+                     }
+                    console.log('input5',this.form);
+                    this.step_id=6;
+
+                }
+                console.log('step5',success);
+            });
+
+        },
+         validationStep6(){
+            this.$refs.step6.validate().then(success => {
+                if(success){
+                    console.log('input6',this.form);
+                    this.step_id=7;
+
+                }
+                console.log('step6',success);
+            });
+
+        },
+        validationStep7(){
+            this.$refs.step7.validate().then(success => {
+                if(success){
+                  
+
+                }
+                console.log('step6',success);
+            });
+
+        }
     }
      
 }
