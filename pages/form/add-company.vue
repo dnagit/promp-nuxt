@@ -189,7 +189,7 @@
                                     >
                                         <b-form-file
                                         v-model="form.stamp"
-                                        :state="Boolean(form.stamp)"
+                                       
                                         placeholder="Choose a file or drop it here..."
                                         drop-placeholder="Drop file here..."
                                         ></b-form-file>
@@ -2091,7 +2091,7 @@
                                          
                                           <validation-provider
                                             #default="{ errors }"
-                                            rules="required|numeric"
+                                            rules="numeric"
                                             name="payment_price"
                                             >
                                             <b-form-group
@@ -2611,6 +2611,7 @@ export default {
         });
     },
     created(){
+       // this.getProvince();
         //console.log('router',this.$route.query.job_id);
 
     },
@@ -2630,6 +2631,12 @@ export default {
        
     },
     methods:{
+        async getProvince(){
+         
+          
+        },
+
+
         chage_sameaddress(){
             if(this.form.same_address == 'yes'){
                 this.form.meeting_addess_no = this.form.addess_no;
@@ -2825,6 +2832,21 @@ export default {
             });
         },
         validationStep4() {
+            let total = 0;
+            let share_total = this.form.share_total;
+            share_total = share_total*1;
+            this.form.shareholders.map(share => {
+                total += (share.sharevalue)*1
+               
+            });
+            console.log(total,share_total);
+           
+            if(total < share_total){
+                alert('จำนวนหุ้นยังไม่ถึงจำนวนหุ้นทั้งหมด');
+                return false;
+               
+               
+            }
             this.$refs.step4.validate().then(success => {
                 let founders = [];
                 if(success){
@@ -2928,6 +2950,11 @@ export default {
          validationStep6(){
             this.$refs.step6.validate().then(success => {
                 if(success){
+                    //president_title
+                    this.form.president_title = this.form.director[0].title;
+                    this.form.president_firstname = this.form.director[0].firstname;
+                    this.form.president_lastname = this.form.director[0].lastname;
+
                     console.log('input6',this.form);
                     this.step_id=7;
 
