@@ -398,21 +398,16 @@
                                         <validation-provider
                                             #default="{ errors }"
                                             rules="required"
-                                            name="provice"
+                                            name="province"
                                             >
                                             <b-form-group
-                                                id="provice-group"
+                                                id="province-group"
                                                 label="จังหวัด*"
-                                                label-for="provice"
+                                                label-for="province"
                                             
                                             >
-                                                <b-form-input
-                                                id="provice"
-                                                v-model="form.provice"
-                                                type="text"
-                                                placeholder="จังหวัด"
-                                                
-                                                ></b-form-input>
+                                                <b-form-select v-model="form.province" :options="provinces"></b-form-select>
+                                               
                                                 <small class="text-danger">{{ errors[0] }}</small>
                                             </b-form-group>
                                             
@@ -426,7 +421,7 @@
                                             name="states"
                                             >
                                             <b-form-group
-                                                id="provice-group"
+                                                id="province-group"
                                                 label="เขต/อำเภอ*"
                                                 label-for="states"
                                             
@@ -1914,17 +1909,17 @@
                                         <validation-provider
                                             #default="{ errors }"
                                             rules="required"
-                                            name="meeting_provice"
+                                            name="meeting_province"
                                             >
                                             <b-form-group
-                                                id="meeting_provice-group"
+                                                id="meeting_province-group"
                                                 label="จังหวัด*"
-                                                label-for="meeting_provice"
+                                                label-for="meeting_province"
                                             
                                             >
                                                 <b-form-input
                                                 id="meeting_rovice"
-                                                v-model="form.meeting_provice"
+                                                v-model="form.meeting_province"
                                                 type="text"
                                                 placeholder="จังหวัด"
                                                 
@@ -2397,13 +2392,1265 @@
                                         
                                 </b-button>
                                 <b-button type="submit" variant="warning" @click.prevent="validationStep7">
-                                    ยืนยันข้อมูลการจดทะเบียน
+                                    NextStep
                                     
 
                                 </b-button>
                             </b-form>
                         </validation-observer>
                       
+                    </div>
+                    <div v-if="step_id==8" class="mt-3">
+                        <h5>ข้อมูลบริษัท</h5>
+                       
+                    
+                       
+                                <b-form-group
+                                id="company_th-group"
+                                label="ชื่อบริษัท (ภาษาไทย) *"
+                                label-for="company_th"
+                                
+                            >
+                              {{ form.company_th }}
+                                
+                            </b-form-group>
+                            
+                        
+                       
+                                <b-form-group
+                                id="company_en-group"
+                                label="ชื่อบริษัท (ภาษาอังกฤษ) *"
+                                label-for="company_en"
+                                
+                            >
+                               {{ form.company_en }}
+                            </b-form-group>
+                            
+                        
+                      
+                                <b-form-group
+                                id="stamp-group"
+                                label="ตราประทับ"
+                                label-for="stamp"
+                                   
+                                
+                            >
+                             {{ form.stamp?'มี':'ไม่มี'}}
+                            </b-form-group>
+                            
+                       
+                        
+                        
+                        
+                       
+                            <b-form-group label="วัตถุประสงค์บริษัท*" >
+                                 {{ form.objective }}
+                            </b-form-group>
+                            
+                       
+
+                               
+                               
+                                
+                               
+                         <hr />
+                          <h5>ที่ตั้งสำนักงาน</h5>
+                        <b-row>
+                            <b-col md="3">
+                               
+                                    <b-form-group
+                                        id="addess_no-group"
+                                        label="บ้านเลขที่*"
+                                        label-for="addess_no"
+                                    
+                                    >
+                                       {{ form.addess_no }}
+                                      
+                                    </b-form-group>
+                                    
+                              
+                            </b-col>
+                            <b-col md="3">
+                               
+                                    <b-form-group
+                                        id="building-group"
+                                        label="อาคาร"
+                                        label-for="building"
+                                    
+                                    >
+                                       {{ form.building }}
+                                    </b-form-group>
+                                    
+                               
+                            </b-col>
+                            <b-col md="3">
+                               
+                                    <b-form-group
+                                        id="level-group"
+                                        label="ชั้น"
+                                        label-for="level"
+                                    
+                                    >
+                                      {{ form.level }}
+                                    </b-form-group>
+                                    
+                                
+                            </b-col>
+                            <b-col md="3">
+                                
+                                    <b-form-group
+                                        id="room_no-group"
+                                        label="ห้องเลขที่"
+                                        label-for="room_no"
+                                    
+                                    >
+                                      {{ form.room_no }}
+                                    </b-form-group>
+                                    
+                                
+                            </b-col>
+                            <b-col md="6">
+                               
+                                    <b-form-group
+                                        id="soi-group"
+                                        label="ซอย"
+                                        label-for="soi"
+                                    
+                                    >
+                                       {{ form.soi }}
+                                    </b-form-group>
+                                    
+                                
+                            </b-col>
+                            <b-col md="6">
+                               
+                                    <b-form-group
+                                        id="road-group"
+                                        label="ถนน"
+                                        label-for="road"
+                                    
+                                    >
+                                       {{ form.road }}
+                                    </b-form-group>
+                                    
+                               
+                            </b-col>
+                            <b-col md="6">
+                               
+                                    <b-form-group
+                                        id="province-group"
+                                        label="จังหวัด*"
+                                        label-for="province"
+                                    
+                                    >
+                                    {{ form.province }}
+                                    </b-form-group>
+                                    
+                                
+
+                            </b-col>
+                            <b-col md="6">
+                               
+                                    <b-form-group
+                                        id="province-group"
+                                        label="เขต/อำเภอ*"
+                                        label-for="states"
+                                    
+                                    >
+                                       {{ form.states }}
+                                    </b-form-group>
+                                    
+                                
+
+                            </b-col>
+                            <b-col md="6">
+                               
+                                    <b-form-group
+                                        id="city-group"
+                                        label="แขวง/ตำบล*"
+                                        label-for="city"
+                                    
+                                    >
+                                       {{ form.city }}
+                                    </b-form-group>
+                                    
+                                
+
+                            </b-col>
+                            <b-col md="6">
+                               
+                                    <b-form-group
+                                        id="postcode-group"
+                                        label="รหัสไปรษณีย์*"
+                                        label-for="postcode"
+                                    
+                                    >
+                                       {{ form.postcode }}
+                                    </b-form-group>
+                                    
+                                
+                            </b-col>
+                            <b-col md="6">
+                               
+                                    <b-form-group
+                                        id="copy_house-group"
+                                        label="สำเนาทะเบียนบ้านของที่ตั้งสำนักงาน"
+                                        label-for="copy_house"
+                                        
+                                    
+                                    >
+                                     {{ form.copy_house }}
+                                    </b-form-group>
+                                    
+                                
+                            </b-col>
+                            <b-col md="6"></b-col>
+                            <b-col md="6">
+                              
+                                    <b-form-group
+                                        id="phone-group"
+                                        label="โทรศัพท์*"
+                                        label-for="phone"
+                                    
+                                    >
+                                        {{ form.phone }}
+                                    </b-form-group>
+                                    
+                              
+
+                            </b-col>
+                            <b-col md="6">
+                               
+                                    <b-form-group
+                                        id="email-group"
+                                        label="อีเมล*"
+                                        label-for="email"
+                                    
+                                    >
+                                        {{ form.email }}
+                                    </b-form-group>
+                                    
+                                
+
+                            </b-col>
+                           
+                            
+                        </b-row>
+                        <hr />
+                        <h5>ทุนจดทะเบียน</h5>
+                        <b-row>
+                            <b-col md="6">
+                                   
+                                    <b-form-group
+                                        id="amount_cap-group"
+                                        label="ทุนจดทะเบียนบริษัทกําหนดไว้เป็นจํานวน (บาท)*"
+                                        label-for="amount_cap"
+                                    
+                                    >
+                                       {{ form.amount_cap }}
+                                    </b-form-group>
+                                    
+                               
+                                
+                            </b-col>
+                            <b-col md="6">
+                                   
+                                    <b-form-group
+                                        id="share_value-group"
+                                        label="มูลค่าหุ้น(บาท ต่อ หุ้น)*"
+                                        label-for="share_value"
+                                    
+                                    >
+                                       {{ form.share_value }}
+                                    </b-form-group>
+                                    
+                               
+                            </b-col>
+                            <b-col md="6" class="form-flex">
+                                <span>จำนวนหุ้นทั้งหมด</span>
+                                <span style="padding-left:10px;">{{ form.share_total }}</span>
+                                <span style="padding-left:10px">หุ้น แบ่งออกเป็น</span>  
+                            </b-col>
+                            
+                            <b-col md="6" class="form-flex">
+                                <span>หุ้นสามัญจำนวน</span>
+                                <span style="padding-left:10px;">{{ form.ordinary_total }}</span>
+                              
+                                <span style="padding-left:10px">หุ้น</span>
+                            </b-col>
+                            <b-col md="6"></b-col>
+                            <b-col md="6" class="form-flex">
+                                
+                                <span>หุ้นบุริมสิทธิ์จำนวน</span>
+                                 <span style="padding-left:10px;">{{ form.number_share_pre }}</span>
+                               
+                                <span style="padding-left:10px">หุ้น</span>
+                            </b-col>
+                            <b-col md="6" class="form-flex">
+                                
+                                <span>ชำระหุ้นแล้วร้อยละ</span>
+                                <span style="padding-left:10px;">{{ form.payment_percent }}</span>
+                                   
+                                
+                                <span>ของทุนจุดทะเบียน</span>
+                            </b-col>
+                            <b-col md="6" class="form-flex">
+                                
+                                <span>คิดเป็นจำนวนเงิน</span>
+                                <span style="padding-left:10px;">{{ form.payment_amount }}</span>
+                                
+                                <span style="padding-left:10px">บาท</span>
+                            </b-col>
+                        </b-row>
+                        <hr />
+                        <h5>ผู้ถือหุ้น</h5>
+                         <b-row v-for="(shareholder,key) in form.shareholders" :key="key" class="mb-3">
+                                    <b-col md="12"><h5>ผู้ถื้อหุ้น {{ key+1 }}</h5></b-col>
+                                   
+                                    <b-col md="12">
+                                         
+                                            <b-form-group
+                                               
+                                               
+                                              
+                                                name="radio-options"
+                                            >
+                                            <div  class="radio-flex">
+                                                
+
+                                                <b-form-radio v-model="form.shareholders[key].type_value" :name="'title['+key+']'" disabled value="บุคคลธรรมดา">บุคคลธรรมดา</b-form-radio>
+                                                <b-form-radio v-model="form.shareholders[key].type_value"  :name="'title['+key+']'" disabled value="นิติบุคคล">นิติบุคคล</b-form-radio>
+                                            </div>
+                                            </b-form-group>
+                                            
+                                    </b-col>
+                                    <template v-if="form.shareholders[key].type_value=='บุคคลธรรมดา'">
+                                        <b-col md="2">
+                                           
+                                                <b-form-group
+                                                    :id="'title-group'+key"
+                                                    label="คำนำหน้า*"
+                                                    label-for="title"
+                                                
+                                                >
+                                                   {{ form.shareholders[key].title }}
+                                                   
+                                                </b-form-group>
+                                          
+                                           
+                                        </b-col>
+                                        <b-col md="5">
+                                            
+                                                <b-form-group
+                                                    :id="'firstname-group'+key"
+                                                    label="ชื่อ*"
+                                                    label-for="firstname"
+                                                
+                                                >
+                                                 {{ form.shareholders[key].firstname }}
+                                                   
+                                                
+                                                </b-form-group>
+                                            
+                                            
+                                        </b-col>
+                                        <b-col md="5">
+                                           
+                                                <b-form-group
+                                                    :id="'lastname-group'+key"
+                                                    label="นามสกุล*"
+                                                    label-for="lastname"
+                                                
+                                                >
+                                                {{ form.shareholders[key].lastname }}
+                                                   
+                                                   
+                                                </b-form-group>
+                                            
+                                        </b-col>
+                                        <b-col md="6">
+                                             
+                                                <b-form-group
+                                                    :id="'idcard-group'+key"
+                                                    label="เลขบัตรประชาชน*"
+                                                    label-for="idcard"
+                                                
+                                                >
+                                                 {{ form.shareholders[key].idcard }}
+                                                   
+                                                   
+                                                </b-form-group>
+                                           
+                                            
+                                        </b-col>
+                                        <b-col md="6">
+                                            
+                                                <b-form-group
+                                                    :id="'occupation-group'+key"
+                                                    label="อาชีพ*"
+                                                    label-for="occupation"
+                                                
+                                                >
+                                                 {{ form.shareholders[key].occupation }}
+                                                   
+                                                 
+                                                </b-form-group>
+                                           
+                                        </b-col>
+                                        <b-col md="6">
+                                             
+                                                <b-form-group
+                                                    :id="'phone-group'+key"
+                                                    label="หมายเลขโทรศัพท์*"
+                                                    label-for="phone"
+                                                
+                                                >
+                                                 {{  form.shareholders[key].phone }}
+                                                   
+                                                   
+                                                </b-form-group>
+                                            
+                                            
+                                        </b-col>
+                                        <b-col md="6">
+                                            
+                                                <b-form-group
+                                                    :id="'idcardfile-group'+key"
+                                                    label="อัพโหลดบัตรประชาชน"
+                                                    label-for="idcardfile"
+                                                
+                                                >
+                                                  {{ form.shareholders[key].idcardfile }}
+                                                   
+                                                    
+                                                </b-form-group>
+                                            
+                                        </b-col>
+                                    </template>
+                                    <template v-else>
+                                        <b-col md="8">
+                                            
+                                                <b-form-group
+                                                    :id="'legal_name-group'+key"
+                                                    label="ชื่อนิติบุคคล*"
+                                                    label-for="legal_name"
+                                                
+                                                >
+                                                {{ form.shareholders[key].legal_name }}
+                                                   
+                                                   
+                                                </b-form-group>
+                                           
+                                            
+                                        </b-col>
+                                        <b-col md="4">
+                                            
+                                                <b-form-group
+                                                    :id="'legal_number-group'+key"
+                                                    label="เลขทะเบียนนิติบุคคล*"
+                                                    label-for="legal_number"
+                                                
+                                                >
+                                                  {{ form.shareholders[key].legal_number }}
+                                                   
+                                                   
+                                                </b-form-group>
+                                            
+                                        </b-col>
+                                        <b-col md="6">
+                                            
+                                                <b-form-group
+                                                    :id="'legal_phone-group'+key"
+                                                    label="หมายเลขโทรศัพท์*"
+                                                    label-for="legal_phone"
+                                                
+                                                >
+                                                 {{ form.shareholders[key].legal_phone }}
+                                                </b-form-group>
+                                           
+                                        </b-col>
+                                        <b-col md="6">
+                                            
+                                                <b-form-group
+                                                    :id="'legal_file-group'+key"
+                                                    label="อัพโหลดหนังสือรับรอง"
+                                                    label-for="legal_file"
+                                                
+                                                >
+                                                  {{ form.shareholders[key].legal_file }}
+                                                   
+                                                    
+                                                </b-form-group>
+                                          
+                                        </b-col>
+                                        <b-col md="12" >
+                                            ชื่อกรรมการผู้มัอำนาจลงนาม
+                                            <b-row v-for="(value,k) in form.shareholders[key].legal_people" :key="'child'+k">
+                                                <b-col md="3">
+                                                     
+                                                            <b-form-group
+                                                                :id="'title-group'+key"
+                                                                label="คำนำหน้า*"
+                                                                label-for="title"
+                                                            
+                                                            >
+                                                               {{ form.shareholders[key].legal_people[k].title }}
+                                                               
+                                                            </b-form-group>
+                                                        
+                                                </b-col>
+                                                <b-col md="4">
+                                                    
+                                                            <b-form-group
+                                                                :id="'firstname-group'+key+'_'+k"
+                                                                label="ชื่อ*"
+                                                                label-for="firstname"
+                                                            
+                                                            >
+                                                            {{ form.shareholders[key].legal_people[k].firstname }}
+                                                            
+                                                                
+                                                            </b-form-group>
+                                                       
+                                                </b-col>
+                                                <b-col md="5">
+                                                   
+                                                            <b-form-group
+                                                                :id="'lastname-group'+key+'_'+k"
+                                                                label="นามสกุล*"
+                                                                label-for="lastname"
+                                                            
+                                                            >
+                                                           {{ form.shareholders[key].legal_people[k].lastname }}
+                                                            
+                                                                
+                                                            </b-form-group>
+                                                       
+                                                </b-col>
+                                               
+                                            </b-row>
+                                           
+                                        </b-col>
+                                        
+                                    </template>
+                                    <b-col md="6" class="form-flex">
+                                         <b-form-radio class="pr-2" v-model="form.shareholders[key].type_share" :name="'shareholders['+key+']'" disabled value="ผู้ถือหุ้นสามัญ">ผู้ถือหุ้นสามัญ*</b-form-radio>
+                                         
+                                            <b-form-group
+                                                :id="'sharevalue-group'+key"
+                                               
+                                                label-for="sharevalue"
+                                            
+                                            >
+                                                {{ form.shareholders[key].sharevalue }}
+                                                
+                                               
+                                            </b-form-group>
+                                       
+                                        <div>หุ้น</div>
+                                    </b-col>
+                                    <b-col md="6" class="form-flex">
+                                         <div class="pr-2">ชำระค่าหุ้นแล้ว</div>
+                                       
+                                         
+                                            <b-form-group
+                                                :id="'shareprice-group'+key"
+                                               
+                                                label-for="shareprice"
+                                            
+                                            >
+                                                {{ form.shareholders[key].shareprice }}
+                                                
+                                               
+                                            </b-form-group>
+                                       
+                                         บาท
+                                    </b-col>
+                                    <b-col md="6">
+                                    </b-col>
+                                    <b-col md="6" class="form-flex">
+                                        <b-form-checkbox v-model="form.shareholders[key].sharepayment" value="cash" aria-readonly="true" class="pr-2">ด้วยเงิน</b-form-checkbox>
+                                        <b-form-checkbox v-model="form.shareholders[key].sharepayment" value="labor" disabled>ด้วยทรัพย์สิน/แรงงาน</b-form-checkbox>
+                                    </b-col>
+                                    <b-col md="6" class="form-flex disabled">
+                                         <b-form-radio class="pr-2" v-model="form.shareholders[key].type_share" :name="'shareholders['+key+']'" disabled value="ถือหุ้นบุริมสิทธิ์">ถือหุ้นบุริมสิทธิ์</b-form-radio>
+                                          
+                                            <b-form-group
+                                                
+                                               
+                                              
+                                                class="pr-2"
+                                            
+                                            >
+                                               -
+                                                
+                                               
+                                            </b-form-group>
+                                       
+                                        <div>หุ้น</div>
+                                    </b-col>
+                                    <b-col md="6" class="form-flex">
+                                         <div class="pr-2">ชำระค่าหุ้นแล้ว</div>
+                                       
+                                            <b-form-group
+                                               
+                                            class="pr-2"
+                                            >
+                                                -
+                                                
+                                               
+                                            </b-form-group>
+                                        
+                                         บาท
+                                    </b-col>
+                                    <b-col md="6">
+                                    </b-col>
+                                    <b-col md="6" class="form-flex">
+                                        <b-form-checkbox  value="cash" disabled class="pr-2">ด้วยเงิน</b-form-checkbox>
+                                        <b-form-checkbox value="labor" disabled>ด้วยทรัพย์สิน/แรงงาน</b-form-checkbox>
+                                    </b-col>
+                                    <b-col md="12">
+                                        <hr />
+                                    </b-col>
+                                    
+                        </b-row>
+                       
+                        <h5>ผู้ก่อตั้ง</h5>
+                         <b-row v-for="(founder,key) in form.founders" :key="key" class="mb-3">
+                        <b-col md="10"><h5>ผู้ก่อตั้งคนที่ {{ key+1 }}</h5></b-col>
+                        <b-col md="2" class="text-right">
+                            <b-button variant="outline-secondary" v-if="key > 2" @click="removefounder(key)">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 37 37">
+                                    <defs>
+                                        <pattern id="pattern" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 64 64">
+                                        <image width="64" height="64" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QA/wD/AP+gvaeTAAAEbUlEQVR4nO2bT2gcVRzHP795kxoFJSGpolaMSLRY8eCfxuK5eFIQsUKN0It/mp3Z7CktiBq9qKWHbCbZgK0aELzEUknx1JNQqE31oFEoRUGwQsBsAlrDxuzMz0Nmw7JN4s5kJ9PS+Vxm3773+813vjszb96+N5CRkZFxEyNJ72BwcLAvCILnVbU7YuifxpgzxWLxQiLCQhIzwHXdW0TkpKr2bzHV58Brnuctt0JXI3YSSQFUdRSoHbwCV1R1pZlYEWkDdrH6A70KLAFvJqEzkTMgn8/3quolwAJmgBc9z7sSJcfAwMB9xpgvgb1A4Pv+w6VS6ZdWa7VanRAgCIL9dblfj3rwAKVS6XdjzBth0TLG7G+ZwDoSMUBE1m54XV1ds3HzdHR0/FhX3LklURsQ+xI4fPhwZ3t7e+d6ddVqdRDIA9i2/WDcfYS5fg0/jtq2XVyvTaVSWZyYmFiMkz+yAY7jvCQi7wJ74uwwQWZV9b2xsbFTUYJMlMaO4wyJyMfAnZGkbQ93iciBvr6+qzMzM+ebDWr6DHAcZ7eIzLLadS4Cnoj8EUNoy1HVewEX6ASqQRDsGR8fv9xMbNPPASLySq29ZVnPFovFi3HEJoXrul8DFwDbGNMPvNNMXJReoHYzm7veDh7A87wZYC4sNn3jjWJAOdzuLBQKd0eI2xYcx7mHsKtU1flm46I8Cp8BHMD4vj/tOM6Rtra236LJTIaVlZUeETlGeFMXkelmYyN1g67rTgPPRZO37Xzled4LzTaO9CRo2/bLwCSrg5vrDQU+tW37YJSgWE+Crus+DdT62kkRabrfbSWqug84FBb3eZ73bdQcsYbDxpg53/drxW9GR0cn4+TZKq7r/ktogDFm7n+ar0sig6EbicT+EAEYHh625ufn9wVB8EOpVLraWJ/P53ur1aquN84fGhq6fWlp6bHu7u7zw8PDQVIaEz0DyuXyURE5Z4y5ZoBSKBR6VPUnY8zPuVzu/sb6SqVySkTOLSwsHElSY9KXQG+4faixolqt9gA7gB0i8kBjvar2httrYlvJTX8PyAxIW0DaZAakLSBtMgPSFpA2mQFpC0ibzIC0BaRNZkDaAtImMyBtAWmTGZC2gLTJDEhbQNpkBqQtIG0yAxLOX23YrmGMqf9uvRWkG8a2kkRnhoBPgEdE5LPGiiAILorIlKqqiHy3Tuwx4JBlWSeTFJioAeFs7TMb1C0DBzaJPQGcSEjaGrEugUqlslRXvLVFWiKjqrfVPvu+/0+cHLEMKJfLZeAqgIg8FSdHi9gbbv/u6uoqb9pyA2IZMDU15avqWQBV7c/lctu+ajSfzz8qIrXVIGfjziDH7gUsyzrO6rKUNsuyTudyucfj5oqK4zhPquppoA3QIAiOx821pfcFXNf9EKifvr4ERF4aH5FdwO668kee5x2Nm2yrL0yI67pvAW+zOtW9nSwD73ue9wFbWLTVkjdGCoVCj+/7B4EngDtakXMT/gK+N8Z8MTIycl2sU8zIyMi4YfkP0StKOqaS3koAAAAASUVORK5CYII="/>
+                                        </pattern>
+                                    </defs>
+                                    <rect id="icons8-delete-64" width="37" height="37" rx="18.5" fill="url(#pattern)"/>
+                                </svg>
+
+                                ลบ
+                            </b-button>
+                        </b-col>
+                        <b-col md="2">
+                               
+                                    <b-form-group
+                                        :id="'ftitle-group'+key"
+                                        label="คำนำหน้า*"
+                                        label-for="ftitle"
+                                    
+                                    >
+                                        {{ form.founders[key].title }}
+                                    </b-form-group>
+                              
+                                
+                            </b-col>
+                            <b-col md="5">
+                                 
+                                    <b-form-group
+                                        :id="'ffirstname-group'+key"
+                                        label="ชื่อ*"
+                                        label-for="ffirstname"
+                                    
+                                    >
+                                    {{ form.founders[key].firstname }}
+                                    </b-form-group>
+                               
+                                
+                            </b-col>
+                            <b-col md="5">
+                               
+                                    <b-form-group
+                                        :id="'flastname-group'+key"
+                                        label="นามสกุล*"
+                                        label-for="flastname"
+                                    
+                                    >
+                                     {{ form.founders[key].lastname }}
+                                       
+                                    </b-form-group>
+                               
+                            </b-col>
+                            <b-col md="6">
+                                  
+                                    <b-form-group
+                                        :id="'fphone-group'+key"
+                                        label="หมายเลขโทรศัพท์*"
+                                        label-for="fphone"
+                                    
+                                    >
+                                    {{ form.founders[key].phone }}
+                                    </b-form-group>
+                               
+                                
+                            </b-col>
+                            <b-col md="6">
+                              
+                                    <b-form-group
+                                        :id="'fidcardfile-group'+key"
+                                        label="อัพโหลดบัตรประชาชน"
+                                        label-for="fidcardfile"
+                                    
+                                    >
+                                {{ form.founders[key].idcardfile }}
+                                    </b-form-group>
+                                
+                            </b-col>
+                            <b-col md="12">
+                                
+                                    <b-form-group>
+                                        <b-form-checkbox v-model="form.founders[key].isdirector"  disabled unchecked-value="" value="1">เป็นกรรมการบริษัท</b-form-checkbox>
+                                   
+                                </b-form-group>
+                                    
+                               
+                            </b-col>
+                            <b-col md="12">
+                                    <hr />
+                                </b-col>
+
+                        </b-row>
+                       
+                        <h5>กรรมการ</h5>
+                        <b-row v-for="(direct,key) in form.director" :key="key" class="mb-3">
+                            <b-col md="12"><h5>กรรมการ {{ key+1 }}</h5></b-col>
+                            
+                            <b-col md="2">
+                                  
+                                        <b-form-group
+                                            :id="'dtitle-group'+key"
+                                            label="คำนำหน้า*"
+                                            label-for="dtitle"
+                                        
+                                        >
+                                            {{ form.director[key].title }}
+                                        </b-form-group>
+                                  
+                                    
+                                </b-col>
+                                <b-col md="5">
+                                      
+                                        <b-form-group
+                                            :id="'dfirstname-group'+key"
+                                            label="ชื่อ*"
+                                            label-for="dfirstname"
+                                        
+                                        >
+                                        {{ form.director[key].firstname }}
+                                        </b-form-group>
+                                  
+                                    
+                                </b-col>
+                                <b-col md="5">
+                                 
+                                        <b-form-group
+                                            :id="'dlastname-group'+key"
+                                            label="นามสกุล*"
+                                            label-for="dlastname"
+                                        
+                                        >
+                                            {{ form.director[key].lastname }}
+                                        </b-form-group>
+                                   
+                                </b-col>
+                                <b-col md="6">
+                                        
+                                        <b-form-group
+                                            :id="'dphone-group'+key"
+                                            label="หมายเลขโทรศัพท์*"
+                                            label-for="dphone"
+                                        
+                                        >
+                                          {{ form.director[key].phone }}
+                                        </b-form-group>
+                                   
+                                    
+                                </b-col>
+                                <b-col md="6">
+                                    
+                                        <b-form-group>
+                                            <b-form-checkbox v-model="form.director[key].issign"  disabled unchecked-value="" value="1">มีอำนาจลงนาม</b-form-checkbox>
+                                      
+                                    </b-form-group>
+                                        
+                                    
+                                </b-col>
+                                <b-col md="12">
+                                    <hr />
+                                </b-col>
+                                
+
+                        </b-row>
+                        <h5>อำนาจกรรมการ</h5>
+                        <b-row>
+                            <b-col md="12">
+                                <b-form-radio class="pr-2" v-model="form.director_power" name="director_power" disabled value="not_specified">อำนาจกรรมการแบบไม่ระบุชื่อกรรมการที่มีอำนาจลงนาม</b-form-radio>
+                                    
+                            </b-col>
+                            
+                            <b-col md="12">
+                                <div style="padding-left:35px;">โปรดระบุจำนวนกรรมการที่ต้องลงลายมือชื่อเพื่อผูกพันบริษัท</div>
+                                
+                            </b-col>
+                            <b-col md="12"  >
+                                <div style="padding-left:35px;" class="form-flex">
+                                    <span>กรรมการ </span>
+                                    <span style="padding-left:10px">{{ form.director_count }}</span>
+                                    <span style="padding-left:10px">คน ลงลายมือชื่อ</span>
+                                </div>
+                            </b-col>
+                            <b-col md="12">
+                                <b-form-radio class="pr-2" v-model="form.director_power" disabled name="director_power" value="specified">อำนาจกรรมการแบบระบุชื่อกรรมการที่มีอำนาจลงนาม</b-form-radio>
+                                    
+                            </b-col>
+                            <b-col md="6" class="mt-2">
+                                <div style="padding-left:35px;">
+                                       
+                                            <b-form-group
+                                                id="specify_director"
+                                                label="โปรดระบุอำนาจกรรมการ"
+                                                label-for="specify_director"
+                                            
+                                            >
+                                            {{ form.specify_director }}
+                                               
+                                            </b-form-group>
+                                       
+                                        
+                                </div>
+                                
+                            </b-col>
+                        </b-row>
+                        <hr />
+                        <h5>การประชุมจัดตั้งบริษัท</h5>
+                        <b-row>
+                            <b-col md="6">
+                               
+                                    <b-form-group
+                                        id="meeting_date"
+                                        label="วันที่*"
+                                        label-for="meeting_date"
+                                    
+                                    >
+                                        {{ form.meeting_date }}
+                                        
+                                       
+                                    </b-form-group>
+                                
+
+                            </b-col>
+                                <b-col md="6">
+                                
+                                    <b-form-group
+                                        id="meeting_time"
+                                        label="เวลา*"
+                                        label-for="meeting_time"
+                                    
+                                    >
+                                    {{ form.meeting_time }}
+                                    </b-form-group>
+                               
+                            </b-col>
+                            <b-col md="2">
+                                <h5>สถานที่</h5>
+                            </b-col>
+                            <b-col md="10">
+                                <b-form-checkbox
+                                    id="same_address"
+                                    v-model="form.same_address"
+                                    name="same_address"
+                                    value="yes"
+                                    unchecked-value="no"
+                                   
+                                    disabled
+                                    >
+                                    ใช้ข้อมูลสถานที่ตั้งสำนักงาน
+                                </b-form-checkbox>
+                                
+                            </b-col>
+                            <b-col md="3">
+                               
+                                    <b-form-group
+                                        id="meeting_addess_no-group"
+                                        label="บ้านเลขที่*"
+                                        label-for="meeting_addess_no"
+                                    
+                                    >
+                                        {{ form.meeting_addess_no }}
+                                    </b-form-group>
+                                    
+                                
+                            </b-col>
+                            <b-col md="3">
+                               
+                                    <b-form-group
+                                        id="meeting_building-group"
+                                        label="อาคาร"
+                                        label-for="meeting_building"
+                                    
+                                    >
+                                       {{ form.meeting_building }}
+                                    </b-form-group>
+                                    
+                               
+                            </b-col>
+                            <b-col md="3">
+                                
+                                    <b-form-group
+                                        id="meeting_level-group"
+                                        label="ชั้น"
+                                        label-for="meeting_level"
+                                    
+                                    >
+                                       {{ form.meeting_level }}
+                                    </b-form-group>
+                                    
+                              
+                            </b-col>
+                            <b-col md="3">
+                                
+                                    <b-form-group
+                                        id="meeting_room_no-group"
+                                        label="ห้องเลขที่"
+                                        label-for="meeting_room_no"
+                                    
+                                    >
+                                       {{ form.meeting_room_no }}
+                                    </b-form-group>
+                                    
+                                
+                            </b-col>
+                            <b-col md="6">
+                               
+                                    <b-form-group
+                                        id="meeting_soi-group"
+                                        label="ซอย"
+                                        label-for="meeting_soi"
+                                    
+                                    >
+                                       {{ form.meeting_soi }}
+                                    </b-form-group>
+                                    
+                          
+                            </b-col>
+                            <b-col md="6">
+                            
+                                    <b-form-group
+                                        id="meeting_road-group"
+                                        label="ถนน"
+                                        label-for="meeting_road"
+                                    
+                                    >
+                                      {{ form.meeting_road }}
+                                    </b-form-group>
+                                    
+                               
+                            </b-col>
+                            <b-col md="6">
+                               
+                                    <b-form-group
+                                        id="meeting_province-group"
+                                        label="จังหวัด*"
+                                        label-for="meeting_province"
+                                    
+                                    >
+                                       {{ form.meeting_province }}
+                                    </b-form-group>
+                                    
+                           
+
+                            </b-col>
+                            <b-col md="6">
+                               
+                                    <b-form-group
+                                        id="meeting_states-group"
+                                        label="เขต/อำเภอ*"
+                                        label-for="meeting_states"
+                                    
+                                    >
+                                      {{ form.meeting_states }}
+                                    </b-form-group>
+                                    
+                              
+                            </b-col>
+                            <b-col md="6">
+                               
+                                    <b-form-group
+                                        id="meeting_city-group"
+                                        label="แขวง/ตำบล*"
+                                        label-for="meeting_city"
+                                    
+                                    >
+                                     {{ form.meeting_city }}
+                                    </b-form-group>
+                                    
+                               
+
+                            </b-col>
+                            <b-col md="6">
+                               
+                                    <b-form-group
+                                        id="meeting_postcode-group"
+                                        label="รหัสไปรษณีย์*"
+                                        label-for="postcode"
+                                    
+                                    >
+                                        {{ form.meeting_postcode }}
+                                    </b-form-group>
+                                    
+                              
+                            </b-col>
+                            <b-col md="12">
+                                <hr />
+                            </b-col>
+                            <b-col md="12">
+                                <h5>ประธานที่ประชุม</h5>
+                            </b-col>
+                            <b-col md="2">
+                               
+                                    <b-form-group
+                                        id="president_title"
+                                        label="คำนำหน้า*"
+                                        label-for="president_title"
+                                    
+                                    >
+                                        {{ form.president_title }}
+                                    </b-form-group>
+                              
+                                
+                            </b-col>
+                                <b-col md="5">
+                                     
+                                        <b-form-group
+                                            id="president_firstname-group"
+                                            label="ชื่อ*"
+                                            label-for="president_firstname"
+                                        
+                                        >
+                                          {{ form.president_firstname }}
+                                            
+                                           
+                                        </b-form-group>
+                                   
+                                    
+                                </b-col>
+                                <b-col md="5">
+                                  
+                                        <b-form-group
+                                            id="president_lastname-group"
+                                            label="นามสกุล*"
+                                            label-for="president_lastname"
+                                        
+                                        >
+                                        {{ form.president_lastname }}
+                                        </b-form-group>
+                                  
+                                </b-col>
+                                <b-col md="12"><hr /></b-col>
+                                <b-col md="12"><h5>จำนวนเงินที่ผู้ก่อตั้งได้ใช้จ่ายไปเพื่อประโยชน์ของบริษัทก่อนวันจดทะเบียนจัดตั้งบริษัท</h5></b-col>
+                                
+                                <b-col md="12" class="form-flex">
+                                    <b-form-checkbox v-model="form.payment_register" class="pr-3" disabled unchecked-value="" value="1">มี</b-form-checkbox>
+                                    
+                                  
+                                    <b-form-group
+                                        id="payment_price-group"
+                                        
+                                        label-for="payment_price"
+                                    
+                                    >
+                                       {{ form.payment_price }}
+                                    </b-form-group>
+                               
+                                <div>บาท</div>
+                            </b-col>
+                            <b-col md="12" >
+                                   
+                                    <b-form-group
+                                        id="payment_detial-group"
+                                        
+                                        label-for="payment_detial"
+                                    
+                                    >
+                                    {{ form.payment_detial }}
+                                    </b-form-group>
+                                
+                            </b-col>
+                                <b-col md="12"><hr /></b-col>
+                            <b-col md="12"><h5>ค่าใช้จ่ายในการจัดตั้งบริษัท</h5></b-col>
+                            <b-col md="12" class="form-flex">
+                                    <div class="mr-3">กำหนดค่าใช้จ่ายในการจัดตั้งบริษัทจำนวน*</div>
+                                    
+                               
+                                    <b-form-group
+                                        id="expenses-group"
+                                        
+                                        label-for="expenses"
+                                    
+                                    >
+                                      {{ form.expenses }}
+                                    </b-form-group>
+                                
+                                <div>บาท</div>
+                            </b-col>
+                            <b-col md="12"><hr /></b-col>
+                            <b-col md="2">
+                                <h5>ข้อบังคับบริษัท</h5>
+                            </b-col>
+                            <b-col md="10">
+                                <b-form-checkbox
+                                    id="same_address"
+                                    v-model="form.standard_rule"
+                                    name="standard_rule"
+                                    value="yes"
+                                    unchecked-value=""
+                                    disabled
+                                    
+                                    >
+                                        ใช้ข้อบังคับมาตรฐาน <small>ดูข้อบังคับแบบมาตรฐาน ที่นี่</small>
+                                </b-form-checkbox>
+                                
+                            </b-col>
+                            <b-col  md="4">อัพโหลดไฟล์ข้อบังคับแบบกำหนดเอง</b-col>
+                            <b-col md="8" >
+                                
+                                -
+                            </b-col>
+                            <b-col md="12"><hr /></b-col>
+                            <b-col md="12">
+                                <h5>รอบปีบัญชี</h5>
+                            </b-col>
+                            <b-col md="12" class="form-flex">
+                                    <div class="mr-5">รอบปีบัญชีของบริษัทเริ่มต้นวันที่*</div>
+                                    
+                                  
+                                    <b-form-group
+                                        id="blling_day-group"
+                                        
+                                        label-for="blling_day"
+                                    
+                                    >
+                                       {{ form.blling_day }}
+                                    </b-form-group>
+                               
+                                 
+                                    <b-form-group
+                                        id="blling_month-group"
+                                        
+                                        label-for="blling_month"
+                                    
+                                    >
+                                      {{ form.blling_month }}
+                                        
+                                    
+                                    </b-form-group>
+                               
+                                
+                                <div class="pl-5">ของทุกปี</div>
+                            </b-col>
+                            <b-col md="12"><hr /></b-col>
+                            <b-col md="2">
+                                <h5>ผู้สอบบัญชี</h5>
+                            </b-col>
+                            <b-col md="10">
+                                <b-form-checkbox
+                                    id="isauditor"
+                                    v-model="form.isauditor"
+                                    name="isauditor"
+                                    value="yes"
+                                    unchecked-value=""
+                                    disabled
+                                    
+                                    >
+                                    ใช้บริการผู้สอบบัญชี
+                                </b-form-checkbox>
+                                
+                            </b-col>
+                            <b-col md="2">
+                               
+                                    <b-form-group
+                                        id="auditor_title"
+                                        label="คำนำหน้า*"
+                                        label-for="auditor_title"
+                                    
+                                    >
+                                       {{ form.auditor_title }}
+                                       
+                                    </b-form-group>
+                               
+                                
+                            </b-col>
+                                <b-col md="5">
+                                      
+                                        <b-form-group
+                                            id="auditor_firstname-group"
+                                            label="ชื่อ*"
+                                            label-for="auditor_firstname"
+                                        
+                                        >
+                                            {{ form.auditor_firstname }}
+                                        </b-form-group>
+                                    
+                                    
+                                </b-col>
+                                <b-col md="5">
+                                   
+                                        <b-form-group
+                                            id="auditor_lastname-group"
+                                            label="นามสกุล*"
+                                            label-for="auditor_lastname"
+                                        
+                                        >
+                                         {{ form.auditor_lastname }}
+                                        </b-form-group>
+                                    
+                                </b-col>
+                                <b-col md="12" class="form-flex">
+                                    <div class="mr-5">เลขที่ใบอนุญาต*</div>
+                                    
+                                    
+                                    <b-form-group
+                                        id="license_number-group"
+                                        
+                                        label-for="license_number"
+                                    
+                                    >
+                                        {{ form.license_number }}
+                                        
+                                       
+                                    </b-form-group>
+                                
+                                <div class="pl-5 pr-3">กำหนดค่าตอบแทน*</div>
+                                 
+                                    <b-form-group
+                                        id="compensation-group"
+                                        
+                                        label-for="compensation"
+                                    
+                                    >
+                                       {{ form.compensation }}
+                                        
+                                     
+                                    </b-form-group>
+                               
+                                
+                                <div class="pl-3">บาท</div>
+                            </b-col>
+                        </b-row>
+                        <hr />
+                        <b-button type="button" variant="outline-warning" @click.prevent="backstep(7)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48.006" height="24.048" viewBox="0 0 48.006 24.048">
+                                    <path id="icons8-up_arrow" d="M12.024,0,.664,10.508a2,2,0,1,0,2.719,2.938L10.024,7.3V45.977a2,2,0,1,0,4,0V7.3l6.641,6.145a2,2,0,1,0,2.719-2.937Z" transform="translate(0 24.048) rotate(-90)" fill="#ffc00f"/>
+                                </svg>
+
+                                ย้อนกลับ
+                                
+                        </b-button>
+                        <b-button type="submit" variant="warning" @click.prevent="validationStep8">
+                            ยืนยันข้อมูลการจดทะเบียน
+                            
+
+                        </b-button>
                     </div>
 
                 </div>
@@ -2416,6 +3663,7 @@
 
 </template>
 <script>
+import axios from 'axios'
 import { ValidationProvider, ValidationObserver } from "vee-validate";
 export default {
     
@@ -2445,6 +3693,395 @@ export default {
                 { value: 'นาง', text: 'นาง' },
                 { value: 'นางสาว', text: 'นางสาว' }
             ],
+            provinces:[
+                    {
+                        value:"",
+                        text:"Select Province"
+                    },
+                     {
+                        value: "กระบี่",
+                        text: "กระบี่"
+                       
+                    },
+                    {
+                        value: "กรุงเทพมหานคร",
+                        text: "กรุงเทพมหานคร"                     
+                    },
+                    {
+                       
+                        value: "กาญจนบุรี",
+                        text: "กาญจนบุรี"
+                        
+                    },
+                    {
+                        value: "กาฬสินธุ์",
+                        text: "กาฬสินธุ์"
+                        
+                    },
+                    {
+                       
+                        value: "กำแพงเพชร",
+                        text: "กำแพงเพชร"
+                        
+                    },
+                    {
+                        
+                        value: "ขอนแก่น",
+                        text: "ขอนแก่น"
+                        
+                    },
+                    {
+                        value: "จันทบุรี",
+                        text: "จันทบุรี",
+                       
+                    },
+                    {
+                        value: "ฉะเชิงเทรา",
+                        text: "ฉะเชิงเทรา",
+                        
+                    },
+                    {
+                        value: "ชลบุรี",
+                        text: "ชลบุรี",
+                       
+                    },
+                    {
+                        value: "ชัยนาท",
+                        text: "ชัยนาท",
+                        
+                    },
+                    {
+                        value: "0236ชัยภูมิ0000",
+                        text: "ชัยภูมิ",
+                        
+                    },
+                    {
+                        value: "ชุมพร",
+                        text: "ชุมพร",
+                        
+                    },
+                    {
+                        value: "เชียงราย",
+                        text: "เชียงราย",
+                        
+                    },
+                    {
+                        value: "เชียงใหม่",
+                        text: "เชียงใหม่",
+                       
+                    },
+                    {
+                        value: "ตรัง",
+                        text: "ตรัง",
+                       
+                    },
+                    {
+                        value: "ตราด",
+                        text: "ตราด",
+                        
+                    },
+                    {
+                        value: "ตาก",
+                        text: "ตาก",
+                     
+                    },
+                    {
+                        value: "นครนายก",
+                        text: "นครนายก",
+                       
+                    },
+                    {
+                        value: "นครปฐม",
+                        text: "นครปฐม",
+                        
+                    },
+                    {
+                        value: "นครพนม",
+                        text: "นครพนม",
+                       
+                    },
+                    {
+                        value: "นครราชสีมา",
+                        text: "นครราชสีมา",
+                       
+                    },
+                    {
+                        value: "นครศรีธรรมราช",
+                        text: "นครศรีธรรมราช",
+                        
+                    },
+                    {
+                        value: "นครสวรรค์",
+                        text: "นครสวรรค์",
+                
+                    },
+                    {
+                        value: "นนทบุรี",
+                        text: "นนทบุรี",
+                        
+                    },
+                    {
+                        value: "นราธิวาส",
+                        text: "นราธิวาส",       
+                    },
+                    {
+                        value: "น่าน",
+                        text: "น่าน",
+                        
+                    },
+                    {
+                        value: "บึงกาฬ",
+                        text: "บึงกาฬ",
+                        
+                    },
+                    {
+                        value: "บุรีรัมย์",
+                        text: "บุรีรัมย์",
+                        
+                    },
+                    {
+                        value: "ปทุมธานี",
+                        text: "ปทุมธานี",
+                    },
+                    {
+                        value: "ประจวบคีรีขันธ์",
+                        text: "ประจวบคีรีขันธ์",
+                        
+                    },
+                    {
+                        value: "ปราจีนบุรี",
+                        text: "ปราจีนบุรี",
+                        
+                    },
+                    {
+                        value: "ปัตตานี",
+                        text: "ปัตตานี",
+                        
+                    },
+                    {
+                        value: "พระนครศรีอยุธยา",
+                        text: "พระนครศรีอยุธยา",
+                       
+                    },
+                    {
+                        value: "พะเยา",
+                        text: "พะเยา",
+                       
+                    },
+                    {
+                        value: "พังงา",
+                        text: "พังงา",
+                        
+                    },
+                    {
+                        value: "พัทลุง",
+                        text: "พัทลุง",
+                      
+                    },
+                    {
+                        value: "พิจิตร",
+                        text: "พิจิตร",
+                        
+                    },
+                    {
+                        value: "พิษณุโลก",
+                        text: "พิษณุโลก",
+                       
+                    },
+                    {
+                        value: "เพชรบุรี",
+                        text: "เพชรบุรี",
+                       
+                    },
+                    {
+                        value: "เพชรบูรณ์",
+                        text: "เพชรบูรณ์",
+                        
+                    },
+                    {
+                        value: "แพร่",
+                        text: "แพร่",
+    
+                    },
+                    {
+                        value: "ภูเก็ต",
+                        text: "ภูเก็ต",
+                       
+                    },
+                    {
+                        value: "มหาสารคาม",
+                        text: "มหาสารคาม",      
+                    },
+                    {
+                        value: "02490000",
+                        text: "มุกดาหาร",   
+                    },
+                    {
+                        value: "แม่ฮ่องสอน",
+                        text: "แม่ฮ่องสอน",
+                       
+                    },
+                    {
+                        value: "ยโสธร",
+                        text: "ยโสธร",
+                      
+                    },
+                    {
+                        value: "ยะลา",
+                        text: "ยะลา",
+                        
+                    },
+                    {
+                        value: "ร้อยเอ็ด",
+                        text: "ร้อยเอ็ด",
+                       
+                    },
+                    {
+                        value: "ระนอง",
+                        text: "ระนอง",
+                       
+                    },
+                    {
+                        value: "ระยอง",
+                        text: "ระยอง",
+                      
+                    },
+                    {
+                        value: "ราชบุรี",
+                        text: "ราชบุรี",
+                      
+                    },
+                    {
+                        value: "ลพบุรี",
+                        text: "ลพบุรี",
+                       
+                    },
+                    {
+                        value: "ลำปาง",
+                        text: "ลำปาง",
+                       
+                    },
+                    {
+                        value: "ลำพูน",
+                        text: "ลำพูน",
+                       
+                    },
+                    {
+                        value: "เลย",
+                        text: "เลย",
+                        
+                    },
+                    {
+                        value: "ศรีสะเกษ",
+                        text: "ศรีสะเกษ",
+                        
+                    },
+                    {
+                        value: "สกลนคร",
+                        text: "สกลนคร",
+                       
+                    },
+                    {
+                        value: "สงขลา",
+                        text: "สงขลา",
+                       
+                    },
+                    {
+                        value: "สตูล",
+                        text: "สตูล",
+                       
+                    },
+                    {
+                        value: "สมุทรปราการ",
+                        text: "สมุทรปราการ",
+                        
+                    },
+                    {
+                        value: "สมุทรสงคราม",
+                        text: "สมุทรสงคราม",
+                   
+                    },
+                    {
+                        value: "สมุทรสาคร",
+                        text: "สมุทรสาคร",
+                      
+                    },
+                    {
+                        value: "สระแก้ว",
+                        text: "สระแก้ว",
+                        
+                    },
+                    {
+                        value: "สระบุรี",
+                        text: "สระบุรี",
+                       
+                    },
+                    {
+                        value: "สิงห์บุรี",
+                        text: "สิงห์บุรี",
+                       
+                    },
+                    {
+                        value: "สุโขทัย",
+                        text: "สุโขทัย",
+                
+                    },
+                    {
+                        value: "สุพรรณบุรี",
+                        text: "สุพรรณบุรี",
+                      
+                    },
+                    {
+                        value: "สุราษฎร์ธานี",
+                        text: "สุราษฎร์ธานี",
+                       
+                    },
+                    {
+                        value: "สุรินทร์",
+                        text: "สุรินทร์",
+                     
+                    },
+                    {
+                        value: "หนองคาย",
+                        text: "หนองคาย",
+                       
+                    },
+                    {
+                        value: "หนองบัวลำภู",
+                        text: "หนองบัวลำภู",
+                     
+                    },
+                    {
+                        value: "อ่างทอง",
+                        text: "อ่างทอง"
+                      
+                    },
+                    {
+                        value: "อำนาจเจริญ",
+                        text: "อำนาจเจริญ"
+                       
+                    },
+                    {
+                        value: "อุดรธานี",
+                        text: "อุดรธานี"
+                        
+                    },
+                    {
+                        value: "อุตรดิตถ์",
+                        text: "อุตรดิตถ์"
+                      
+                    },
+                    {
+                        value: "อุทัยธานี",
+                        text: "อุทัยธานี"
+                       
+                    },
+                    {
+                        value: "อุบลราชธานี",
+                        text: "อุบลราชธานี"
+                       
+                    }
+                ],
             
             form:{
                 compensation:null,
@@ -2472,7 +4109,7 @@ export default {
                 meeting_room_no:null,
                 meeting_soi:null,
                 meeting_road:null,
-                meeting_provice:null,
+                meeting_province:null,
                 meeting_states:null,
                 meeting_city:null,
                 meeting_postcode:null,
@@ -2491,7 +4128,7 @@ export default {
                 room_no:null,
                 soi:null,
                 road:null,
-                provice:null,
+                province:'',
                 states:null,
                 city:null,
                 postcode:null,
@@ -2591,8 +4228,10 @@ export default {
                             }
                         ]
                     },
+                   
                     
-                ]
+                ],
+                
             }
         };
     },
@@ -2611,7 +4250,7 @@ export default {
         });
     },
     created(){
-       // this.getProvince();
+        //this.getProvince();
         //console.log('router',this.$route.query.job_id);
 
     },
@@ -2632,6 +4271,13 @@ export default {
     },
     methods:{
         async getProvince(){
+            var config = {
+                headers: {'Access-Control-Allow-Origin': '*'},
+                proxy: '*'
+            };
+           // const provinces = await this.$axios.$get('?api-key=pDkgl18SYBDccvl6EkUX0VUPfsUf5FR9',config);
+           // let data = await  axios.get(`https://opend.data.go.th/govspending/bbgfmisprovince/?api-key=pDkgl18SYBDccvl6EkUX0VUPfsUf5FR9`,config);
+           // console.log('data',data);
          
           
         },
@@ -2645,7 +4291,7 @@ export default {
                 this.form.meeting_room_no = this.form.room_no;
                 this.form.meeting_soi = this.form.soi;
                 this.form.meeting_road =this.form.road;
-                this.form.meeting_provice = this.form.provice;
+                this.form.meeting_province = this.form.province;
                 this.form.meeting_states = this.form.states;
                 this.form.meeting_city = this.form.city;
                 
@@ -2658,10 +4304,10 @@ export default {
                 this.form.meeting_room_no = null;
                 this.form.meeting_soi = null;
                 this.form.meeting_road = null;
-                this.form.meeting_provice = null;
+                this.form.meeting_province = null;
                 this.form.meeting_states = null;
                 this.form.meeting_city ='';
-                thithis.forms.meeting_postcode = null;
+                this.forms.meeting_postcode = null;
                
             }
            // alert(this.form.same_address);
@@ -2966,11 +4612,15 @@ export default {
         validationStep7(){
             this.$refs.step7.validate().then(success => {
                 if(success){
-                  
+                    this.step_id=8;
 
                 }
                 console.log('step6',success);
             });
+
+        },
+        validationStep8(){
+            //submit
 
         }
     }

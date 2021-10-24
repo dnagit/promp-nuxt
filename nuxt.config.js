@@ -198,8 +198,8 @@ module.exports = {
     
   ],
   axios: {
-    baseURL: 'http://localhost:3000/api',
-    credentials: true
+    baseURL: 'https://opend.data.go.th/govspending/bbgfmisprovince',
+   // credentials: false
   },
  /*  auth: {
    strategies: {
