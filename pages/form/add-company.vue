@@ -4620,6 +4620,7 @@ export default {
 
         },
         validationStep8(){
+            this.$router.push("/");
             //submit
 
         }
