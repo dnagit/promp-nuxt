@@ -6,7 +6,8 @@ result.getDetail = async (req, res) => {
    
     return res.json({
         data: {
-            api:true
+            api:true,
+            test:true
         
         }
     });
