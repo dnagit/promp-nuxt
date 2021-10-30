@@ -1,6 +1,7 @@
 [build]
   publish = "dist"
-  command = "yarn run generate && yarn run build:api"
+  #command = "yarn run generate && yarn run build:api"
+  command = "yarn run serve"
   functions = "./functions"
 [build.environment]
   NODE_VERSION = "12" 
