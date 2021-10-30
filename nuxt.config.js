@@ -44,6 +44,9 @@ module.exports = {
       }
     ]
   },
+  serverMiddleware: [
+    { path: '/api', handler: '~/api/index.js' }
+  ],
   //css: ["@/assets/grid.css", "@/assets/content.scss", "bf-solid/dist/solid.latest.css","@/assets/main.scss"],
   css: ["@/assets/grid.css", "@/assets/content.scss","@/assets/main.scss","@/assets/promp.scss","@/assets/register-company.scss"],
   
@@ -54,6 +57,8 @@ module.exports = {
   ** Customize the progress bar color
   */
   loading: { color: '#3B8070' },
+  
+  
   modules: 
   [
     '@nuxtjs/bootstrap-vue',
@@ -140,9 +145,6 @@ module.exports = {
     
     
   },
-  serverMiddleware: [
-    { path: '/api', handler: '~/api/index.js' }
-  ],
   
   content: {
     fullTextSearchFields: ['title', 'description', 'category']
@@ -178,6 +180,7 @@ module.exports = {
     },
     middleware: ['title']
   },
+
   plugins: [
     
    
@@ -201,8 +204,6 @@ module.exports = {
     
   ],
   axios: {
-
-   baseURL: 'http://realvestor.co:3001',
    // baseURL: 'https://opend.data.go.th/govspending/bbgfmisprovince',
    // credentials: false
   },

@@ -1,9 +1,9 @@
 
 import express from 'express'
-import allRoutes from './routes/all.routes';
-import apiRoute from './routes/api.route'
+
 import testController from './controllers/test.controller'
-import httpResponse from './handles/httpresponse';
+const host = process.env.HOST || '127.0.0.1'
+const port = process.env.PORT || 3000
 
 const app = express()
 const router = express.Router();
@@ -26,5 +26,8 @@ router.get('/test',testController.getDetail)
   
 app.use('',router);
 
-app.use(httpResponse);
+
+  // Listen the server
+//app.listen(port, host)
+
 module.exports = app

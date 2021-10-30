@@ -37,7 +37,7 @@ export default {
 
             }
            
-        const facts = await this.$axios.$post('/api/facility/v1/lists',filter);
+        const facts = await this.$axios.$get('/api');
         console.log('facts',facts);
        // this.desserts = await this.$axios.$get('/api/moji')
     },
