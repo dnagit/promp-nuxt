@@ -140,6 +140,9 @@ module.exports = {
     
     
   },
+  serverMiddleware: [
+    { path: '/api', handler: '~/api/index.js' }
+  ],
   
   content: {
     fullTextSearchFields: ['title', 'description', 'category']
@@ -198,7 +201,9 @@ module.exports = {
     
   ],
   axios: {
-    baseURL: 'https://opend.data.go.th/govspending/bbgfmisprovince',
+
+   baseURL: 'http://realvestor.co:3001',
+   // baseURL: 'https://opend.data.go.th/govspending/bbgfmisprovince',
    // credentials: false
   },
  /*  auth: {
