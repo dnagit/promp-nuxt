@@ -204,7 +204,7 @@ module.exports = {
     
   ],
   axios: {
-   // baseURL: 'https://opend.data.go.th/govspending/bbgfmisprovince',
+   baseURL: 'https://promp-nuxt.netlify.app:3001',
    // credentials: false
   },
  /*  auth: {
