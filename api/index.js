@@ -24,10 +24,14 @@ router.get('/me', (req, res) => {
 router.get('/test',testController.getDetail)
 
   
-app.use('',router);
+app.use(router);
 
 
   // Listen the server
 //app.listen(port, host)
 
-module.exports = app
+//module.exports = app
+module.exports = {
+    path: '/api',
+    handler: app
+  }

@@ -1,6 +1,7 @@
 const siteInfo = require('./content/setup/info.json');
 const pkginfo = require('./package.json')
 const webpack = require('webpack')
+import serveStatic from 'serve-static'
 
 module.exports = {
   target: 'static',
@@ -44,9 +45,11 @@ module.exports = {
       }
     ]
   },
-  serverMiddleware: [
-    { path: '/api', handler: '~/api/index.js' }
-  ],
+  serverMiddleware: ['~/api/index.js'],
+  /*serverMiddleware: [
+    { path: '/api', handler: '~/api/index.js' },
+    
+  ],*/
   //css: ["@/assets/grid.css", "@/assets/content.scss", "bf-solid/dist/solid.latest.css","@/assets/main.scss"],
   css: ["@/assets/grid.css", "@/assets/content.scss","@/assets/main.scss","@/assets/promp.scss","@/assets/register-company.scss"],
   
