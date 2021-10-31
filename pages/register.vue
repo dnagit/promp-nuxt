@@ -163,38 +163,9 @@ export default {
 
    created(){
     //console.log('abc');
-    try{
-      
-      let data ={
-        email :'deoz@windowslive.com',
-        password: '123456'
-      }//displayName
-      /*await this.$fire.auth.createUserWithEmailAndPassword(
-          'sweeppers@gmail.com',
-          '123456'
-      );*/
-    
-    }catch(error){
-      switch (error.code) {
-        case 'auth/email-already-in-use':
-          console.log('Email address '+this.state.email+' already in use.');
-          break;
-        case 'auth/invalid-email':
-          console.log('Email address ${this.state.email} is invalid.');
-          break;
-        case 'auth/operation-not-allowed':
-          console.log('Error during sign up.');
-          break;
-        case 'auth/weak-password':
-          console.log('Password is not strong enough. Add additional characters including special characters and numbers.');
-          break;
-        default:
-          console.log(error.message);
-          break;
-      }
-      //handleError(e)
-    }
+   
   },
+  
    refresh() {
         this.$nuxt.refresh()
       },
@@ -229,12 +200,50 @@ export default {
             
         })
     },
-    validationForm() {
+     register(){ 
+      
+       
+    },
+     validationForm() {
        let params = {};
       this.$refs.simpleRules.validate().then(success => {
-        console.log('success',success);
+       
         if(success){
-            this.$fire.auth.createUserWithEmailAndPassword(this.email, this.password)
+          
+          let params = {};
+          try {
+            let data = {
+              email:this.email,
+              password:this.password,
+              group_id:2,
+              is_active:1
+            }
+             this.$axios.$post('/users/v1/register',data).then(res=>{
+                console.log('res',res);
+                if(res.success){
+                   params.variant = 'success';
+                    params.message = res.message;
+                    this.makeToast(params);
+                    this.$router.push("/login");
+
+                }else{
+                   params.variant = 'danger';
+                    params.message = res.message;
+                    this.makeToast(params);
+
+                }
+            })
+           
+          }catch(error){
+            params.variant = 'danger';
+            params.message = 'Error during sign up.';
+            this.makeToast(params);
+          }
+       
+        
+       
+
+           /* this.$fire.auth.createUserWithEmailAndPassword(this.email, this.password)
               .then((u) => {
                 params.variant = 'success';
                   params.message = 'Register Success';
@@ -266,7 +275,7 @@ export default {
                       break;
                   }
                   this.makeToast(params);
-          });
+          });*/
            
             
             

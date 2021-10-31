@@ -162,12 +162,45 @@ export default {
       this.$refs.simpleRules.validate().then(success => {
         console.log('success',success);
         if(success){
-            this.$fire.auth.signInWithEmailAndPassword(this.email, this.password)
+          try {
+            let data = {
+              email:this.email,
+              password:this.password,
+          
+            }
+             this.$axios.$post('/users/v1/login',data).then(res=>{
+                console.log('res',res);
+                if(res.success){
+                  let user = res.data
+                   params.variant = 'success';
+                    params.message = res.message;
+                    
+                    this.$auth.setUser(user)  
+                    this.$auth.$storage.setLocalStorage('user',user);
+                     this.$router.push("/",()=>{
+                        this.makeToast(params);
+                      
+                      })
+                    //this.$router.push("/login");
+
+                }else{
+                   params.variant = 'danger';
+                    params.message = res.message;
+                    this.makeToast(params);
+
+                }
+            })
+           
+          }catch(error){
+            params.variant = 'danger';
+            params.message = 'Error during sign up.';
+            this.makeToast(params);
+          }
+            /*this.$fire.auth.signInWithEmailAndPassword(this.email, this.password)
               .then((u) => {
                 params.variant = 'success';
                   params.message = 'Login Success';
-                 // console.log('user',u.user.uid);
-               // console.log('userauth',u.user.email);
+                
                 let user = {
                   uid : u.user.uid,
                   email : u.user.email
@@ -192,7 +225,7 @@ export default {
                 params.message = error.message;
                  
                   this.makeToast(params);
-          });
+          });*/
            
             
             

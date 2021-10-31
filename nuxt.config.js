@@ -45,11 +45,13 @@ module.exports = {
       }
     ]
   },
-  serverMiddleware: ['~/api/index.js'],
-  /*serverMiddleware: [
-    { path: '/api', handler: '~/api/index.js' },
+  //serverMiddleware: ['~/api/auth.js'],
+  
+  serverMiddleware: [
+    { path: '/api', handler: '~/api/app.js' },
+    { path: '/static2', handler: serveStatic(__dirname + '/static2') }
     
-  ],*/
+  ],
   //css: ["@/assets/grid.css", "@/assets/content.scss", "bf-solid/dist/solid.latest.css","@/assets/main.scss"],
   css: ["@/assets/grid.css", "@/assets/content.scss","@/assets/main.scss","@/assets/promp.scss","@/assets/register-company.scss"],
   
@@ -186,7 +188,7 @@ module.exports = {
 
   plugins: [
     
-   
+   // { src: "@/plugins/api.js" },
     {
       src: "~/plugins/browser",
       mode: 'client'
@@ -207,7 +209,8 @@ module.exports = {
     
   ],
   axios: {
-   //baseURL: 'https://promp-nuxt.netlify.app:3001',
+    baseURL: 'https://api-propmpt.netlify.app/.netlify/functions/server',
+    //baseURL: 'http://localhost:3001/api',
    // credentials: false
   },
  /*  auth: {

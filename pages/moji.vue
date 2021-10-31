@@ -36,8 +36,9 @@ export default {
     
 
             }
+            
            
-        const facts = await this.$axios.$get('/api/test');
+        const facts = await this.$axios.$get('/users/v1/getgroups');
         console.log('facts',facts);
        // this.desserts = await this.$axios.$get('/api/moji')
     },
