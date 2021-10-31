@@ -209,8 +209,8 @@ module.exports = {
     
   ],
   axios: {
-    //baseURL: 'https://api-propmpt.netlify.app/.netlify/functions/server',
-    baseURL: 'http://localhost:3001/api',
+    baseURL: 'https://api-propmpt.netlify.app/.netlify/functions/server',
+    //baseURL: 'http://localhost:3001/api',
    // credentials: false
   },
  /*  auth: {
