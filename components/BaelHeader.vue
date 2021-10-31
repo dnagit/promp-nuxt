@@ -5,8 +5,8 @@
   
 
     <div class="btn-group" role="group" >
-      <button id="btnGroupDrop1" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <img src="~/assets/icon/logocompany.png" class="icon" /> บริษัทฟาสต์เวิร์ค เทคโนโลยีส์ จำก...
+      <button id="btnGroupDrop1" type="button" class="btn btn-default dropdown-toggle button-company" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        All Company
       </button>
       <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
         <a class="dropdown-item" href="#"><img src="~/assets/icon/logocompany.png" class="icon" /> บริษัทฟาสต์เวิร์ค เทคโนโลยีส์ จำก...</a>
@@ -35,7 +35,7 @@
     
   </div>
   <div class="head-right"  v-else-if="title=='job-slug'">
-    <h5><a class="icon-back"><img src="~assets/icon/icons-back.png" /></a>จดทะเบียนจัดตั้งบริษัท</h5>
+    <h5><nuxt-link  to="/" class="icon-back"><img src="~assets/icon/icons-back.png" /></nuxt-link>จดทะเบียนจัดตั้งบริษัท</h5>
     
   </div>
   
@@ -168,5 +168,8 @@ nav {
   .results {
     width: 94vw;
   }
+}
+.button-company{
+  min-width:350px;
 }
 </style>

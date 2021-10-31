@@ -96,7 +96,7 @@
                                 <!-- Timeline Area-->
                                 <div class="apland-timeline-area">
                                     <!-- Single Timeline Content-->
-                                    <div class="single-timeline-area" :class="step_id==(key+1)?'active':''" v-for="(step,key) in step" :key="key">
+                                    <div class="single-timeline-area" :class="step_id==(key+1)?'active':''" v-for="(step,key) in step" :key="'sp6'+key">
                                         <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
                                         
                                         </div>
@@ -760,7 +760,7 @@
                     <div v-if="step_id==4" class="mt-3">
                         <validation-observer ref="step4" v-slot="{ handleSubmit }">
                             <b-form @submit.stop.prevent="handleSubmit(onSubmit)" method="post">
-                                <b-row v-for="(shareholder,key) in form.shareholders" :key="key" class="mb-3">
+                                <b-row v-for="(shareholder,key) in form.shareholders" :key="'st4'+key" class="mb-3">
                                     <b-col md="10"><h5>ผู้ถื้อหุ้น {{ key+1 }}</h5></b-col>
                                     <b-col md="2" class="text-right">
                                         <b-button variant="outline-secondary" v-if="key > 2" @click="removeshare(key)">
@@ -1304,7 +1304,7 @@
                         <validation-observer ref="step5" v-slot="{ handleSubmit }">
                             <b-form @submit.stop.prevent="handleSubmit(onSubmit)" method="post">
                                     
-                                <b-row v-for="(founder,key) in form.founders" :key="key" class="mb-3">
+                                <b-row v-for="(founder,key) in form.founders" :key="'mo'+key" class="mb-3">
                                     <b-col md="10"><h5>ผู้ก่อตั้งคนที่ {{ key+1 }}</h5></b-col>
                                     <b-col md="2" class="text-right">
                                         <b-button variant="outline-secondary" v-if="key > 2" @click="removefounder(key)">
@@ -1484,7 +1484,7 @@
                         <validation-observer ref="step6" v-slot="{ handleSubmit }">
                             <b-form @submit.stop.prevent="handleSubmit(onSubmit)" method="post">
                                     
-                                <b-row v-for="(direct,key) in form.director" :key="key" class="mb-3">
+                                <b-row v-for="(direct,key) in form.director" :key="'shar'+key" class="mb-3">
                                     <b-col md="10"><h5>กรรมการ {{ key+1 }}</h5></b-col>
                                     <b-col md="2" class="text-right">
                                         <b-button variant="outline-secondary" v-if="key > 0" @click="removedirector(key)">
@@ -2704,7 +2704,7 @@
                         </b-row>
                         <hr />
                         <h5>ผู้ถือหุ้น</h5>
-                         <b-row v-for="(shareholder,key) in form.shareholders" :key="key" class="mb-3">
+                         <b-row v-for="(shareholder,key) in form.shareholders" :key="'pp'+key" class="mb-3">
                                     <b-col md="12"><h5>ผู้ถื้อหุ้น {{ key+1 }}</h5></b-col>
                                    
                                     <b-col md="12">
@@ -3016,7 +3016,7 @@
                         </b-row>
                        
                         <h5>ผู้ก่อตั้ง</h5>
-                         <b-row v-for="(founder,key) in form.founders" :key="key" class="mb-3">
+                         <b-row v-for="(founder,key) in form.founders" :key="'sa'+key" class="mb-3">
                         <b-col md="10"><h5>ผู้ก่อตั้งคนที่ {{ key+1 }}</h5></b-col>
                         <b-col md="2" class="text-right">
                             <b-button variant="outline-secondary" v-if="key > 2" @click="removefounder(key)">
@@ -3112,7 +3112,7 @@
                         </b-row>
                        
                         <h5>กรรมการ</h5>
-                        <b-row v-for="(direct,key) in form.director" :key="key" class="mb-3">
+                        <b-row v-for="(direct,key) in form.director" :key="'sta'+key" class="mb-3">
                             <b-col md="12"><h5>กรรมการ {{ key+1 }}</h5></b-col>
                             
                             <b-col md="2">
@@ -4084,6 +4084,7 @@ export default {
                 ],
             
             form:{
+                job_id:this.$route.query.job_id,
                 compensation:null,
                 license_number:null,
                 isauditor:'yes',
@@ -4609,9 +4610,11 @@ export default {
             });
 
         },
-        validationStep7(){
+         validationStep7(){
+
             this.$refs.step7.validate().then(success => {
                 if(success){
+                    
                     this.step_id=8;
 
                 }
@@ -4619,7 +4622,9 @@ export default {
             });
 
         },
-        validationStep8(){
+        async validationStep8(){
+            let res =  await this.$axios.$post('/company/v1/add',this.form);
+           
             this.$router.push("/");
             //submit
 

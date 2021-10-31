@@ -10,25 +10,20 @@
                 <th  class="col">Status</th>
             </tr>
             </thead>
-            <tbody>
-            <tr>
-                <td class="pl-5">จดทะเบียนบริษัท</td>
-                
-                <td><nuxt-link to="/register-company?job_id=defd" class="btn btn-xs btn-default"><img src="~assets/icon/icon-go.png" class="img-process" />ดำเนินการ</nuxt-link></td>
-                <td><nuxt-link to="/job/defd" class="btn btn-xs btn-danger">Incomplete</nuxt-link></td>
-            </tr>
-            <tr>
-                <td class="pl-5 font-dis">รอตรวจสอบข้อมูลการจดทะเบียนจัดตั้งบริษัท</td>
-                
-                <td></td>
-                <td></td>
-            </tr>
-             <tr>
-                <td class="pl-5 font-dis">ยืนยันตัวตน</td>
-                
-                <td></td>
-                <td></td>
-            </tr>
+            <tbody v-if="actions.length > 0">
+                <tr v-for="(action,key) in actions" :key="key">
+                    <td class="pl-5" :class="job.action_id==action.id?'':'font-dis'">{{ action.title }}</td>
+                    
+                    <td>
+                        <nuxt-link :to="'/register-company?job_id='+job_id" class="btn btn-xs btn-default" v-if="action.id == 1 && job.action_id == 1"><img src="~assets/icon/icon-go.png" class="img-process" />ดำเนินการ</nuxt-link>
+                    </td>
+                    <td>
+                        <nuxt-link :to="'/job/'+job_id" class="btn btn-xs btn-danger" v-if="job.action_id==action.id">Incomplete</nuxt-link>
+                        <nuxt-link :to="'/job/'+job_id"  class="btn btn-xs btn-outline-success" v-if="job.action_id>action.id">Complete</nuxt-link>
+                    </td>
+                </tr>
+            
+            
             <!--<tr>
                 <td>เปลี่ยนชื่อบริษัทใหม่</td>
                 <td>12/04/2020  12:00</td>
@@ -68,7 +63,12 @@ export default {
     middleware: ['router-auth'],
     data(){
         return {
-        date_today:new Date()
+            date_today:new Date(),
+         job_id:this.$route.params.slug,
+            job:{
+                action_id:''
+            },
+            actions:[]
         };
     },
     watchQuery: ["page"],
@@ -81,6 +81,8 @@ export default {
         title: "Job Detail",
         dir: ''
         });
+        this.getActions();
+        this.getJob();
     },
     transition(to, from) {
         if (!from) return "fade";
@@ -93,6 +95,23 @@ export default {
         return this.$store.state.info.altlayout ? "FullGrid" : "BaelGrid";
         },
     },
+    methods:{
+        async getActions(){
+              const actions = await this.$axios.$get('/jobs/v1/getactions');
+              if( actions.data){
+                  this.actions = actions.data
+              }
+              
+            console.log('actions',actions);
+
+        },
+        async getJob(){
+            const job = await this.$axios.$get('/jobs/v1/get/'+this.job_id);
+            this.job = job.data;
+            console.log('job',job);
+
+        }
+    }
      
 }
 </script>
