@@ -205,7 +205,8 @@ module.exports = {
       mode: 'client' ,
       
     },
-    "~/plugins/vee-validate.js"
+    "~/plugins/vee-validate.js",
+    { src: '@/plugins/vue-html2pdf', mode: 'client' }
     
   ],
   axios: {
