@@ -761,7 +761,7 @@
                         <validation-observer ref="step4" v-slot="{ handleSubmit }">
                             <b-form @submit.stop.prevent="handleSubmit(onSubmit)" method="post">
                                 <b-row v-for="(shareholder,key) in form.shareholders" :key="'st4'+key" class="mb-3">
-                                    <b-col md="10"><h5>ผู้ถื้อหุ้น {{ key+1 }}</h5></b-col>
+                                    <b-col md="10"><h5>ผู้ถือหุ้นคนที่ {{ key+1 }}</h5></b-col>
                                     <b-col md="2" class="text-right">
                                         <b-button variant="outline-secondary" v-if="key > 2" @click="removeshare(key)">
                                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 37 37">
@@ -1485,7 +1485,7 @@
                             <b-form @submit.stop.prevent="handleSubmit(onSubmit)" method="post">
                                     
                                 <b-row v-for="(direct,key) in form.director" :key="'shar'+key" class="mb-3">
-                                    <b-col md="10"><h5>กรรมการ {{ key+1 }}</h5></b-col>
+                                    <b-col md="10"><h5>กรรมการคนที่ {{ key+1 }}</h5></b-col>
                                     <b-col md="2" class="text-right">
                                         <b-button variant="outline-secondary" v-if="key > 0" @click="removedirector(key)">
                                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 37 37">

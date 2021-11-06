@@ -79,82 +79,164 @@
         
       
    
-      <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-          
-          <div class="t-radius job-dashboard">
-            <table class="table">
-              <thead class="thead-light">
-                <tr>
-                  <th scope="col">Job Request</th>
-                  <th scope="col">Date time</th>
-                  <th scope="col">Lawyer</th>
-                  <th scope="col">Status</th>
-                </tr>
-              </thead>
-              <tbody v-if="assigneds.length > 0">
-                <tr v-for="(ass,key) in assigneds" :key="key">
-                  <td>{{ ass.job_name }}(J{{ ass.id | padStr(5)}})</td>
-                  <td>{{ ass.created_at | formatDate }}</td>
-                  <td><!--<img src="~/assets/icon/user.png" class="icon" /> Patsanan--></td>
-                  <td><nuxt-link :to="'/job/'+ass.id" class="btn btn-xs btn-primary">Assigned</nuxt-link></td>
-                </tr>
-                
-              </tbody>
-              <tbody v-else>
-                <tr>
-                  <td colspan="4"><center>No data</center></td>
-                </tr>
-                
-              </tbody>
-            </table>
-             
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
             
+            <div class="t-radius job-dashboard">
+              <table class="table">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Job Request</th>
+                    <th scope="col">Date time</th>
+                    <th scope="col">Lawyer</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody v-if="assigneds.length > 0">
+                  <tr v-for="(ass,key) in assigneds" :key="key">
+                    <td>{{ ass.job_name }}(J{{ ass.id | padStr(5)}})</td>
+                    <td>{{ ass.created_at | formatDate }}</td>
+                    <td><!--<img src="~/assets/icon/user.png" class="icon" /> Patsanan--></td>
+                    <td><nuxt-link :to="'/job/'+ass.id" class="btn btn-xs btn-primary">Assigned</nuxt-link></td>
+                  </tr>
+                  
+                </tbody>
+                <tbody v-else>
+                  <tr>
+                    <td colspan="4"><center>No data</center></td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+              
+              
+            </div>
+            <div class="row mt-3">
+                <span class="col-8 justify-content-start align-middle show-pagination">
+                  Show {{ this.assigneds.length}} from {{ this.count.assignedcount}}
+                </span>
+              <!-- <ul class="col-4 pagination  justify-content-end">
+                  <li class="page-item "><a class="page-link" href="#"></a></li>
+                  <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">></a></li>
+                </ul>-->
+            </div>
           </div>
-          <div class="row mt-3">
-              <span class="col-8 justify-content-start align-middle show-pagination">
-                Show {{ this.assigneds.length}} from {{ this.count.assignedcount}}
-              </span>
-             <!-- <ul class="col-4 pagination  justify-content-end">
-                <li class="page-item "><a class="page-link" href="#"></a></li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">></a></li>
-              </ul>-->
+          <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <div class="t-radius job-dashboard">
+            <table class="table">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Job Request</th>
+                    <th scope="col">Date time</th>
+                    <th scope="col">Lawyer</th>
+                    <th scope="col">Download</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+              <tbody v-if="pendings.length > 0">
+                  <tr v-for="(ass,key) in pendings" :key="key">
+                    <td>{{ ass.job_name }}(J{{ ass.id | padStr(5)}})</td>
+                    <td>{{ ass.created_at | formatDate}}</td>
+                    <td><!--<img src="~/assets/icon/user.png" class="icon" /> Patsanan--></td>
+                    <td scope="col"><b-button variant="primary" @click="generateReport(ass.id)">Download Meeting</b-button></td>
+                    <td><nuxt-link :to="'/job/'+ass.id" class="btn btn-xs btn-primary">Pending payment</nuxt-link></td>
+                  </tr>
+                  
+                </tbody>
+                <tbody v-else>
+                  <tr>
+                    <td colspan="4"><center>No data</center></td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+            </div>
           </div>
-        </div>
-        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-          <div class="t-radius job-dashboard">
-          <table class="table">
-              <thead class="thead-light">
-                <tr>
-                  <th scope="col">Job Request</th>
-                  <th scope="col">Date time</th>
-                  <th scope="col">Lawyer</th>
-                  <th scope="col">Status</th>
-                </tr>
-              </thead>
-             <tbody v-if="pendings.length > 0">
-                <tr v-for="(ass,key) in pendings" :key="key">
-                  <td>{{ ass.job_name }}(J{{ ass.id | padStr(5)}})</td>
-                  <td>{{ ass.created_at | formatDate}}</td>
-                  <td><!--<img src="~/assets/icon/user.png" class="icon" /> Patsanan--></td>
-                  <td><nuxt-link :to="'/job/'+ass.id" class="btn btn-xs btn-primary">Pending payment</nuxt-link></td>
-                </tr>
-                
-              </tbody>
-              <tbody v-else>
-                <tr>
-                  <td colspan="4"><center>No data</center></td>
-                </tr>
-                
-              </tbody>
-            </table>
-          </div>
-        </div>
+          
+        </div>  
+          <client-only>
+            <vue-html2pdf
+                :show-layout="false"
+                :float-layout="true"
+                :enable-download="false"
+                :preview-modal="true"
+                :paginate-elements-by-height="1400"
+                filename="meeting"
+                :pdf-quality="2"
+                :manual-pagination="false"
+                pdf-format="a4"
+                pdf-orientation="portrait"
+                pdf-content-width="790px"
         
-      </div>  
+              
+                @hasStartedGeneration="hasStartedGeneration()"
+                @hasGenerated="hasGenerated($event)"
+                ref="html2Pdf"
+            >
+                <section slot="pdf-content">
+                    <div class="page">
+                        <img src="~/assets/from_meeting_new/from_meeting_new-1.png" class="form-1" />
+                        <div class="position-abs-1" v-if="company">{{ company.company_th }}</div>
+                        <div class="position-meeting_date-1" v-if="company">{{ company.meeting_date | formatDatePdf }}</div>
+                        <div class="position-meeting_time-1" v-if="company">{{ company.meeting_time }}</div>
+                        <div class="position-meeting_addess_no-1" v-if="company">
+                          {{ company.meeting_addess_no }}
+                          {{ company.meeting_building }}
+                          {{ company.meeting_level }}
+                          {{ company.meeting_room_no }}
+                          {{ company.meeting_soi }}
+                          {{ company.meeting_road }}
+                           {{ company.meeting_city }}
+                          {{ company.meeting_states }}
+                          
+                         
+
+                        </div>
+                        <div class="position-meeting_city-1" v-if="company">
+                         
+                          
+                          {{ company.meeting_province }}
+                          {{ company.meeting_postcode }}
+                          
+                          
+                         
+
+                        </div>
+                         <div class="position-share_count-1" v-if="company">{{ company.share_count }}</div>
+                         <div class="position-share_total-1" v-if="company">{{ company.share_total }}</div>
+                         <div class="position-president_title-1" v-if="company">{{ company.president_title }}{{ company.president_firstname }} {{ company.president_lastname }}</div>
+                        <div class="position-static-1" >ใช้ตามประมวลกฎหมายแพ่งและพาณิชย์เป็นข้อบังคับของบริษัท</div>
+                        <div class="position-payment_register-1" >{{ company.expenses | getcomma}}</div>
+                        <div class="position-share_value-1" v-if="company">{{ company.share_value | getcomma }}</div>
+                        <div class="position-payment_percent-1" v-if="company">{{ company.payment_percent | calpayment(company.amount_cap) }}</div>
+                        
+                        
+                        
+                    </div>
+                    <div class="page">
+                        <img src="~/assets/from_meeting_new/from_meeting_new-2.png" class="form-1" />
+                        <div class="position-director_count-2" v-if="company.directors">{{ company.directors.length }}</div>
+                        <template v-if="company.directors">
+                          <div v-for="(director,key) in company.directors" :key="key" :class="'position-director_'+(key+1)+'-2'">{{ director.title }}{{ director.firstname }} {{ director.lastname }}</div>
+                        </template>
+                        <div class="position-auditor_title-2" v-if="company">{{ company.auditor_title }}{{ company.auditor_firstname }} {{ company.auditor_lastname }}</div>
+                         <div class="position-license_number-2" v-if="company">{{ company.license_number }}</div>
+                          <div class="position-compensation-2" v-if="company">{{ company.compensation | getcomma }}</div>
+                           <div class="position-president_title-2" v-if="company">{{ company.president_title }}{{ company.president_firstname }} {{ company.president_lastname }}</div>
+                       
+                        
+                        
+                    </div>
+                  
+                  
+                    
+                    <!-- PDF Content Here -->
+                </section>
+            </vue-html2pdf>
+          </client-only>
       </div>
     </div>
   </div>
@@ -199,7 +281,8 @@ export default {
       user: {
         email: '',
         uid:''
-      }
+      },
+      company:{}
     };
   },
   mounted() {
@@ -246,6 +329,38 @@ export default {
     return [day, month, year].join('/')+' '+hh+':'+mm;
 
     },
+    calpayment(percent,amount){
+      const pay = amount*(percent/100);
+
+       var nStr = pay;
+        nStr += '';
+        var x = nStr.split('.');
+        var x1 = x[0];
+        var x2 = x.length > 1 ? '.' + x[1] : '';
+        var rgx = /(\d+)(\d{3})/;
+        while (rgx.test(x1)) {
+            x1 = x1.replace(rgx, '$1' + ',' + '$2');
+        }
+        return x1 ;
+      
+
+    },
+    formatDatePdf(date) {
+      var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear(),
+        hh = d.getHours(),
+        mm = d.getMinutes();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [day, month, year].join('/');
+
+    },
     getcomma: function(text){
         if(!text){
             return ''
@@ -273,6 +388,16 @@ export default {
   },
   
   methods:{
+    async generateReport (id) {
+      const detail = await this.$axios.$get('/company/v1/getmeeting/'+id);
+      if(detail){
+        this.company = detail.data;
+
+      }
+      console.log('detail',this.company);
+     
+          this.$refs.html2Pdf.generatePdf()
+    },
     async getJobscounts(){
       //console.log('user',this.user.email);
       const counts = await this.$axios.$get('/jobs/v1/getJobCount/'+this.user.uid);
@@ -367,6 +492,8 @@ nav .r {
 .r.full-height {
   grid-gap: 0;
 }
+
+
 @media only screen and (max-width: 40rem) {
   .xs-collapse {
     visibility: hidden;
@@ -379,4 +506,5 @@ nav .r {
     visibility: visible;
   }
 }
+
 </style>
