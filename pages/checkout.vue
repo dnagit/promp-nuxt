@@ -91,12 +91,17 @@ export default {
 
 
         }
+        axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
         var config = {
             method: 'post',
             url: 'https://api.omise.co/charges',
+             proxyHeaders: false,
+            credentials: true,
             headers: { 
+              'Access-Control-Allow-Origin':'*',
               'Authorization': 'Basic c2tleV90ZXN0XzVwczZ6NnUwaGFva3dkbzlnZGI=', 
-              'Content-Type': 'text/plain'
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
             },
             data : data
           };

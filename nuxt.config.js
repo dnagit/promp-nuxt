@@ -74,6 +74,7 @@ module.exports = {
     '@nuxt/content', 
     '@nuxtjs/pwa', 
     '@nuxtjs/axios',
+    '@nuxtjs/proxy',
     '@nuxtjs/auth',
     '@nuxtjs/pwa',
    

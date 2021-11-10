@@ -23,6 +23,7 @@
     "@nuxtjs/bootstrap-vue": "^2.0.4",
     "@nuxtjs/firebase": "^7.6.1",
     "@nuxtjs/fontawesome": "^1.1.2",
+    "@nuxtjs/proxy": "^2.1.0",
     "@nuxtjs/pwa": "^3.3.5",
     "axios": "^0.21.4",
     "bf-solid": "^2.10.6",
@@ -41,7 +42,6 @@
     "nuxt": "^2.15.3",
     "nuxt-element-ui": "^1.0.10",
     "nuxt-validate": "^1.0.1",
-
     "request": "^2.79.0",
     "sequelize": "^6.7.0",
     "sequelize-cli": "^6.2.0",
