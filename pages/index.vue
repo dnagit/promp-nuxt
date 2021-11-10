@@ -141,8 +141,15 @@
                     <td>{{ ass.job_name }}(J{{ ass.id | padStr(5)}})</td>
                     <td>{{ ass.created_at | formatDate}}</td>
                     <td><!--<img src="~/assets/icon/user.png" class="icon" /> Patsanan--></td>
-                    <td scope="col"><b-button variant="primary" @click="generateReport(ass.id)">Download Meeting</b-button></td>
-                    <td><nuxt-link :to="'/job/'+ass.id" class="btn btn-xs btn-primary">Pending payment</nuxt-link></td>
+                    <td scope="col">
+                      <b-dropdown text="Download" variant="outline-primary"  class="m-2">
+                        <b-dropdown-item @click="generateReport(ass.id)">Meeting</b-dropdown-item>
+                        <!--<b-dropdown-item @click="generateDocument(ass.id)">Document</b-dropdown-item>-->
+                       
+                      </b-dropdown>
+                      
+                    </td>
+                    <td><nuxt-link :to="'/checkout?job_id='+ass.id" class="btn btn-xs btn-primary">Pending payment</nuxt-link></td>
                   </tr>
                   
                 </tbody>
@@ -226,6 +233,45 @@
                          <div class="position-license_number-2" v-if="company">{{ company.license_number }}</div>
                           <div class="position-compensation-2" v-if="company">{{ company.compensation | getcomma }}</div>
                            <div class="position-president_title-2" v-if="company">{{ company.president_title }}{{ company.president_firstname }} {{ company.president_lastname }}</div>
+                       
+                        
+                        
+                    </div>
+                  
+                  
+                    
+                    <!-- PDF Content Here -->
+                </section>
+            </vue-html2pdf>
+          </client-only>
+           <client-only>
+            <vue-html2pdf
+                :show-layout="false"
+                :float-layout="true"
+                :enable-download="false"
+                :preview-modal="true"
+                :paginate-elements-by-height="1400"
+                filename="meeting"
+                :pdf-quality="2"
+                :manual-pagination="false"
+                pdf-format="a4"
+                pdf-orientation="portrait"
+                pdf-content-width="790px"
+        
+              
+                @hasStartedGeneration="hasStartedGeneration()"
+                @hasGenerated="hasGenerated($event)"
+                ref="html2Pdf2"
+            >
+                <section slot="pdf-content">
+                    <div class="page">
+                        <img src="~/assets/from_meeting_new/from_meeting_new-1.png" class="form-1" />
+                        
+                        
+                        
+                    </div>
+                    <div class="page">
+                      
                        
                         
                         
@@ -388,6 +434,17 @@ export default {
   },
   
   methods:{
+    async generateDocument(id){
+      const detail = await this.$axios.$get('/company/v1/getmeeting/'+id);
+      if(detail){
+        this.company = detail.data;
+
+      }
+      console.log('detail',this.company);
+     
+          this.$refs.html2Pdf2.generatePdf()
+
+    },
     async generateReport (id) {
       const detail = await this.$axios.$get('/company/v1/getmeeting/'+id);
       if(detail){

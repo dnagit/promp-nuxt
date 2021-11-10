@@ -1245,3 +1245,11 @@ a.btn-goback:hover {
     height: 100vh;
 
 }
+.tab-pane{
+    .dropdown-toggle{
+        font-size: 14px;
+         a{
+            font-size: 14px !important; 
+        }
+    }
+}

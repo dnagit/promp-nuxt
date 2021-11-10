@@ -42,6 +42,10 @@ module.exports = {
       {
         src: 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js',
         type: 'text/javascript'
+      },
+      {
+        src: 'https://cdn.omise.co/omise.js',
+        type: 'text/javascript'
       }
     ]
   },
