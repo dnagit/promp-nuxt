@@ -163,7 +163,7 @@
               </table>
             </div>
           </div>
-          <div class="tab-pane fade show active" id="nav-processing" role="tabpanel" aria-labelledby="nav-processing-tab">
+          <div class="tab-pane fade show" id="nav-processing" role="tabpanel" aria-labelledby="nav-processing-tab">
             
             <div class="t-radius job-dashboard">
               <table class="table">
