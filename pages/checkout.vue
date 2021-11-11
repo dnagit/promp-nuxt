@@ -257,8 +257,8 @@ export default {
           capture:false,
           card:this.omiseToken,
           job_id:this.job_id,
-          //return_uri:'https://promp-nuxt.netlify.app/payment?job_id='+this.job_id
-          return_uri:'http://localhost:3000/payment?job_id='+this.job_id
+          return_uri:'https://promp-nuxt.netlify.app/payment?job_id='+this.job_id
+          //return_uri:'http://localhost:3000/payment?job_id='+this.job_id
 
 
         }
