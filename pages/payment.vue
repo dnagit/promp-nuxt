@@ -1,7 +1,9 @@
 <template>
-   <div class="row dashboard company">
+   <div class=" dashboard company text-center">
   
-
+      <h3>Payment {{ status }}</h3><br />
+      Job Id #{{ job_id }}<br />
+      <nuxt-link to="/" class="btn btn-xs btn-warning p-2 mt-3">Back To Home</nuxt-link>
    </div>
 </template>
 
@@ -20,7 +22,15 @@ export default {
    
    
   },
+   data(){
+      return {
+          
+          job_id:this.$route.query.job_id,
+          job:{},
+          status:'Failed',
 
+      }
+  },
   transition(to, from) {
     if (!from) return "fade";
     return +to.query.page > +from.query.page ? "slide-right" : "slide-left";
@@ -33,8 +43,24 @@ export default {
     },
   },
   mounted() {
+    this.getTransition();
     console.log(this.$query);
     
+  },
+  methods:{
+    async getTransition(){
+      let tran =  await this.$axios.$get('/jobs/v1/checkcharge/'+this.job_id);
+      if(tran.data){
+        if(tran.data.status == 'successful' || tran.data.status ==  'pending'){
+          this.status = 'Complete';
+
+        }
+
+      }
+      console.log('checkcharge',tran);
+
+    }
+
   }
 };
 </script>
@@ -67,4 +93,5 @@ nav .r {
     visibility: visible;
   }
 }
+
 </style>

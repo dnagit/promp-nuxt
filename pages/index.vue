@@ -53,6 +53,7 @@
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
           <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">My job request ({{ this.count.assignedcount}})</a>
           <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Pending Payment({{ this.count.pendingcount}})</a>
+           <a class="nav-item nav-link" id="nav-processing-tab" data-toggle="tab" href="#nav-processing" role="tab" aria-controls="nav-profile" aria-selected="false">Processing({{ this.count.processingcount}})</a>
         
         </div>
   
@@ -162,7 +163,50 @@
               </table>
             </div>
           </div>
-          
+          <div class="tab-pane fade show active" id="nav-processing" role="tabpanel" aria-labelledby="nav-processing-tab">
+            
+            <div class="t-radius job-dashboard">
+              <table class="table">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Job Request</th>
+                    <th scope="col">Date time</th>
+                    <th scope="col">Lawyer</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody v-if="processings.length > 0">
+                  <tr v-for="(ass,key) in processings" :key="key">
+                    <td>{{ ass.job_name }}(J{{ ass.id | padStr(5)}})</td>
+                    <td>{{ ass.created_at | formatDate }}</td>
+                    <td><!--<img src="~/assets/icon/user.png" class="icon" /> Patsanan--></td>
+                    <td><nuxt-link :to="'/job/'+ass.id" class="btn btn-xs btn-primary">Processing</nuxt-link></td>
+                  </tr>
+                  
+                </tbody>
+                <tbody v-else>
+                  <tr>
+                    <td colspan="4"><center>No data</center></td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+              
+              
+            </div>
+            <div class="row mt-3">
+                <span class="col-8 justify-content-start align-middle show-pagination">
+                  Show {{ this.assigneds.length}} from {{ this.count.assignedcount}}
+                </span>
+              <!-- <ul class="col-4 pagination  justify-content-end">
+                  <li class="page-item "><a class="page-link" href="#"></a></li>
+                  <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">></a></li>
+                </ul>-->
+            </div>
+          </div>
         </div>  
           <client-only>
             <vue-html2pdf
@@ -321,6 +365,7 @@ export default {
       },
       pendings:[],
       assigneds:[],
+      processings:[],
       perPage:10,
       offsetPending:0,
       offsetAssigned:0,
@@ -504,6 +549,20 @@ export default {
       }
        const pending = await this.$axios.$post('/jobs/v1/getjobs',filterpending);
        this.pendings = pending.data;
+
+       let  filterprocessing ={
+        perPage:this.perPage,
+        offset:this.offsetPending,
+        uid:this.user.uid,
+        status_id:3
+
+      }
+       const processings = await this.$axios.$post('/jobs/v1/getjobs',filterprocessing);
+       this.processings = processings.data;
+
+
+
+       
        //console.log('assigned',assigned);
 
     },
